@@ -17,10 +17,9 @@ export default {
     return {
       tutorials: [
         { id: 0, name: 'Home', contents: '/' },
-        { id: 1, name: 'About', contents: '/about' },
-        { id: 2, name: 'item1', contents: '/id1' },
-        { id: 3, name: 'item2', contents: '/id2' },
-        { id: 4, name: 'item3', contents: '/id3' }
+        { id: 1, name: 'Git とは', contents: '/what-is-the-git' },
+        { id: 2, name: 'item2', contents: '/id2' },
+        { id: 3, name: 'item3', contents: '/id3' }
       ]
     }
   }

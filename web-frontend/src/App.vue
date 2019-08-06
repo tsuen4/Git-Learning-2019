@@ -46,7 +46,6 @@ div {
   margin-left: 200px;
   padding: 10px;
   /* width: 780px; */
-  background-color: gainsboro;
 }
 
 /* #app {
