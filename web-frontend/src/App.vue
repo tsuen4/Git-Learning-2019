@@ -48,6 +48,15 @@ div {
   /* width: 780px; */
 }
 
+#terminal-box {
+  background-color: #424242;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 300px;
+}
+
 /* #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
