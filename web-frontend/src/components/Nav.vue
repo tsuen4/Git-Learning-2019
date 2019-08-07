@@ -2,9 +2,12 @@
   <div id="nav">
     <div id="tutorial-list">
       <ul>
-        <li v-for="tutorial in tutorials" :key="tutorial.id">
-          <router-link :to="tutorial.contents">{{tutorial.name}}</router-link>
-        </li>
+        <router-link
+          tag="li"
+          :to="tutorial.contents"
+          v-for="tutorial in tutorials"
+          :key="tutorial.id"
+        >{{tutorial.name}}</router-link>
       </ul>
     </div>
   </div>
