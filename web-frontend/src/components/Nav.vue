@@ -18,7 +18,7 @@ export default {
       tutorials: [
         { id: 0, name: 'Home', contents: '/' },
         { id: 1, name: 'Git とは', contents: '/what-is-the-git' },
-        { id: 2, name: 'item2', contents: '/id2' },
+        { id: 2, name: 'リポジトリの作成', contents: '/create-repository' },
         { id: 3, name: 'item3', contents: '/id3' }
       ]
     }
