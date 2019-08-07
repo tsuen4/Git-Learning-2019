@@ -25,6 +25,11 @@ export default new Router({
       path: '/what-is-the-git',
       name: 'what-is-the-git',
       component: () => import('./views/text/WhatIsTheGit.vue')
+    },
+    {
+      path: '/create-repository',
+      name: 'create-repository',
+      component: () => import('./views/text/CreateRepository.vue')
     }
   ]
 })

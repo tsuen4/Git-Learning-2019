@@ -2,9 +2,12 @@
   <div id="nav">
     <div id="tutorial-list">
       <ul>
-        <li v-for="tutorial in tutorials" :key="tutorial.id">
-          <router-link :to="tutorial.contents">{{tutorial.name}}</router-link>
-        </li>
+        <router-link
+          tag="li"
+          :to="tutorial.contents"
+          v-for="tutorial in tutorials"
+          :key="tutorial.id"
+        >{{tutorial.name}}</router-link>
       </ul>
     </div>
   </div>
@@ -18,7 +21,7 @@ export default {
       tutorials: [
         { id: 0, name: 'Home', contents: '/' },
         { id: 1, name: 'Git とは', contents: '/what-is-the-git' },
-        { id: 2, name: 'item2', contents: '/id2' },
+        { id: 2, name: 'リポジトリの作成', contents: '/create-repository' },
         { id: 3, name: 'item3', contents: '/id3' }
       ]
     }
