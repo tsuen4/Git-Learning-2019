@@ -32,12 +32,14 @@ body {
   margin: 0px;
 }
 
-#app {
-  padding: 0px;
+div {
+  /* border: 1px dotted #000000; */
 }
 
 #nav {
   float: left;
+  position: fixed;
+  top: 0;
   width: 200px;
 }
 
