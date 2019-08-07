@@ -2,11 +2,6 @@
   <div id="app">
     <Nav></Nav>
     <Tutorial></Tutorial>
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>-->
-    <!-- <router-view/> -->
   </div>
 </template>
 
@@ -30,10 +25,6 @@ div {
 
 body {
   margin: 0px;
-}
-
-div {
-  /* border: 1px dotted #000000; */
 }
 
 #nav {
