@@ -30,4 +30,8 @@ export default {
 </script>
 
 <style>
+#tutorial-list ul {
+  list-style-type: none;
+  margin-left: -30px;
+}
 </style>
