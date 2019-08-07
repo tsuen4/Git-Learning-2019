@@ -23,18 +23,17 @@ export default {
 </script>
 
 <style>
+/* レイアウト確認用の枠線 */
+div {
+  /* border: 0.05px dotted #000000; */
+}
+
 body {
   margin: 0px;
 }
 
 #app {
   padding: 0px;
-  /* width: 1000px; */
-  /* margin: auto; */
-}
-
-div {
-  /* border: 1px dotted #000000; */
 }
 
 #nav {
@@ -44,16 +43,20 @@ div {
 
 #tutorial {
   margin-left: 200px;
+}
+
+#git-text {
   padding: 10px;
-  /* width: 780px; */
 }
 
 #terminal-box {
   background-color: #424242;
   color: white;
   position: fixed;
+  width: 80%;
+  margin-left: -10px;
   bottom: 0;
-  width: 100%;
+
   height: 300px;
 }
 
@@ -77,4 +80,15 @@ div {
 #nav a.router-link-exact-active {
   color: #42b983;
 } */
+
+/* width: 1024px 以上 */
+@media (min-width: 1024px) {
+  #app {
+    margin: auto;
+    width: 80%;
+  }
+  #terminal-box {
+    width: calc(80% - 200px);
+  }
+}
 </style>
