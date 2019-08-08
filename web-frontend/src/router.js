@@ -30,6 +30,11 @@ export default new Router({
       path: '/create-repository',
       name: 'create-repository',
       component: () => import('./views/text/CreateRepository.vue')
+    },
+    {
+      path: '/git-commit',
+      name: 'git-commit',
+      component: () => import('./views/text/git-commit.vue')
     }
   ]
 })
