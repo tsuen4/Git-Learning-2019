@@ -9,5 +9,7 @@ export default {
 </script>
 
 <style>
-
+#git-text {
+  padding-bottom: 300px;
+}
 </style>
