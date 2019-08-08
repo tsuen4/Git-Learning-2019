@@ -14,7 +14,8 @@ module.exports = {
             {
               loader: 'markdown-to-vue-loader',
               options: {
-                exportSource: true // この設定でMarkdownのRawデータを読み込めるようにする
+                // この設定でMarkdownのRawデータを読み込めるようにする
+                exportSource: true
               }
             }
           ]
