@@ -49,7 +49,6 @@ body {
   width: 80%;
   margin-left: -10px;
   bottom: 0;
-
   height: 300px;
 }
 
@@ -60,7 +59,6 @@ body {
   text-align: center;
   color: #2c3e50;
 }
-/
 
 #nav {
 }
