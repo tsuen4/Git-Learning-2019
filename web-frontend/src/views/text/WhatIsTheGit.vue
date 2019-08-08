@@ -1,22 +1,15 @@
 <template>
   <div id="git-text">
-    <vue-markdown :source="source"></vue-markdown>
+    <md></md>
   </div>
 </template>
 
 <script>
 import md from '@/assets/text/what-is-the-git.md'
-import VueMarkdown from 'vue-markdown'
 
 export default {
   components: {
-    VueMarkdown
-  },
-  data: () => {
-    return {
-      // raw データの取得
-      source: md.source
-    }
+    md
   }
 }
 </script>
