@@ -6,24 +6,13 @@
 </template>
 
 <script>
-import md from '@/assets/text/create-repository.md'
+import md from '@/assets/text/git-commit.md'
 import TerminalBlock from '@/components/Terminal.vue'
 
 export default {
   components: {
     md,
     TerminalBlock
-  },
-  data: () => {
-    return {
-      // raw データの取得
-      // source: md.source
-    }
-  },
-  computed: {
-    source: () => {
-      return md
-    }
   }
 }
 </script>
