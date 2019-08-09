@@ -18,6 +18,8 @@ export default {
 </script>
 
 <style>
+@import url('../node_modules/github-markdown-css/github-markdown.css');
+
 /* レイアウト確認用の枠線 */
 div {
   /* border: 0.05px dotted #000000; */
@@ -53,10 +55,25 @@ body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* 767px 以下 */
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 10px;
+  }
 }
 
 /*

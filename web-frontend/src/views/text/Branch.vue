@@ -1,6 +1,6 @@
 <template>
   <div id="git-text">
-    <md></md>
+    <md class="markdown-body"></md>
     <TerminalBlock></TerminalBlock>
   </div>
 </template>
