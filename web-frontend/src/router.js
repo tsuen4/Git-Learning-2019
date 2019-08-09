@@ -40,6 +40,11 @@ export default new Router({
       path: '/branch',
       name: 'branch',
       component: () => import('./views/text/Branch.vue')
+    },
+    {
+      path: '/git-amend',
+      name: 'git-amend',
+      component: () => import('./views/text/GitAmend.vue')
     }
   ]
 })
