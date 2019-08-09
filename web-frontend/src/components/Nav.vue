@@ -22,7 +22,8 @@ export default {
         { id: 0, name: 'Home', contents: '/' },
         { id: 1, name: 'Git とは', contents: '/what-is-the-git' },
         { id: 2, name: 'リポジトリの作成', contents: '/create-repository' },
-        { id: 3, name: '変更内容の記録', contents: '/git-commit' }
+        { id: 3, name: '変更内容の記録', contents: '/git-commit' },
+        { id: 4, name: 'ブランチによる分岐と統合', contents: '/branch' }
       ]
     }
   }
