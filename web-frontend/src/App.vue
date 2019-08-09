@@ -63,17 +63,9 @@ body {
 
 .markdown-body {
   box-sizing: border-box;
-  min-width: 200px;
-  max-width: 980px;
+  min-width: 300px;
   margin: 0 auto;
   padding: 10px;
-}
-
-/* 767px 以下 */
-@media (max-width: 767px) {
-  .markdown-body {
-    padding: 10px;
-  }
 }
 
 /*
