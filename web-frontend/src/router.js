@@ -34,7 +34,12 @@ export default new Router({
     {
       path: '/git-commit',
       name: 'git-commit',
-      component: () => import('./views/text/git-commit.vue')
+      component: () => import('./views/text/GitCommit.vue')
+    },
+    {
+      path: '/branch',
+      name: 'branch',
+      component: () => import('./views/text/Branch.vue')
     }
   ]
 })
