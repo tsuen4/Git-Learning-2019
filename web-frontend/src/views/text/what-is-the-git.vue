@@ -8,6 +8,7 @@
 import md from '@/assets/text/what-is-the-git.md'
 
 export default {
+  name: 'git-text',
   components: {
     md
   }

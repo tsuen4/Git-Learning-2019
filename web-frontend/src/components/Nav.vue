@@ -22,9 +22,9 @@ export default {
         { name: 'Home', contents: '/' },
         { name: 'Git とは', contents: '/what-is-the-git' },
         { name: 'リポジトリの作成', contents: '/create-repository' },
-        { name: '変更内容の記録', contents: '/git-commit' },
+        { name: '変更内容の記録', contents: '/commit' },
         { name: 'ブランチによる分岐と統合', contents: '/branch' },
-        { name: 'コミットのやり直し', contents: '/git-amend' }
+        { name: 'コミットのやり直し', contents: '/amend' }
       ]
     }
   }
