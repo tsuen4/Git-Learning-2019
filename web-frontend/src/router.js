@@ -24,27 +24,27 @@ export default new Router({
     {
       path: '/what-is-the-git',
       name: 'what-is-the-git',
-      component: () => import('./views/text/WhatIsTheGit.vue')
+      component: () => import(/* webpackChunkName: "what-is-the-git" */ './views/text/WhatIsTheGit.vue')
     },
     {
       path: '/create-repository',
       name: 'create-repository',
-      component: () => import('./views/text/CreateRepository.vue')
+      component: () => import(/* webpackChunkName: "create-repository" */ './views/text/CreateRepository.vue')
     },
     {
       path: '/git-commit',
       name: 'git-commit',
-      component: () => import('./views/text/GitCommit.vue')
+      component: () => import(/* webpackChunkName: "git-commit" */ './views/text/GitCommit.vue')
     },
     {
       path: '/branch',
       name: 'branch',
-      component: () => import('./views/text/Branch.vue')
+      component: () => import(/* webpackChunkName: "branch" */ './views/text/Branch.vue')
     },
     {
       path: '/git-amend',
       name: 'git-amend',
-      component: () => import('./views/text/GitAmend.vue')
+      component: () => import(/* webpackChunkName: "git-amend" */ './views/text/GitAmend.vue')
     }
   ],
   scrollBehavior (to, from, savedPosition) {
