@@ -4,7 +4,7 @@
 
 ファイルの変更を Git で記録することで、追従対象に置くことができます。
 
-![commit_flow](src/git_commit_flow.png)
+![commit_flow](@/assets/text/img/git_commit_flow.png)
 
 ## 変更内容の記録: 問題
 
