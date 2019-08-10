@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <Nav></Nav>
-    <Tutorial></Tutorial>
+    <AppNav></AppNav>
+    <AppTutorial></AppTutorial>
   </div>
 </template>
 
 <script>
-import Nav from '@/components/Nav.vue'
-import Tutorial from '@/components/Tutorial.vue'
+import AppNav from '@/components/AppNav.vue'
+import AppTutorial from '@/components/AppTutorial.vue'
 import hljs from 'highlight.js/lib/highlight'
 import bash from 'highlight.js/lib/languages/bash'
 import 'highlight.js/styles/github.css'
@@ -15,8 +15,8 @@ hljs.registerLanguage('bash', bash)
 
 export default {
   components: {
-    Nav,
-    Tutorial
+    AppNav,
+    AppTutorial
   }
 }
 </script>
@@ -73,15 +73,15 @@ body {
 }
 
 /*
-#nav {
+#Appnav {
 }
 
-#nav a {
+#Appnav a {
   font-weight: bold;
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
+#Appnav a.router-link-exact-active {
   color: #42b983;
 } */
 
