@@ -46,5 +46,12 @@ export default new Router({
       name: 'git-amend',
       component: () => import('./views/text/GitAmend.vue')
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
