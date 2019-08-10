@@ -6,10 +6,11 @@
 </template>
 
 <script>
-import md from '@/assets/text/branch.md'
+import md from '@/assets/text/create-repository.md'
 import TerminalBlock from '@/components/Terminal.vue'
 
 export default {
+  name: 'git-text',
   components: {
     md,
     TerminalBlock
