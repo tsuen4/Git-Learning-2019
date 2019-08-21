@@ -45,6 +45,11 @@ export default new Router({
       path: '/amend',
       name: 'amend',
       component: () => import(/* webpackChunkName: "amend" */ './views/text/amend.vue')
+    },
+    {
+      path: '/github-flow',
+      name: 'github-flow',
+      component: () => import(/* webpackChunkName: "github-flow" */ './views/text/github-flow.vue')
     }
   ],
   scrollBehavior (to, from, savedPosition) {
