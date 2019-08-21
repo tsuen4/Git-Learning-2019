@@ -24,7 +24,8 @@ export default {
         { name: 'リポジトリの作成', contents: '/create-repository' },
         { name: '変更内容の記録', contents: '/commit' },
         { name: 'ブランチによる分岐と統合', contents: '/branch' },
-        { name: 'コミットのやり直し', contents: '/amend' }
+        { name: 'コミットのやり直し', contents: '/amend' },
+        { name: 'GitHub Flow', contents: '/github-flow' }
       ]
     }
   }
