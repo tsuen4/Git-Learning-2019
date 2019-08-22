@@ -4,7 +4,7 @@ Git では `ブランチ(branch)` を使って隔離された作業環境を作�
 
 (図を入れよう!)
 
-## 問題 1
+## 問題
 
 まずは、現在どのブランチにいるかを確認してみましょう。
 
@@ -26,8 +26,6 @@ git branch edit-hello # edit-hello ブランチの作成
 git checkout edit-hello # edit-hello ブランチに移動
 git status
 ```
-
-## 問題 2
 
 先ほど作成した edit-hello ブランチ上で、 hello.txt を編集してコミットしてみましょう。今回は簡単にコマンドで追記します。
 
