@@ -37,4 +37,10 @@ export default {
   list-style-type: none;
   margin-left: -30px;
 }
+
+#tutorial-list li {
+  border-bottom: 1px solid #BBB;
+  list-style-position: inside;
+  line-height:2.0em;
+}
 </style>
