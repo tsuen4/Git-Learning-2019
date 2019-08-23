@@ -25,6 +25,7 @@ export default {
         { name: '変更内容の記録', contents: '/commit' },
         { name: 'ブランチによる分岐と統合', contents: '/branch' },
         { name: 'コミットのやり直し', contents: '/amend' },
+        { name: '作業の取り消し', contents: '/git-reset' },
         { name: 'GitHub Flow', contents: '/github-flow' }
       ]
     }
