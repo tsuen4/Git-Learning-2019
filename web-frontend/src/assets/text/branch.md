@@ -2,9 +2,9 @@
 
 Git では `ブランチ(branch)` を使って隔離された作業環境を作ることができます。隔離して作業することで、メインの master ブランチを安全な状態に保ちつつ作業できます。作業が終わり、準備が整ったら `マージ(merge)` というブランチを統合する Git の機能を使えば、変更を master ブランチに反映できます。
 
-(図を入れよう!)
+![branch](@/assets/text/img/git_branch.png)
 
-## 問題
+## 問題: ブランチの作成と切替
 
 まずは、現在どのブランチにいるかを確認してみましょう。
 
@@ -26,6 +26,8 @@ git branch edit-hello # edit-hello ブランチの作成
 git checkout edit-hello # edit-hello ブランチに移動
 git status
 ```
+
+## 問題: edit-hello ブランチ上での作業とマージ
 
 先ほど作成した edit-hello ブランチ上で、 hello.txt を編集してコミットしてみましょう。今回は簡単にコマンドで追記します。
 
