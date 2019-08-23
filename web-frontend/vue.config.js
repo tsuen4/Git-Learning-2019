@@ -16,8 +16,6 @@ module.exports = {
             {
               loader: 'markdown-to-vue-loader',
               options: {
-                // この設定でMarkdownのRawデータを読み込めるようにする
-                exportSource: true,
                 markdownItOptions: {
                   highlight: function (str, lang) {
                     if (lang && hljs.getLanguage(lang)) {
