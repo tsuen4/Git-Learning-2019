@@ -47,6 +47,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "amend" */ './views/text/amend.vue')
     },
     {
+      path: '/git-reset',
+      name: 'git-reset',
+      component: () => import(/* webpackChunkName: "git-reset" */ './views/text/git-reset.vue')
+    },
+    {
       path: '/github-flow',
       name: 'github-flow',
       component: () => import(/* webpackChunkName: "github-flow" */ './views/text/github-flow.vue')
