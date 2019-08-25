@@ -48,9 +48,9 @@ body {
   padding: 10px;
 }
 
-#terminal-box {
-  background-color: #424242;
-  color: white;
+#terminal {
+  /* background-color: #424242; */
+  /* color: white; */
   position: fixed;
   width: 80%;
   margin-left: -10px;
@@ -91,7 +91,7 @@ body {
     margin: auto;
     width: 80%;
   }
-  #terminal-box {
+  #terminal {
     width: calc(80% - 200px);
   }
 }
