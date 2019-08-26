@@ -36,12 +36,13 @@ export default {
 <style>
 #tutorial-list ul {
   list-style-type: none;
-  margin-left: -30px;
+  margin-left: -40px;
 }
 
 #tutorial-list li {
   border-bottom: 1px solid #BBB;
   list-style-position: inside;
   line-height:2.0em;
+  padding-left: 10px;
 }
 </style>

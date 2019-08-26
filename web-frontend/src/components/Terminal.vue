@@ -19,8 +19,8 @@ export default {
     }).then(function (response) {
       let socket = io.connect('/' + response.containerId)
       let term = new Terminal({
-        cols: 120, // Set the terminal's width to 120 columns
-        rows: 40 // Set the terminal's height to 80 rows
+        // cols: 120, // Set the terminal's width to 120 columns
+        // rows: 40 // Set the terminal's height to 80 rows
       })
       Terminal.applyAddon(fit)
       term.open(document.getElementById('terminal'))
@@ -44,6 +44,23 @@ export default {
 @import url("../../node_modules/xterm/dist/xterm.css");
 
 #git-text {
-  padding-bottom: 300px;
+  overflow: auto;
+  height: calc(100vh - calc(20px + 300px - 5px));
+}
+
+#terminal {
+  position: fixed;
+  width: 100%;
+  margin-left: -20px;
+  margin-bottom: -5px;
+  bottom: 0;
+  height: 300px;
+}
+
+/* width: 1024px 以上 */
+@media (min-width: 1024px) {
+  #terminal {
+    width: calc(90% - 200px);
+  }
 }
 </style>

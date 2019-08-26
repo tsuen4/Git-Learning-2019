@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style>
-
+#tutorial {
+  overflow: auto;
+  margin-left: 200px;
+}
 </style>

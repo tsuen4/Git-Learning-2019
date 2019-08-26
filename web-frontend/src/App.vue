@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style>
-@import url('../node_modules/github-markdown-css/github-markdown.css');
+@import url("../node_modules/github-markdown-css/github-markdown.css");
 
 /* レイアウト確認用の枠線 */
 div {
@@ -40,22 +40,8 @@ body {
   width: 200px;
 }
 
-#tutorial {
-  margin-left: 200px;
-}
-
 #git-text {
-  padding: 10px;
-}
-
-#terminal {
-  /* background-color: #424242; */
-  /* color: white; */
-  position: fixed;
-  width: 80%;
-  margin-left: -10px;
-  bottom: 0;
-  height: 300px;
+  padding: 20px 0 0 20px;
 }
 
 #app {
@@ -69,7 +55,7 @@ body {
   box-sizing: border-box;
   min-width: 300px;
   margin: 0 auto;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 /*
@@ -89,10 +75,7 @@ body {
 @media (min-width: 1024px) {
   #app {
     margin: auto;
-    width: 80%;
-  }
-  #terminal {
-    width: calc(80% - 200px);
+    width: 90%;
   }
 }
 </style>
