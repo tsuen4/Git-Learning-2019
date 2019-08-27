@@ -55,7 +55,6 @@ body {
   box-sizing: border-box;
   min-width: 300px;
   margin: 0 auto;
-  /* padding: 10px; */
 }
 
 /*
