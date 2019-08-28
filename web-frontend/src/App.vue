@@ -54,7 +54,7 @@ body {
 .markdown-body {
   box-sizing: border-box;
   min-width: 300px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
 }
 
 /*
