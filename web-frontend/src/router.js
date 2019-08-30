@@ -11,7 +11,8 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: { isPublic: true }
     },
     {
       path: '/about',
@@ -57,6 +58,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "github-flow" */ './views/text/github-flow.vue')
     }
   ],
+  // スクロール位置を保存 & 保存されていないページは一番上に
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition

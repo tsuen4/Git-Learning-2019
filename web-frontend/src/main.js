@@ -19,6 +19,18 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => !record.meta.isPublic) && !store.getters.isSignedIn) {
+    // このルートはログインされているかどうか認証が必要です。
+    // もしされていないならば、ログインページにリダイレクトします。
+    next({
+      path: '/'
+    })
+  } else {
+    next()
+  }
+})
+
 new Vue({
   router,
   store,
