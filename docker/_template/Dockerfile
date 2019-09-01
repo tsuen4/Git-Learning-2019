@@ -28,5 +28,6 @@ RUN echo -e "alias vi='vim'" >> $HOME/.bashrc && \
 RUN touch $HOME/.gitconfig && \
     git config --global user.email "student" && \
     git config --global user.name "student"
+WORKDIR /hello-git/
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/bin/bash"]
