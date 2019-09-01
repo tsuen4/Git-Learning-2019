@@ -9,8 +9,11 @@ import * as fit from 'xterm/lib/addons/fit/fit'
 
 export default {
   name: 'Terminal',
-  beforeCreate: () => {
-    fetch('/api/console/gi-al', {
+  props: {
+    imageName: String
+  },
+  created: function () {
+    fetch('/api/console/git-' + this.imageName, {
       method: 'POST',
       body: JSON.stringify({}),
       headers: new Headers({ 'Content-type': 'application/json' })
