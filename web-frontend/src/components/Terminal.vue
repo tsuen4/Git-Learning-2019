@@ -28,7 +28,7 @@ export default {
       })
       term.open(document.getElementById('terminal'))
       term.fit()
-      console.log(term.rows, term.cols)
+      // console.log(term.rows, term.cols)
 
       socket.on('data', data => {
         term.write(data)
