@@ -2,7 +2,7 @@ const hljs = require('highlight.js')
 
 module.exports = {
   runtimeCompiler: true,
-  outputDir: '../docs/',
+  // outputDir: '../docs/',
 
   // publicPath: process.env.NODE_ENV === 'production' ? '/(RepositoryName)/' : './',
   publicPath: './',

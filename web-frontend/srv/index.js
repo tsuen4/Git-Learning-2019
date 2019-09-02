@@ -2,6 +2,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const build = require('./build')
+const path = require('path')
 
 export default (app, http) => {
   build.init(http)
@@ -12,7 +13,7 @@ export default (app, http) => {
   }))
 
   // app.use('/node_modules', express.static(__dirname + '/node_modules'))
-  app.use(express.static('../docs'))
+  app.use(express.static(path.join(__dirname, '../dist')))
 
   app.post('/api/console/:imagename', async function (req, res) {
     try {
