@@ -15,9 +15,10 @@ export default (app, http) => {
   // app.use('/node_modules', express.static(__dirname + '/node_modules'))
   // app.use(express.static(path.join(__dirname, '../dist')))
 
+  // shell on docker
   app.post('/api/console/:imagename', async function (req, res) {
     try {
-      const container = await build.run(req.params.imagename)
+      const container = await build.run(req.params.imagename, ['userId=' + req.body.userId])
       res.send({
         containerId: container.id
       })
