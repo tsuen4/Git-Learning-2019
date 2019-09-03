@@ -18,7 +18,7 @@ exports.run = async (imageName, env = []) => {
     Tty: true,
     OpenStdin: true,
     StdinOnce: true,
-    // Env: env,
+    Env: env,
     Cmd: ['/bin/bash'],
     Image: imageName,
     Volumes: {},
