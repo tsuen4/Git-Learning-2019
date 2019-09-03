@@ -1,5 +1,8 @@
 <template>
-  <div id="terminal"></div>
+  <div id="t-out">
+    <input type="button" value="採点" @click="scoring()" />
+    <div id="terminal"></div>
+  </div>
 </template>
 
 <script>
@@ -7,12 +10,16 @@ import io from 'socket.io-client'
 import { Terminal } from 'xterm'
 import * as fit from 'xterm/lib/addons/fit/fit'
 
+let socket
+
 export default {
   name: 'Terminal',
   props: {
-    imageName: String
+    imageName: String,
+    userId: String
   },
   created: function () {
+    this.userId = this.$store.getters.user
     fetch('/api/console/git-' + this.imageName, {
       method: 'POST',
       body: JSON.stringify({}),
@@ -20,16 +27,11 @@ export default {
     }).then(function (response) {
       return response.json()
     }).then(function (response) {
-      let socket = io.connect('/' + response.containerId)
+      socket = io.connect('/' + response.containerId)
+      let term = new Terminal()
       Terminal.applyAddon(fit)
-      let term = new Terminal({
-        // cols: 120,
-        // rows: 20
-      })
       term.open(document.getElementById('terminal'))
       term.fit()
-      // console.log(term.rows, term.cols)
-
       socket.on('data', data => {
         term.write(data)
       })
@@ -40,6 +42,12 @@ export default {
         term.destroy()
       })
     })
+  },
+  methods: {
+    scoring: function () {
+      socket.emit('data', 'userID=' + this.userID + '\n')
+      socket.emit('data', this.imageName + '_sc.sh\n')
+    }
   }
 }
 </script>
@@ -47,6 +55,7 @@ export default {
 <style>
 @import url("../../node_modules/xterm/dist/xterm.css");
 
+/* TODO: ボタン追加に伴うシェルの高さの変更 */
 #git-text {
   overflow: auto;
   height: calc(100vh - calc(20px + 300px - 5px));
