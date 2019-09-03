@@ -5,8 +5,9 @@ ENV TZ Asia/Tokyo
 ENV LANG="ja_JP.UTF-8" LANGUAGE="ja_JP:ja" LC_ALL="ja_JP.UTF-8"
 # git-l/ 内のシェルスクリプトをコピー
 COPY git-l/* /usr/local/bin/
-# docker-entrypoint.sh の \r を消去
-RUN sed -i 's/\r//' /usr/local/bin/*.sh
+# docker-entrypoint.sh の \r を消去 & 書き込み権を消去
+RUN sed -i 's/\r//' /usr/local/bin/*.sh && \
+    chmod 111 /usr/local/bin/*.sh
 # リポジトリ一覧の更新 & bash のインストール
 RUN apk update && \
     apk upgrade && \
