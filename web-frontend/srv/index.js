@@ -26,4 +26,11 @@ export default (app, http) => {
       console.error(error)
     }
   })
+
+  app.post('/api/scoring/commit', function (req, res) {
+    // リクエストボディを出力
+    console.log(req.body)
+
+    res.send(req.body)
+  })
 }
