@@ -15,14 +15,18 @@ let socket
 export default {
   name: 'Terminal',
   props: {
-    imageName: String,
-    userId: String
+    imageName: String
+  },
+  data: function () {
+    return {
+      userId: ''
+    }
   },
   created: function () {
     this.userId = this.$store.getters.user
     fetch('/api/console/git-' + this.imageName, {
       method: 'POST',
-      body: JSON.stringify({}),
+      body: JSON.stringify({ userId: this.userId }),
       headers: new Headers({ 'Content-type': 'application/json' })
     }).then(function (response) {
       return response.json()
@@ -45,7 +49,6 @@ export default {
   },
   methods: {
     scoring: function () {
-      socket.emit('data', 'userID=' + this.userID + '\n')
       socket.emit('data', this.imageName + '_sc.sh\n')
     }
   }
