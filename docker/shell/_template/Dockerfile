@@ -12,15 +12,14 @@ RUN sed -i 's/\r//' /usr/local/bin/*.sh && \
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache \
-    bash less
+    bash less curl
 SHELL ["/bin/bash", "-c"]
 # git と別に tzdata をインストール
 RUN apk add --no-cache \
     tzdata
 # git vim のインストール
 RUN apk add --no-cache \
-    git \
-    vim && \
+    git vim && \
     rm -rf /var/cache/apk/*
 # vi で vim を起動するエイリアスの設定
 RUN echo -e "alias vi='vim'" >> $HOME/.bashrc && \
@@ -29,6 +28,6 @@ RUN echo -e "alias vi='vim'" >> $HOME/.bashrc && \
 RUN touch $HOME/.gitconfig && \
     git config --global user.email "student" && \
     git config --global user.name "student"
-# WORKDIR /hello-git/
+WORKDIR /hello-git/
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/bin/bash"]
