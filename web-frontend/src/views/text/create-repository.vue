@@ -1,7 +1,7 @@
 <template>
   <div id="git-text">
     <md class="markdown-body"></md>
-    <TerminalBlock image-name="create-repository" />
+    <TerminalBlock image-name="git-create-repository" />
   </div>
 </template>
 

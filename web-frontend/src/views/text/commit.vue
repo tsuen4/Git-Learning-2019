@@ -1,7 +1,7 @@
 <template>
   <div id="git-text">
     <md class="markdown-body"></md>
-    <TerminalBlock image-name="commit"></TerminalBlock>
+    <TerminalBlock image-name="git-commit"></TerminalBlock>
   </div>
 </template>
 

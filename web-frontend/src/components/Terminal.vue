@@ -24,7 +24,7 @@ export default {
   },
   created: function () {
     this.userId = this.$store.getters.user
-    fetch('/api/console/git-' + this.imageName, {
+    fetch('/api/console/' + this.imageName, {
       method: 'POST',
       body: JSON.stringify({ userId: this.userId }),
       headers: new Headers({ 'Content-type': 'application/json' })
