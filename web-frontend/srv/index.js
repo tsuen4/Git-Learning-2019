@@ -22,12 +22,21 @@ export default (app, http) => {
       res.send({
         containerId: container.id
       })
+      console.log(req.body.userId)
     } catch (error) {
       console.error(error)
     }
   })
 
   app.post('/api/scoring/commit', function (req, res) {
+    // リクエストボディを出力
+    console.log(req.body)
+
+    res.send(req.body)
+  })
+
+  // 「ブランチによる分岐と統合」の採点 API
+  app.post('/api/scoring/branch', function (req, res) {
     // リクエストボディを出力
     console.log(req.body)
 
