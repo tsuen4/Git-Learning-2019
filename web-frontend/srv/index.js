@@ -28,7 +28,11 @@ export default (app, http) => {
     }
   })
 
-  app.post('/api/scoring/commit', function (req, res) {
+  // 初回ログイン時にユーザーを登録する API
+  app.post('/api/db/create-user', (req, res) => {
+    db.createUser(req.body)
+  })
+
     // リクエストボディを出力
     console.log(req.body)
 
