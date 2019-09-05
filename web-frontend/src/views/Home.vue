@@ -12,6 +12,7 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import firebase from '../firebase'
+import axios from 'axios'
 
 export default {
   name: 'home',
@@ -30,9 +31,11 @@ export default {
     },
     status: function () {
       if (this.$store.getters.isSignedIn) {
-        return 'logined'
-      } else {
-        return 'not login'
+        // createUser
+        axios.post('/api/db/create-user', {
+          id: this.id,
+          name: this.name
+        })
       }
       return this.$store.getters.id
     }
