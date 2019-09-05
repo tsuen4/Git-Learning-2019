@@ -32,7 +32,7 @@ export default {
         store.commit('onAuthStateChanged', user)
         store.commit('onUserStatusChanged', true)
       } else {
-        store.commit('onAuthStateChanged', {})
+        store.commit('onAuthStateChanged', { email: '未ログイン', displayName: '' })
         store.commit('onUserStatusChanged', false)
       }
     })

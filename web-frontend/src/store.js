@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    id: '',
+    id: 'ログイン状況確認中…',
     name: '',
     status: false
   },
