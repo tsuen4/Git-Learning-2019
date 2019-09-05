@@ -16,7 +16,7 @@ export default (app, http) => {
   // app.use(express.static(path.join(__dirname, '../dist')))
 
   // shell on docker
-  app.post('/api/console/:imagename', async function (req, res) {
+  app.post('/api/console/:imagename', async (req, res) => {
     try {
       const container = await build.run(req.params.imagename, ['userId=' + req.body.userId])
       res.send({
@@ -33,6 +33,8 @@ export default (app, http) => {
     db.createUser(req.body)
   })
 
+  // 「変更内容の記録」の採点 API
+  app.post('/api/scoring/commit', (req, res) => {
     // リクエストボディを出力
     console.log(req.body)
 
@@ -40,7 +42,7 @@ export default (app, http) => {
   })
 
   // 「ブランチによる分岐と統合」の採点 API
-  app.post('/api/scoring/branch', function (req, res) {
+  app.post('/api/scoring/branch', (req, res) => {
     // リクエストボディを出力
     console.log(req.body)
 
