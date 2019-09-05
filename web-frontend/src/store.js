@@ -6,20 +6,27 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: {},
+    id: '',
+    name: '',
     status: false
   },
   mutations: {
     onAuthStateChanged (state, user) {
-      state.user = user // firebaseが返したユーザー情報
+      // firebaseが返したユーザー情報
+      state.id = user.email
+      state.name = user.displayName
     },
     onUserStatusChanged (state, status) {
-      state.status = status // ログインしてるかどうか true or false
+      // ログインしてるかどうか true or false
+      state.status = status
     }
   },
   getters: {
-    user (state) {
-      return state.user
+    id (state) {
+      return state.id
+    },
+    name (state) {
+      return state.name
     },
     isSignedIn (state) {
       return state.status
