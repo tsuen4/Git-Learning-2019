@@ -4,15 +4,14 @@
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <input type="button" value="Login" @click="signUp()" />
     <input type="button" value="Logout" @click="signOut()" />
-    <span>{{ user }}: {{ status }}</span>
+    <span>{{ status }}</span>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import firebase from '../firebase'
 
 export default {
   name: 'home',
@@ -23,8 +22,11 @@ export default {
     this.onAuth()
   },
   computed: {
-    user: function () {
-      return this.$store.getters.user
+    id: function () {
+      return this.$store.getters.id
+    },
+    name: function () {
+      return this.$store.getters.name
     },
     status: function () {
       if (this.$store.getters.isSignedIn) {
@@ -32,6 +34,7 @@ export default {
       } else {
         return 'not login'
       }
+      return this.$store.getters.id
     }
   },
   methods: {
