@@ -20,7 +20,7 @@ export default {
     HelloWorld
   },
   created: function () {
-    this.loginStatus()
+    this.onAuth()
   },
   computed: {
     user: function () {
@@ -36,25 +36,13 @@ export default {
   },
   methods: {
     signUp: () => {
-      const provider = new firebase.auth.GoogleAuthProvider()
-      provider.setCustomParameters({
-        hd: 'oecu.jp'
-      })
-      firebase.auth().signInWithRedirect(provider)
+      firebase.signUp()
     },
     signOut: () => {
-      firebase.auth().signOut()
+      firebase.signOut()
     },
-    loginStatus: function () {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          this.$store.commit('onAuthStateChanged', user.email)
-          this.$store.commit('onUserStatusChanged', true)
-        } else {
-          this.$store.commit('onAuthStateChanged', '')
-          this.$store.commit('onUserStatusChanged', false)
-        }
-      })
+    onAuth: () => {
+      firebase.onAuth()
     }
   }
 }
