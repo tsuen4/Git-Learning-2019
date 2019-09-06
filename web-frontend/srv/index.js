@@ -2,6 +2,7 @@
 // const express = require('express')
 const bodyParser = require('body-parser')
 const build = require('./build')
+const dbWrite = require('./db-write')
 // const path = require('path')
 
 export default (app, http) => {
@@ -16,7 +17,7 @@ export default (app, http) => {
   // app.use(express.static(path.join(__dirname, '../dist')))
 
   // shell on docker
-  app.post('/api/console/:imagename', async function (req, res) {
+  app.post('/api/console/:imagename', async (req, res) => {
     try {
       const container = await build.run(req.params.imagename, ['userId=' + req.body.userId])
       res.send({
@@ -28,17 +29,24 @@ export default (app, http) => {
     }
   })
 
-  app.post('/api/scoring/commit', function (req, res) {
-    // リクエストボディを出力
-    console.log(req.body)
+  // 初回ログイン時にユーザーを登録する API
+  app.post('/api/db/create-user', (req, res) => {
+    dbWrite.createUser(req.body)
+  })
 
-    res.send(req.body)
+  // 「変更内容の記録」の採点 API
+  app.post('/api/scoring/commit', (req, res) => {
+    // console.log(req.body)
+    // res.send(req.body)
+    dbWrite.git_commit(req.body)
+    res.send('\n') // ターミナルの入力を可能にするため改行
   })
 
   // 「ブランチによる分岐と統合」の採点 API
-  app.post('/api/scoring/branch', function (req, res) {
+  app.post('/api/scoring/branch', (req, res) => {
     // リクエストボディを出力
     console.log(req.body)
+    res.send('\n') // ターミナルの入力を可能にするため改行
 
     res.send(req.body)
   })

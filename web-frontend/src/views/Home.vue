@@ -4,15 +4,15 @@
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <input type="button" value="Login" @click="signUp()" />
     <input type="button" value="Logout" @click="signOut()" />
-    <span>{{ user }}: {{ status }}</span>
+    <span>{{ status }}</span>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import firebase from '../firebase'
+import axios from 'axios'
 
 export default {
   name: 'home',
@@ -20,41 +20,35 @@ export default {
     HelloWorld
   },
   created: function () {
-    this.loginStatus()
+    this.onAuth()
   },
   computed: {
-    user: function () {
-      return this.$store.getters.user
+    id: function () {
+      return this.$store.getters.id
+    },
+    name: function () {
+      return this.$store.getters.name
     },
     status: function () {
       if (this.$store.getters.isSignedIn) {
-        return 'logined'
-      } else {
-        return 'not login'
+        // createUser
+        axios.post('/api/db/create-user', {
+          id: this.id,
+          name: this.name
+        })
       }
+      return this.$store.getters.id
     }
   },
   methods: {
     signUp: () => {
-      const provider = new firebase.auth.GoogleAuthProvider()
-      provider.setCustomParameters({
-        hd: 'oecu.jp'
-      })
-      firebase.auth().signInWithRedirect(provider)
+      firebase.signUp()
     },
     signOut: () => {
-      firebase.auth().signOut()
+      firebase.signOut()
     },
-    loginStatus: function () {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          this.$store.commit('onAuthStateChanged', user.email)
-          this.$store.commit('onUserStatusChanged', true)
-        } else {
-          this.$store.commit('onAuthStateChanged', '')
-          this.$store.commit('onUserStatusChanged', false)
-        }
-      })
+    onAuth: () => {
+      firebase.onAuth()
     }
   }
 }
