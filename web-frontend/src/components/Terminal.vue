@@ -23,7 +23,7 @@ export default {
     }
   },
   created: function () {
-    this.userId = this.$store.getters.user
+    this.userId = this.$store.getters.id
     fetch('/api/console/' + this.imageName, {
       method: 'POST',
       body: JSON.stringify({ userId: this.userId }),
