@@ -1,5 +1,6 @@
 <template>
   <div id="t-out">
+    <input type="button" value="最初からやり直す" @click="reload()" />
     <input type="button" value="採点" @click="scoring()" />
     <div id="terminal"></div>
   </div>
@@ -50,6 +51,9 @@ export default {
   methods: {
     scoring: function () {
       socket.emit('data', this.imageName + '_sc.sh\n')
+    },
+    reload: function () {
+      this.$router.go({ path: this.$router.currentRoute.path, force: true })
     }
   }
 }
