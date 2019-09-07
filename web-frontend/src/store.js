@@ -1,10 +1,15 @@
 'use strict'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import persistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins: [persistedState({
+    storage: window.sessionStorage,
+    key: 'OECU-Git-Learning'
+  })],
   state: {
     id: 'ログイン状況確認中…',
     name: '',
