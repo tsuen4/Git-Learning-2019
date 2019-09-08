@@ -54,7 +54,7 @@ exports.run = async (imageName, env = []) => {
   return container
 }
 
-// 60 分でコンテナを殺す
+// 90 分でコンテナを殺す
 setInterval(() => {
   docker.listContainers((err, containers) => {
     if (err) return false
@@ -73,4 +73,4 @@ setInterval(() => {
       })
     })
   })
-}, 3600000)
+}, 5400000)
