@@ -54,24 +54,23 @@ exports.run = async (imageName, env = []) => {
   return container
 }
 
-// setInterval(() => {
-//     docker.listContainers((err, containers) => {
-//         if (err) return false
-//         // 稼働時間チェック
-//         let unixtime = new Date().getTime() / 1000
-//         containers = containers.filter((element, index, array) => {
-//             for (let lang in config.build.langs) {
-//                 if (element.Image === config.build.langs[lang].docker && unixtime - element.Created > config.build.timeout) {
-//                     return true
-//                 }
-//             }
-//         })
-//         // 殺す
-//         // console.log(containers)
-//         containers.forEach((containerInfo) => {
-//             docker.getContainer(containerInfo.Id).stop(() => {
-//                 // console.log(`kill:${containerInfo.Id}`)
-//             })
-//         })
-//     })
-// }, 10000)
+// 60 分でコンテナを殺す
+setInterval(() => {
+  docker.listContainers((err, containers) => {
+    if (err) return false
+    // 稼働時間チェック
+    // let unixtime = new Date().getTime() / 1000
+    // containers = containers.filter((element, index, array) => {
+    //     if (element.Image === config.build.langs[lang].docker && unixtime - element.Created > config.build.timeout) {
+    //     }
+    // })
+    // 殺す
+    // console.log(containers)
+    containers.forEach((containerInfo) => {
+      docker.getContainer(containerInfo.Id).stop(() => {
+        console.log(`kill:${containerInfo.Id}`)
+        return true
+      })
+    })
+  })
+}, 3600000)
