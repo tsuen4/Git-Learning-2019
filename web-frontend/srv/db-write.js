@@ -1,34 +1,42 @@
 'use strict'
 const table = require('./table')
 
-exports.createUser = obj => {
+exports.createUser = async obj => {
   console.log(obj.id + ': ' + obj.name)
 
-  table.CreateRepository.findOrCreate({
+  await table.CreateRepository.findOrCreate({
     where: { id: obj.id },
     defaults: {
       name: obj.name,
       ans: 0,
-      create_repository: 0
+      correct: 0
     }
   })
 
-  table.GitCommit.findOrCreate({
+  await table.GitCommit.findOrCreate({
     where: { id: obj.id },
     defaults: {
       name: obj.name,
       ans: 0,
-      commited: 0
+      correct: 0
     }
   })
 
-  table.GitBranch.findOrCreate({
+  await table.GitBranch.findOrCreate({
     where: { id: obj.id },
     defaults: {
       name: obj.name,
       ans: 0,
-      branch: 0,
-      merge: 0
+      correct: 0
+    }
+  })
+
+  await table.GitMerge.findOrCreate({
+    where: { id: obj.id },
+    defaults: {
+      name: obj.name,
+      ans: 0,
+      correct: 0
     }
   })
 }
@@ -40,7 +48,6 @@ exports.git_commit = async obj => {
   table.GitCommit.findOne({ where: { id: obj.id } })
     .then(result => {
       const data = result.get()
-      // console.log(data)
       // 初回時に ans: 1 にする
       if (data.ans === 0) { table.GitCommit.update({ ans: 1 }, { where: { id: obj.id } }) }
       // db の correct が 0 かつ解答の correct が 1 だった場合に記録
