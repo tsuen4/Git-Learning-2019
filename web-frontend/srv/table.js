@@ -17,7 +17,7 @@ export const CreateRepository = sequelize.define('create_repositories',
     },
     name: Sequelize.TEXT,
     ans: Sequelize.INTEGER,
-    create_repository: Sequelize.INTEGER
+    correct: Sequelize.INTEGER
   },
   { timestamps: false }
 )
@@ -30,7 +30,7 @@ export const GitCommit = sequelize.define('git_commits',
     },
     name: Sequelize.TEXT,
     ans: Sequelize.INTEGER,
-    commited: Sequelize.INTEGER
+    correct: Sequelize.INTEGER
   },
   { timestamps: false }
 )
@@ -43,8 +43,20 @@ export const GitBranch = sequelize.define('git_branches',
     },
     name: Sequelize.TEXT,
     ans: Sequelize.INTEGER,
-    branch: Sequelize.INTEGER,
-    merge: Sequelize.INTEGER
+    correct: Sequelize.INTEGER
+  },
+  { timestamps: false }
+)
+
+export const GitMerge = sequelize.define('git_merges',
+  {
+    id: {
+      type: Sequelize.TEXT,
+      primaryKey: true
+    },
+    name: Sequelize.TEXT,
+    ans: Sequelize.INTEGER,
+    correct: Sequelize.INTEGER
   },
   { timestamps: false }
 )
