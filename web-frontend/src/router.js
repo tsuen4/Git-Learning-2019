@@ -15,6 +15,12 @@ export default new Router({
       meta: { isPublic: true }
     },
     {
+      path: '/manage',
+      name: 'manage',
+      component: () => import(/* webpackChunkName: "manage" */ './views/Manage.vue'),
+      meta: { isAdmin: true }
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
