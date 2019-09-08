@@ -43,18 +43,25 @@ export default (app, http) => {
     res.send('\n') // ターミナルの入力を可能にするため改行
   })
 
-  // 「ブランチによる分岐と統合」の採点 API
+  // 「ブランチによる分岐と統合」の「ブランチ」採点 API
   app.post('/api/scoring/branch', (req, res) => {
     // リクエストボディを出力
-    console.log(req.body)
+    // res.send(req.body)
+    dbWrite.git_branch(req.body)
     res.send('\n') // ターミナルの入力を可能にするため改行
-
-    res.send(req.body)
   })
 
-  // 解答者数を返す API
-  app.post('/api/db/get-ans-count', async (req, res) => {
-    const data = await dbRead.Counter()
+  // 「ブランチによる分岐と統合」の「マージ」採点 API
+  app.post('/api/scoring/merge', (req, res) => {
+    // リクエストボディを出力
+    // res.send(req.body)
+    dbWrite.git_merge(req.body)
+    res.send('\n') // ターミナルの入力を可能にするため改行
+  })
+
+  // 解答者情報を返す API
+  app.post('/api/db/get-ans', async (req, res) => {
+    const data = await dbRead.answer()
     res.send(data)
   })
 }

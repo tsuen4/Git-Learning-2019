@@ -1,17 +1,29 @@
 <template>
   <div id="manage-view" class="markdown-body">
     <h1>解答状況</h1>
-    <div v-for="exer in ansData" :key="exer.name">
-      <div v-for="ans in exer.exer" :key="ans.id">
-        <h2>{{exer.name}}: {{ ans.name }}</h2>
-        <table>
-          <tr>
-            <td>解答者: {{ ans.answer }}</td>
-            <td>正解者: {{ ans.correct }}</td>
-            <td>正答率: {{ ans.correct/ans.correct * 100 }} %</td>
-          </tr>
-        </table>
-      </div>
+    <div v-for="ans in ansData" :key="ans.name && ans.exer.name">
+      <h2>{{ans.name}}: {{ ans.exer.name }}</h2>
+      <table>
+        <tr>
+          <td>解答者: {{ ans.exer.answer }}</td>
+          <td>正解者: {{ ans.exer.correct }}</td>
+          <td>正答率: {{ ans.exer.correct / ans.exer.answer * 100 }} %</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>ID</td>
+          <td>名前</td>
+          <td>回答状況</td>
+          <td>正誤</td>
+        </tr>
+        <tr v-for="user in ans.exer.user" :key="user.id">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ rw(user.ans) }}</td>
+          <td>{{ rw(user.correct) }}</td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
@@ -27,12 +39,13 @@ export default {
     }
   },
   created: function () {
-    this.getAnswers()
+    axios.post('/api/db/get-ans')
+      .then(res => { this.ansData = res.data })
+    console.log(this.ansData)
   },
   methods: {
-    getAnswers: function () {
-      axios.post('/api/db/get-ans-count')
-        .then(res => { this.ansData = res.data })
+    rw: (num) => {
+      return num === 1 ? '○' : '×'
     }
   }
 }
