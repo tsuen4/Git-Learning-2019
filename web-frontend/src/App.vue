@@ -40,7 +40,7 @@ body {
   width: 200px;
 }
 
-#git-text {
+#git-text, #manage-view {
   padding: 20px 0 0 20px;
 }
 
