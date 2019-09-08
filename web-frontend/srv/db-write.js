@@ -33,8 +33,8 @@ exports.createUser = obj => {
   })
 }
 
-exports.git_commit = obj => {
-  // console.log('==db==\n' + obj.id + '\n' + obj.commited + '\n======')
+exports.git_commit = async obj => {
+  // console.log('==db==\n' + obj.id + '\n' + obj.correct + '\n======')
 
   // 回答状況登録
   table.GitCommit.findOne({ where: { id: obj.id } })
@@ -43,10 +43,50 @@ exports.git_commit = obj => {
       // console.log(data)
       // 初回時に ans: 1 にする
       if (data.ans === 0) { table.GitCommit.update({ ans: 1 }, { where: { id: obj.id } }) }
-      // db の commited が 0 だった場合のみ解答を記録
-      if (data.commited === 0) {
+      // db の correct が 0 かつ解答の correct が 1 だった場合に記録
+      if (data.correct === 0 && obj.correct === 1) {
         table.GitCommit.update(
-          { commited: obj.commited },
+          { correct: obj.correct },
+          { where: { id: obj.id } }
+        )
+      }
+    }
+    )
+}
+
+exports.git_branch = async obj => {
+  // console.log('==db==\n' + obj.id + '\n' + obj.correct + '\n======')
+
+  // 回答状況登録
+  await table.GitBranch.findOne({ where: { id: obj.id } })
+    .then(result => {
+      const data = result.get()
+      // 初回時に ans: 1 にする
+      if (data.ans === 0) { table.GitBranch.update({ ans: 1 }, { where: { id: obj.id } }) }
+      // db の correct が 0 かつ解答の correct が 1 だった場合に記録
+      if (data.correct === 0 && obj.correct === 1) {
+        table.GitBranch.update(
+          { correct: obj.correct },
+          { where: { id: obj.id } }
+        )
+      }
+    }
+    )
+}
+
+exports.git_merge = async obj => {
+  // console.log('==db==\n' + obj.id + '\n' + obj.correct + '\n======')
+
+  // 回答状況登録
+  await table.GitMerge.findOne({ where: { id: obj.id } })
+    .then(result => {
+      const data = result.get()
+      // 初回時に ans: 1 にする
+      if (data.ans === 0) { table.GitMerge.update({ ans: 1 }, { where: { id: obj.id } }) }
+      // db の correct が 0 かつ解答の correct が 1 だった場合に記録
+      if (data.correct === 0 && obj.correct === 1) {
+        table.GitMerge.update(
+          { correct: obj.correct },
           { where: { id: obj.id } }
         )
       }
