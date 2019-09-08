@@ -22,6 +22,16 @@ export default {
   created: function () {
     this.onAuth()
   },
+  beforeDestroy: function () {
+    if (this.$store.getters.isSignedIn) {
+      // createUser
+      axios.post('/api/db/create-user', {
+        id: this.id,
+        name: this.name
+      })
+    }
+    console.log('===== beforeDestroy =====')
+  },
   computed: {
     id: function () {
       return this.$store.getters.id
@@ -30,13 +40,6 @@ export default {
       return this.$store.getters.name
     },
     status: function () {
-      if (this.$store.getters.isSignedIn) {
-        // createUser
-        axios.post('/api/db/create-user', {
-          id: this.id,
-          name: this.name
-        })
-      }
       return this.$store.getters.id
     }
   },
