@@ -76,7 +76,7 @@ const userList = async () => {
     )
 }
 
-exports.Counter = async () => {
+exports.answer = async () => {
   await counter()
   await userList()
   return answerData
