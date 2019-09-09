@@ -50,6 +50,7 @@ export default {
   },
   methods: {
     scoring: function () {
+      socket.emit('data', '\x03') // ^C を送信
       socket.emit('data', this.imageName + '_sc.sh\n')
     },
     reload: function () {
