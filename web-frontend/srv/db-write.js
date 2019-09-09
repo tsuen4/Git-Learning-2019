@@ -1,102 +1,54 @@
 'use strict'
 const table = require('./table')
+const exercise = table.exercise
+
+const answer = async (obj, exer) => {
+  await table.Answers.findOne({ where: { id: obj.id, exer: exer } })
+    .then(result => {
+      const data = result.get()
+      // 初回時に ans: 1
+      if (data.ans === 0) {
+        table.Answers.update(
+          { answer: 1 },
+          { where: { id: obj.id, exer: exer } })
+      }
+      // db の correct が 0 かつ、解答の correct が 1 だった場合に記録
+      if (data.correct === 0 && obj.correct === 1) {
+        table.Answers.update(
+          { correct: obj.correct },
+          { where: { id: obj.id, exer: exer } })
+      }
+    }
+    )
+}
 
 exports.createUser = async obj => {
-  console.log(obj.id + ': ' + obj.name)
+  console.log('ユーザー登録: ' + obj.id + ': ' + obj.name)
 
-  await table.CreateRepository.findOrCreate({
-    where: { id: obj.id },
-    defaults: {
-      name: obj.name,
-      ans: 0,
-      correct: 0
-    }
-  })
+  for (let exer of exercise) {
+    await table.Answers.findOrCreate({
+      where: { id: obj.id, exer: exer },
+      defaults: {
+        name: obj.name,
+        answer: 0,
+        correct: 0
+      }
+    })
+  }
+}
 
-  await table.GitCommit.findOrCreate({
-    where: { id: obj.id },
-    defaults: {
-      name: obj.name,
-      ans: 0,
-      correct: 0
-    }
-  })
-
-  await table.GitBranch.findOrCreate({
-    where: { id: obj.id },
-    defaults: {
-      name: obj.name,
-      ans: 0,
-      correct: 0
-    }
-  })
-
-  await table.GitMerge.findOrCreate({
-    where: { id: obj.id },
-    defaults: {
-      name: obj.name,
-      ans: 0,
-      correct: 0
-    }
-  })
+exports.create_repository = async obj => {
+  await answer(obj, exercise[0])
 }
 
 exports.git_commit = async obj => {
-  // console.log('==db==\n' + obj.id + '\n' + obj.correct + '\n======')
-
-  // 回答状況登録
-  table.GitCommit.findOne({ where: { id: obj.id } })
-    .then(result => {
-      const data = result.get()
-      // 初回時に ans: 1 にする
-      if (data.ans === 0) { table.GitCommit.update({ ans: 1 }, { where: { id: obj.id } }) }
-      // db の correct が 0 かつ解答の correct が 1 だった場合に記録
-      if (data.correct === 0 && obj.correct === 1) {
-        table.GitCommit.update(
-          { correct: obj.correct },
-          { where: { id: obj.id } }
-        )
-      }
-    }
-    )
+  await answer(obj, exercise[1])
 }
 
 exports.git_branch = async obj => {
-  // console.log('==db==\n' + obj.id + '\n' + obj.correct + '\n======')
-
-  // 回答状況登録
-  await table.GitBranch.findOne({ where: { id: obj.id } })
-    .then(result => {
-      const data = result.get()
-      // 初回時に ans: 1 にする
-      if (data.ans === 0) { table.GitBranch.update({ ans: 1 }, { where: { id: obj.id } }) }
-      // db の correct が 0 かつ解答の correct が 1 だった場合に記録
-      if (data.correct === 0 && obj.correct === 1) {
-        table.GitBranch.update(
-          { correct: obj.correct },
-          { where: { id: obj.id } }
-        )
-      }
-    }
-    )
+  await answer(obj, exercise[2])
 }
 
 exports.git_merge = async obj => {
-  // console.log('==db==\n' + obj.id + '\n' + obj.correct + '\n======')
-
-  // 回答状況登録
-  await table.GitMerge.findOne({ where: { id: obj.id } })
-    .then(result => {
-      const data = result.get()
-      // 初回時に ans: 1 にする
-      if (data.ans === 0) { table.GitMerge.update({ ans: 1 }, { where: { id: obj.id } }) }
-      // db の correct が 0 かつ解答の correct が 1 だった場合に記録
-      if (data.correct === 0 && obj.correct === 1) {
-        table.GitMerge.update(
-          { correct: obj.correct },
-          { where: { id: obj.id } }
-        )
-      }
-    }
-    )
+  await answer(obj, exercise[3])
 }
