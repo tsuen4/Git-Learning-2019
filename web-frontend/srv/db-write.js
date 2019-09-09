@@ -7,7 +7,7 @@ const answer = async (obj, exer) => {
     .then(result => {
       const data = result.get()
       // 初回時に ans: 1
-      if (data.ans === 0) {
+      if (data.answer === 0) {
         table.Answers.update(
           { answer: 1 },
           { where: { id: obj.id, exer: exer } })
