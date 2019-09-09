@@ -20,7 +20,7 @@
         <tr v-for="userItem in ans.user" :key="userItem.id">
           <td>{{ userItem.id }}</td>
           <td>{{ userItem.name }}</td>
-          <td>{{ rw(userItem.ans) }}</td>
+          <td>{{ rw(userItem.answer) }}</td>
           <td>{{ rw(userItem.correct) }}</td>
         </tr>
       </table>
