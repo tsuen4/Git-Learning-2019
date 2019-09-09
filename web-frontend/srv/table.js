@@ -2,60 +2,26 @@
 
 const path = require('path')
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize(
-  'database', '', '', {
+export const sequelize = new Sequelize(
+  'database', '', '',
+  {
     dialect: 'sqlite',
     storage: path.join(__dirname, '../db/exer.sqlite3')
   }
 )
 
-export const CreateRepository = sequelize.define('create_repositories',
-  {
-    id: {
-      type: Sequelize.TEXT,
-      primaryKey: true
-    },
-    name: Sequelize.TEXT,
-    ans: Sequelize.INTEGER,
-    correct: Sequelize.INTEGER
-  },
-  { timestamps: false }
-)
+// 課題識別用の配列
+export const exercise = ['create_repository', 'commit', 'branch', 'merge']
 
-export const GitCommit = sequelize.define('git_commits',
+export const Answers = sequelize.define('answers',
   {
     id: {
       type: Sequelize.TEXT,
       primaryKey: true
     },
     name: Sequelize.TEXT,
-    ans: Sequelize.INTEGER,
-    correct: Sequelize.INTEGER
-  },
-  { timestamps: false }
-)
-
-export const GitBranch = sequelize.define('git_branches',
-  {
-    id: {
-      type: Sequelize.TEXT,
-      primaryKey: true
-    },
-    name: Sequelize.TEXT,
-    ans: Sequelize.INTEGER,
-    correct: Sequelize.INTEGER
-  },
-  { timestamps: false }
-)
-
-export const GitMerge = sequelize.define('git_merges',
-  {
-    id: {
-      type: Sequelize.TEXT,
-      primaryKey: true
-    },
-    name: Sequelize.TEXT,
-    ans: Sequelize.INTEGER,
+    exer: Sequelize.TEXT,
+    answer: Sequelize.INTEGER,
     correct: Sequelize.INTEGER
   },
   { timestamps: false }
