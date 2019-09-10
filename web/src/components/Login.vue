@@ -1,7 +1,7 @@
 <template>
   <div>
     <span>{{ status }}</span>
-    <input v-if="!this.isSignedIn" type="button" value="Login" @click="signUp()" />
+    <input v-if="!isSignedIn()" type="button" value="Login" @click="signUp()" />
     <input v-else type="button" value="Logout" @click="signOut()" />
   </div>
 </template>
@@ -32,9 +32,8 @@ export default {
     },
     status: function () {
       let role
-      this.isAdmin ? role = '管理者'
-        : this.isSignedIn ? role = '一般ユーザー'
-          : role = '未ログイン'
+      this.isAdmin() ? role = '管理者' : this.isSignedIn() ? role = '一般ユーザー' : role = '未ログイン'
+
       return (this.id + ' ' + role)
     }
   },
