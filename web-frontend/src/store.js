@@ -13,13 +13,17 @@ export default new Vuex.Store({
   state: {
     id: 'ログイン状況確認中…',
     name: '',
-    status: false
+    status: false,
+    admin: false
   },
   mutations: {
     onAuthStateChanged (state, user) {
       // firebaseが返したユーザー情報
       state.id = user.email
       state.name = user.displayName
+    },
+    onAuthAdminChanged (state, status) {
+      state.admin = status
     },
     onUserStatusChanged (state, status) {
       // ログインしてるかどうか true or false
@@ -35,6 +39,9 @@ export default new Vuex.Store({
     },
     isSignedIn (state) {
       return state.status
+    },
+    isAdmin (state) {
+      return state.admin
     }
   }
 })
