@@ -6,7 +6,7 @@ export const sequelize = new Sequelize(
   'database', '', '',
   {
     dialect: 'sqlite',
-    storage: path.join(__dirname, '../db/exer.sqlite3')
+    storage: path.join(__dirname, 'exer.sqlite3')
   }
 )
 
