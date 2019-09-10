@@ -1,5 +1,5 @@
 <template>
-  <div id="manage-view" class="markdown-body">
+  <div id="text-view" class="markdown-body">
     <h1>解答状況</h1>
     <div v-for="ans in ansData" :key="ans.name && ans.exer">
       <h2>{{ans.name}}: {{ ans.exer }}</h2>

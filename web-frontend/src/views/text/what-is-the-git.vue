@@ -1,5 +1,5 @@
 <template>
-  <div id="git-text">
+  <div id="text-view">
     <md class="markdown-body"></md>
   </div>
 </template>
@@ -8,7 +8,7 @@
 import md from '@/assets/text/what-is-the-git.md'
 
 export default {
-  name: 'git-text',
+  name: 'text-view',
   components: {
     md
   }
