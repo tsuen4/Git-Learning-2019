@@ -41,7 +41,6 @@ export default {
   created: function () {
     axios.post('/api/db/get-ans')
       .then(res => { this.ansData = res.data })
-    console.log(this.ansData)
   },
   methods: {
     rw: (num) => {
