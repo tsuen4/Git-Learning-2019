@@ -36,6 +36,12 @@ export default (app, http) => {
     dbWrite.createUser(req.body)
   })
 
+  // 「リポジトリの作成」の採点 API
+  app.post('/api/scoring/create-repository', (req, res) => {
+    dbWrite.create_repository(req.body)
+    res.send('\n') // ターミナルの入力を可能にするため改行
+  })
+
   // 「変更内容の記録」の採点 API
   app.post('/api/scoring/commit', (req, res) => {
     dbWrite.git_commit(req.body)
