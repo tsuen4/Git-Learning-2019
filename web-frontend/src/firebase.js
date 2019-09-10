@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import store from './store'
+import axios from 'axios'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB9SN6tC_qiLIEWgKVFwFwiRPPyH8hnXIQ',
@@ -31,9 +32,15 @@ export default {
       if (user) {
         store.commit('onAuthStateChanged', user)
         store.commit('onUserStatusChanged', true)
+
+        axios.post('/api/isadmin', { id: store.getters.id })
+          .then(res => {
+            store.commit('onAuthAdminChanged', res.data)
+          })
       } else {
         store.commit('onAuthStateChanged', { email: '', displayName: '' })
         store.commit('onUserStatusChanged', false)
+        store.commit('onAuthAdminChanged', false)
       }
     })
   }
