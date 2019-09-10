@@ -64,7 +64,7 @@ export default {
 @import url("../../node_modules/xterm/dist/xterm.css");
 
 /* TODO: ボタン追加に伴うシェルの高さの変更 */
-#git-text {
+#text-view {
   overflow: auto;
   height: calc(100vh - calc(20px + 300px - 5px));
 }
