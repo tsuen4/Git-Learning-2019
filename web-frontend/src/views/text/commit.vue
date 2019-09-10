@@ -1,5 +1,5 @@
 <template>
-  <div id="git-text">
+  <div id="text-view">
     <md class="markdown-body"></md>
     <TerminalBlock image-name="git-commit"></TerminalBlock>
   </div>
@@ -10,7 +10,7 @@ import md from '@/assets/text/commit.md'
 import TerminalBlock from '@/components/Terminal.vue'
 
 export default {
-  name: 'git-text',
+  name: 'text-view',
   components: {
     md,
     TerminalBlock
