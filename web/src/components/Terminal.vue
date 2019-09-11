@@ -1,8 +1,11 @@
 <template>
-  <div id="t-out">
-    <input type="button" value="最初からやり直す" @click="reload()" />
-    <input type="button" value="採点" @click="scoring()" />
+  <div id="term">
+    <hr>
     <div id="terminal"></div>
+    <div id="buttons">
+      <input type="button" class="btn" value="最初からやり直す" @click="reload()" />
+      <input type="button" class="btn" value="採点" @click="scoring()" />
+    </div>
   </div>
 </template>
 
@@ -63,10 +66,17 @@ export default {
 <style>
 @import url("../../node_modules/xterm/dist/xterm.css");
 
-/* TODO: ボタン追加に伴うシェルの高さの変更 */
 #text-view {
   overflow: auto;
   height: calc(100vh - calc(20px + 300px - 5px));
+}
+
+#buttons {
+  padding : 10px 0 20px;
+}
+
+.btn {
+  margin-right: 10px;
 }
 
 #terminal {
