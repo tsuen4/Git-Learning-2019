@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>{{ status }}</span>
+    <span>{{ this.$store.getters.id }} {{status }}</span>
     <input v-if="!isSignedIn()" type="button" value="Login" @click="signUp()" />
     <input v-else type="button" value="Logout" @click="signOut()" />
   </div>
@@ -31,10 +31,7 @@ export default {
       return this.$store.getters.name
     },
     status: function () {
-      let role
-      this.isAdmin() ? role = '管理者' : this.isSignedIn() ? role = '一般ユーザー' : role = '未ログイン'
-
-      return (this.id + ' ' + role)
+      return this.isAdmin() ? '管理者' : this.isSignedIn() ? '一般ユーザー' : '未ログイン'
     }
   },
   methods: {
