@@ -57,6 +57,10 @@ body {
   margin: 0 auto 20px;
 }
 
+hr {
+  border:0.5px solid #BBB;
+}
+
 /*
 #Appnav {
 }
