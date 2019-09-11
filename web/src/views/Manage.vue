@@ -12,10 +12,10 @@
       </table>
       <table>
         <tr>
-          <td>ID</td>
-          <td>名前</td>
-          <td>回答状況</td>
-          <td>正誤</td>
+          <th>ID</th>
+          <th>名前</th>
+          <th>回答状況</th>
+          <th>正誤</th>
         </tr>
         <tr v-for="userItem in ans.user" :key="userItem.id">
           <td>{{ userItem.id }}</td>
