@@ -18,6 +18,15 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+  if (to.matched.some(record => record.meta.isAdmin)) {
+    if (!store.getters.isAdmin) {
+      next({
+        path: '/'
+      })
+    } else {
+      next()
+    }
+  }
 })
 
 new Vue({
