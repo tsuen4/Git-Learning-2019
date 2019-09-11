@@ -6,8 +6,8 @@ id="\"id\": \"${userId}\""
 
 echo -e "\n===== 採点結果 ====="
 
-if ! ls /hello-git/ -a | grep .git -q; then
-    echo "NG: '/hello-edit/' が Git のリポジトリとして初期化されていません。"
+if ! ls /hello-git/.git &> /dev/null; then
+    echo "NG: '/hello-edit/' が作成されていなか、 Git のリポジトリとして初期化されていません。"
     flag=1
     create_repository="\"correct\": 0"
 else
