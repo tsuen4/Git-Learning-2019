@@ -57,11 +57,6 @@ export default new Router({
       path: '/git-reset',
       name: 'git-reset',
       component: () => import(/* webpackChunkName: "git-reset" */ './views/text/git-reset.vue')
-    },
-    {
-      path: '/github-flow',
-      name: 'github-flow',
-      component: () => import(/* webpackChunkName: "github-flow" */ './views/text/github-flow.vue')
     }
   ],
   // スクロール位置を保存 & 保存されていないページは一番上に
