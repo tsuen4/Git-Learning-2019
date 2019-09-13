@@ -2,7 +2,7 @@ version: '3'
 services:
   crate-repository:
     build: ./docker/shell/create-repository
-    image: git-create-repository
+    image: create-repository
 
   git-commit:
     build: ./docker/shell/commit
