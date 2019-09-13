@@ -67,10 +67,15 @@ setInterval(() => {
     // 殺す
     // console.log(containers)
     containers.forEach((containerInfo) => {
-      docker.getContainer(containerInfo.Id).stop(() => {
-        console.log(`kill:${containerInfo.Id}`)
+      // console.log(containerInfo)
+      if (containerInfo.Image === 'gl-app' || containerInfo.Image === 'gl-web') {
         return true
-      })
+      } else {
+        docker.getContainer(containerInfo.Id).stop(() => {
+          console.log(`kill:${containerInfo.Id}`)
+          return true
+        })
+      }
     })
   })
 }, 5400000)
