@@ -21,7 +21,7 @@ if ! git log --decorate | grep 'master, edit-hello' -q; then
     flag=1
     merge="\"correct\": 0"
 else
-    echo "OK: edit-hello ブランチが master ブランチにマージされています。"
+    echo "OK: 'edit-hello' ブランチが master ブランチにマージされています。"
     let ++count
     merge="\"correct\": 1"
 fi
