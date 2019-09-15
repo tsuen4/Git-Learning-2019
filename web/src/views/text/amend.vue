@@ -1,7 +1,7 @@
 <template>
   <div id="text-view">
     <md class="markdown-body"></md>
-    <TerminalBlock></TerminalBlock>
+    <TerminalBlock image-name="git-amend"></TerminalBlock>
   </div>
 </template>
 
