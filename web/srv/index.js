@@ -36,27 +36,28 @@ export default (app, http) => {
     dbWrite.createUser(req.body)
   })
 
-  // 「リポジトリの作成」の採点 API
-  app.post('/api/scoring/create-repository', (req, res) => {
-    dbWrite.create_repository(req.body)
-    res.send('\n') // ターミナルの入力を可能にするため改行
-  })
-
-  // 「変更内容の記録」の採点 API
-  app.post('/api/scoring/commit', (req, res) => {
-    dbWrite.git_commit(req.body)
-    res.send('\n') // ターミナルの入力を可能にするため改行
-  })
-
-  // 「ブランチによる分岐と統合」の「ブランチ」採点 API
-  app.post('/api/scoring/branch', (req, res) => {
-    dbWrite.git_branch(req.body)
-    res.send('\n') // ターミナルの入力を可能にするため改行
-  })
-
-  // 「ブランチによる分岐と統合」の「マージ」採点 API
-  app.post('/api/scoring/merge', (req, res) => {
-    dbWrite.git_merge(req.body)
+  // 採点用 API
+  app.post('/api/scoring/:exername', (req, res) => {
+    switch (req.params.exername) {
+      case 'create-repository':
+        dbWrite.create_repository(req.body)
+        break
+      case 'commit':
+        dbWrite.git_commit(req.body)
+        break
+      case 'branch':
+        dbWrite.git_branch(req.body)
+        break
+      case 'merge':
+        dbWrite.git_merge(req.body)
+        break
+      case 'amend':
+        break
+      case 'no-edit':
+        break
+      default:
+        break
+    }
     res.send('\n') // ターミナルの入力を可能にするため改行
   })
 
