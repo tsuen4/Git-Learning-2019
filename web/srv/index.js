@@ -52,10 +52,16 @@ export default (app, http) => {
         dbWrite.git_merge(req.body)
         break
       case 'amend':
+        dbWrite.git_amend(req.body)
         break
-      case 'no-edit':
+      case 'no_edit':
+        dbWrite.git_no_edit(req.body)
+        break
+      case 'checkout':
+        dbWrite.git_checkout(req.body)
         break
       default:
+        console.log('存在しない問題 id です')
         break
     }
     res.send('\n') // ターミナルの入力を可能にするため改行
