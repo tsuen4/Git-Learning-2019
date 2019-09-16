@@ -54,9 +54,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "amend" */ './views/text/amend.vue')
     },
     {
-      path: '/git-reset',
-      name: 'git-reset',
-      component: () => import(/* webpackChunkName: "git-reset" */ './views/text/git-reset.vue')
+      path: '/checkout',
+      name: 'checkout',
+      component: () => import(/* webpackChunkName: "checkout" */ './views/text/checkout.vue')
     }
   ],
   // スクロール位置を保存 & 保存されていないページは一番上に
