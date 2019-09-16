@@ -1,12 +1,12 @@
 <template>
   <div id="text-view">
     <md class="markdown-body"></md>
-    <TerminalBlock image-name="git-branch" />
+    <TerminalBlock image-name="git-checkout" />
   </div>
 </template>
 
 <script>
-import md from '@/assets/text/branch.md'
+import md from '@/assets/text/checkout.md'
 import TerminalBlock from '@/components/Terminal.vue'
 
 export default {
