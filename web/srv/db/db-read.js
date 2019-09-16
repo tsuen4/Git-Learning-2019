@@ -1,7 +1,13 @@
 'use strict'
 const table = require('./table')
 const exercise = table.exercise
-const exerName = ['リポジトリの作成', '変更内容の記録', 'ブランチによる分岐と統合']
+const exerName = [
+  'リポジトリの作成',
+  '変更内容の記録',
+  'ブランチによる分岐と統合',
+  'コミットのやり直し',
+  '作業の取り消し'
+]
 
 // キーはテーブル名と同じに
 const answerData = {
@@ -29,6 +35,27 @@ const answerData = {
   merge: {
     name: exerName[2],
     exer: 'マージできたか',
+    answer: 0,
+    correct: 0,
+    user: []
+  },
+  amend: {
+    name: exerName[3],
+    exer: '直前のコミットメッセージを変更できたか',
+    answer: 0,
+    correct: 0,
+    user: []
+  },
+  no_edit: {
+    name: exerName[3],
+    exer: '直前のコミットにファイルを追加できたか',
+    answer: 0,
+    correct: 0,
+    user: []
+  },
+  checkout: {
+    name: exerName[4],
+    exer: '作業の取り消しができたか',
     answer: 0,
     correct: 0,
     user: []

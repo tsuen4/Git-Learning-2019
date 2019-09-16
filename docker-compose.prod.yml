@@ -12,6 +12,14 @@ services:
     build: ./docker/shell/branch
     image: git-branch
 
+  git-amend:
+    build: ./docker/shell/amend
+    image: git-amend
+
+  git-checkout:
+    build: ./docker/shell/checkout
+    image: git-checkout
+
   web:
     build:
       context: ./ # Dockerfile保存場所

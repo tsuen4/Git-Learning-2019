@@ -11,7 +11,15 @@ export const sequelize = new Sequelize(
 )
 
 // 課題識別用の配列
-export const exercise = ['create_repository', 'commit', 'branch', 'merge']
+export const exercise = [
+  'create_repository',
+  'commit',
+  'branch',
+  'merge',
+  'amend',
+  'no_edit',
+  'checkout'
+]
 
 export const Answers = sequelize.define('answers',
   {

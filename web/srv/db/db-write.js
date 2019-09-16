@@ -52,3 +52,15 @@ exports.git_branch = async obj => {
 exports.git_merge = async obj => {
   await answer(obj, exercise[3])
 }
+
+exports.git_amend = async obj => {
+  await answer(obj, exercise[4])
+}
+
+exports.git_no_edit = async obj => {
+  await answer(obj, exercise[5])
+}
+
+exports.git_checkout = async obj => {
+  await answer(obj, exercise[6])
+}
