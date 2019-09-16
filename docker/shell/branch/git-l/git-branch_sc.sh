@@ -31,5 +31,4 @@ echo -e "\n正解数: $count/2"
 curl -X POST host.docker.internal:3000/api/scoring/branch -H "Content-Type: application/json" -d "{${id}, ${branch}}"
 curl -X POST host.docker.internal:3000/api/scoring/merge -H "Content-Type: application/json" -d "{${id}, ${merge}}"
 
-
 exit $flag

@@ -20,5 +20,4 @@ echo -e "\n正解数: $count/1"
 
 curl -X POST host.docker.internal:3000/api/scoring/create-repository -H "Content-Type: application/json" -d "{${id}, ${create_repository}}"
 
-
 exit $flag
