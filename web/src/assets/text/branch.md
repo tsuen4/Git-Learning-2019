@@ -6,7 +6,7 @@ Git では `ブランチ(branch)` を使って隔離された作業環境を作�
 
 ## 問題: ブランチの作成と切替
 
-まずは、現在どのブランチにいるかを確認してみましょう。
+前回の「変更内容の記録」から続いて、現在どのブランチにいるかを確認してみましょう。
 
 ```bash
 git status # 現在のブランチを確認
@@ -33,12 +33,12 @@ git status
 
 ```bash
 echo "This is edit-hello branch" >> hello.txt
+# 'cat hello.txt' で hello.txt の中身を確認してみましょう
 ```
 
 編集後、ステージングエリアに追加してコミットしましょう。
 
 ```bash
-cat hello.txt # hello.txt の中身を確認
 git add hello.txt
 git commit -m "edit-hello ブランチでのコミット"
 ```
