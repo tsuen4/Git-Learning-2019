@@ -1,13 +1,15 @@
 <template>
   <div id="nav">
     <div id="tutorial-list">
-      <ul>
-        <router-link
-          tag="li"
-          :to="tutorial.contents"
-          v-for="tutorial in tutorials"
-          :key="tutorial.contents"
-        >{{tutorial.name}}</router-link>
+      <ul v-if="isGit()">
+        <li v-for="tutorial in git_tutorials" :key="tutorial.contents">
+          <router-link :to="tutorial.contents">{{tutorial.name}}</router-link>
+        </li>
+      </ul>
+      <ul v-else-if="isGitHub()">
+        <li v-for="tutorial in github_tutorials" :key="tutorial.contents">
+          <router-link :to="tutorial.contents">{{tutorial.name}}</router-link>
+        </li>
       </ul>
     </div>
   </div>
@@ -18,7 +20,7 @@ export default {
   name: 'Nav',
   data: () => {
     return {
-      tutorials: [
+      git_tutorials: [
         { name: 'Home', contents: '/' },
         { name: 'Git とは', contents: '/what-is-the-git' },
         { name: 'リポジトリの作成', contents: '/create-repository' },
@@ -26,7 +28,24 @@ export default {
         { name: 'ブランチによる分岐と統合', contents: '/branch' },
         { name: 'コミットのやり直し', contents: '/amend' },
         { name: '作業の取り消し', contents: '/checkout' }
+      ],
+      github_tutorials: [
+        { name: 'Home', contents: '/' },
+        { name: 'GitHub-Flow', contents: '/github-flow' }
       ]
+    }
+  },
+  methods: {
+    isGit: function () {
+      let result = Boolean(this.$store.getters.isSignedIn && this.$store.getters.materials === 'git')
+      return result
+    },
+    isGitHub: function () {
+      let result = Boolean(this.$store.getters.isSignedIn && this.$store.getters.materials === 'github')
+      return result
+    },
+    getMaterials: function () {
+      return this.$store.getters.materials
     }
   }
 }
@@ -39,9 +58,9 @@ export default {
 }
 
 #tutorial-list li {
-  border-bottom: 1px solid #BBB;
+  border-bottom: 1px solid #bbb;
   list-style-position: inside;
-  line-height:2.0em;
+  line-height: 2em;
   padding-left: 10px;
 }
 </style>
