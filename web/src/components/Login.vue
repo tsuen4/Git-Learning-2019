@@ -31,7 +31,7 @@ export default {
       return this.$store.getters.name
     },
     status: function () {
-      return this.isAdmin() ? '管理者' : this.isSignedIn() ? '一般ユーザー' : '未ログイン'
+      return this.isAdmin() ? '管理者' : this.isSignedIn() ? '一般ユーザー' : ''
     }
   },
   methods: {
