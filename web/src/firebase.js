@@ -18,6 +18,8 @@ export default {
     firebase.initializeApp(firebaseConfig)
   },
   signUp () {
+    store.commit('isLoading', true)
+
     const provider = new firebase.auth.GoogleAuthProvider()
     provider.setCustomParameters({
       hd: 'oecu.jp'
@@ -42,6 +44,7 @@ export default {
         store.commit('onUserStatusChanged', false)
         store.commit('onAuthAdminChanged', false)
       }
+      store.commit('isLoading', false)
     })
   }
 }

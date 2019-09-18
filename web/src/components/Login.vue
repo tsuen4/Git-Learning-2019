@@ -1,8 +1,11 @@
 <template>
-  <div>
-    <span>{{ this.$store.getters.id }} {{status }}</span>
-    <input v-if="!isSignedIn()" type="button" value="Login" @click="signUp()" />
-    <input v-else type="button" value="Logout" @click="signOut()" />
+  <div class="login">
+    <div v-if="isLoading">loading...</div>
+    <div v-else>
+      <span v-if="isSignedIn()">{{ this.$store.getters.id }}: {{ status }}</span>
+      <input v-if="!isSignedIn()" type="button" value="Login" @click="signUp()" />
+      <input v-else type="button" value="Logout" @click="signOut()" />
+    </div>
   </div>
 </template>
 
@@ -32,6 +35,9 @@ export default {
     },
     status: function () {
       return this.isAdmin() ? '管理者' : this.isSignedIn() ? '一般ユーザー' : ''
+    },
+    isLoading: function () {
+      return this.$store.getters.isLoading
     }
   },
   methods: {
@@ -41,7 +47,7 @@ export default {
     signOut: () => {
       firebase.signOut()
     },
-    onAuth: () => {
+    onAuth: function () {
       firebase.onAuth()
     },
     isSignedIn: function () {
