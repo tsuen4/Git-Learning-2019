@@ -19,7 +19,7 @@ export default {
     this.onAuth()
   },
   beforeDestroy: function () {
-    if (this.isSignedIn) {
+    if (this.isSignedIn()) {
       axios.post('/api/db/create-user', {
         id: this.id,
         name: this.name
