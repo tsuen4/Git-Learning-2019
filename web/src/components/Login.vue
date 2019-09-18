@@ -2,7 +2,7 @@
   <div class="login">
     <div v-if="isLoading">loading...</div>
     <div v-else>
-      <span v-if="isSignedIn()">{{ this.$store.getters.id }}: {{ status }}</span>
+      <span v-if="isSignedIn()" class="status">{{ this.$store.getters.id }}: {{ status }}</span>
       <input v-if="!isSignedIn()" type="button" value="Login" @click="signUp()" />
       <input v-else type="button" value="Logout" @click="signOut()" />
     </div>
@@ -61,6 +61,9 @@ export default {
 </script>
 
 <style>
+.status {
+  padding-right: 10px;
+}
 .login {
   display: table;
   margin: -65px 0 0 auto;
