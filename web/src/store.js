@@ -14,7 +14,8 @@ export default new Vuex.Store({
     id: 'ログイン状況確認中…',
     name: '',
     status: false,
-    admin: false
+    admin: false,
+    material: 'git'
   },
   mutations: {
     onAuthStateChanged (state, user) {
@@ -28,6 +29,9 @@ export default new Vuex.Store({
     onUserStatusChanged (state, status) {
       // ログインしてるかどうか true or false
       state.status = status
+    },
+    onMaterialChanged (state, item) {
+      state.material = item
     }
   },
   getters: {
@@ -42,6 +46,9 @@ export default new Vuex.Store({
     },
     isAdmin (state) {
       return state.admin
+    },
+    materials (state) {
+      return state.material
     }
   }
 })
