@@ -59,3 +59,11 @@ export default {
   }
 }
 </script>
+
+<style>
+.login {
+  display: table;
+  margin: -65px 0 0 auto;
+  height: 50px;
+}
+</style>
