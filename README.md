@@ -16,6 +16,12 @@ web ディレクトリ上で以下のコマンドを実行すると、 localhost
 npm run serve
 ```
 
+## デプロイ準備
+
+```bash
+docker-compose -f docker-compose.prod.yml build --no-cache
+```
+
 ## デプロイ
 
 プロジェクトルート上で
