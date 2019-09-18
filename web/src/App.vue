@@ -24,11 +24,6 @@ export default {
 <style>
 @import url("../node_modules/github-markdown-css/github-markdown.css");
 
-/* レイアウト確認用の枠線 */
-div {
-  /* border: 0.05px dotted #000000; */
-}
-
 body {
   margin: 0px;
 }
@@ -69,11 +64,6 @@ a {
 a.router-link-exact-active {
   color: #f05033;
 }
-
-/*
-#Appnav {
-}
-*/
 
 /* width: 1024px 以上 */
 @media (min-width: 1024px) {
