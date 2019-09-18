@@ -11,11 +11,11 @@ export default new Vuex.Store({
     key: 'OECU-Git-Learning'
   })],
   state: {
-    id: 'ログイン状況確認中…',
+    id: '',
     name: '',
     status: false,
     admin: false,
-    material: 'git'
+    loading: true
   },
   mutations: {
     onAuthStateChanged (state, user) {
@@ -30,8 +30,8 @@ export default new Vuex.Store({
       // ログインしてるかどうか true or false
       state.status = status
     },
-    onMaterialChanged (state, item) {
-      state.material = item
+    isLoading (state, status) {
+      state.loading = status
     }
   },
   getters: {
@@ -47,8 +47,8 @@ export default new Vuex.Store({
     isAdmin (state) {
       return state.admin
     },
-    materials (state) {
-      return state.material
+    isLoading (state) {
+      return state.loading
     }
   }
 })
