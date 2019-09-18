@@ -4,6 +4,10 @@ const users = [
   {
     email: 'ht17a045@oecu.jp',
     role: 'admin'
+  },
+  {
+    email: 'hisamatu@osakac.ac.jp',
+    role: 'admin'
   }
 ]
 
