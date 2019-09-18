@@ -58,21 +58,22 @@ body {
 }
 
 hr {
-  border:0.5px solid #BBB;
+  border: 0.5px solid #bbb;
+}
+
+a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+a.router-link-exact-active {
+  color: #f05033;
 }
 
 /*
 #Appnav {
 }
-
-#Appnav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#Appnav a.router-link-exact-active {
-  color: #42b983;
-} */
+*/
 
 /* width: 1024px 以上 */
 @media (min-width: 1024px) {
