@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   crate-repository:
     build: ./docker/shell/create-repository
@@ -27,7 +27,7 @@ services:
     image: gl-web # docker image name
     container_name: gl-web # docker container name
     ports:
-      - 172.24.57.203:80:80
+      - 80:80
 
   app:
     build:
