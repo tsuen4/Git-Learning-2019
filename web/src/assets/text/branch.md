@@ -9,18 +9,20 @@ Git では `ブランチ(branch)` を使って隔離された作業環境を作�
 前回の「変更内容の記録」から続いて、現在どのブランチにいるかを確認してみましょう。
 
 ```bash
+# 'hello-git' ディレクトリ内から始まります
 git status # 現在のブランチを確認
 ```
 
 1 行目 に `On branch master` と表示され、 master ブランチにいることを示しています。
 
-それでは、新しくブランチを作ってみましょう。今回は hello.txt を編集するので、 `edit-hello` と名前をつけてみましょう。新しく生成されるブランチは、現在いるブランチからの分岐となります。
+それでは、`git branch` コマンドで新しくブランチを作ってみましょう。今回は hello.txt を編集するので、 `edit-hello` と名前をつけてみましょう。新しく生成されるブランチは、現在いる master ブランチからの分岐となります。新しくブランチを作成したら、 `git branch` コマンドでブランチ一覧を表示して確認してみましょう。
 
 ```bash
 git branch edit-hello # edit-hello ブランチの作成
+git branch # ブランチ一覧の表示
 ```
 
-ブランチを作成したら、対象のブランチに移動してみましょう。移動後に `git status` で、 edit-hello ブランチにいることが確認できたら成功です。
+新しく作成したブランチを確認できたら、 `git checkout` で対象のブランチに移動してみましょう。移動後に `git status` で、 edit-hello ブランチにいることが確認できたら成功です。
 
 ```bash
 git checkout edit-hello # edit-hello ブランチに移動
@@ -32,7 +34,7 @@ git status
 先ほど作成した edit-hello ブランチ上で、 hello.txt を編集してコミットしてみましょう。今回は簡単にコマンドで追記します。
 
 ```bash
-echo "This is edit-hello branch" >> hello.txt
+echo "edit on edit-hello branch" >> hello.txt
 # 'cat hello.txt' で hello.txt の中身を確認してみましょう
 ```
 
@@ -43,13 +45,16 @@ git add hello.txt
 git commit -m "edit-hello ブランチでのコミット"
 ```
 
-コミットができたら、 master ブランチに戻ってマージしてみましょう。
+コミットができたら、 master ブランチに戻ってマージしてみましょう。マージして不要になったブランチは `git branch` コマンドに `-d` オプションをつけることで削除できます。
 
 ```bash
 git checkout master # master ブランチに移動
 cat hello.txt # master ブランチでの hello.txt を確認
+
 git merge edit-hello # master ブランチに edit-hello ブランチの内容をマージ
 cat hello.txt # マージ後の hello.txt を確認
+
+git branch -d edit-hello # 'edit-hello' ブランチを削除
 ```
 
 edit-hello ブランチで記録した内容が、 master ブランチ上に反映されてたらマージ成功です。
