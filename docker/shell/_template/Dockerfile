@@ -28,8 +28,6 @@ RUN echo -e "alias vi='vim'" >> $HOME/.bashrc && \
 RUN touch $HOME/.gitconfig && \
     git config --global user.email "student" && \
     git config --global user.name "student"
-# Linux 上で host.docker.internal でホストマシンを指せるように
-RUN ip -4 route list match 0/0 | awk '{print $3 "host.docker.internal"}' >> /etc/hosts
 WORKDIR /hello-git/
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/bin/bash"]

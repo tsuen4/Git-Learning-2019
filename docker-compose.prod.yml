@@ -3,7 +3,6 @@ services:
   crate-repository:
     build: ./docker/shell/create-repository
     image: create-repository
-    # extra_hosts: "localapi:192.168.163.225"
 
   git-commit:
     build: ./docker/shell/commit
