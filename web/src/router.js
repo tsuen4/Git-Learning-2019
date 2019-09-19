@@ -21,6 +21,11 @@ export default new Router({
       meta: { isAdmin: true }
     },
     {
+      path: '/my-status',
+      name: 'my-status',
+      component: () => import(/* webpackChunkName: "my-status" */ './views/MyStatus.vue')
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
