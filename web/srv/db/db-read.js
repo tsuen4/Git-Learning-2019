@@ -1,61 +1,71 @@
 'use strict'
 const table = require('./table')
 const exercise = table.exercise
-const exerName = [
+
+const tutorialName = [
   'リポジトリの作成',
   '変更内容の記録',
   'ブランチによる分岐と統合',
   'コミットのやり直し',
   '作業の取り消し'
 ]
+const exerName = [
+  'リポジトリを作成できたか',
+  'コミットできたか',
+  'ブランチを切れたか',
+  'マージできたか',
+  '直前のコミットメッセージを変更できたか',
+  '直前のコミットにファイルを追加できたか',
+  '作業の取り消しができたか'
+]
 
 // キーはテーブル名と同じに
 const answerData = {
   create_repository: {
-    name: exerName[0],
-    exer: 'リポジトリを作成できたか',
+    name: tutorialName[0],
+    exer: exerName[0],
     answer: 0,
     correct: 0,
     user: []
   },
   commit: {
-    name: exerName[1],
-    exer: 'コミットできたか',
+    name: tutorialName[1],
+    exer: exerName[1],
     answer: 0,
     correct: 0,
     user: []
   },
   branch: {
-    name: exerName[2],
-    exer: 'ブランチを切れたか',
+    name: tutorialName[2],
+    exer: exerName[2],
     answer: 0,
     correct: 0,
     user: []
   },
   merge: {
-    name: exerName[2],
-    exer: 'マージできたか',
+    name: tutorialName[2],
+    exer: exerName[3],
     answer: 0,
     correct: 0,
     user: []
   },
   amend: {
-    name: exerName[3],
-    exer: '直前のコミットメッセージを変更できたか',
+    name: tutorialName[3],
+    exer: exerName[4],
     answer: 0,
     correct: 0,
     user: []
   },
   no_edit: {
-    name: exerName[3],
-    exer: '直前のコミットにファイルを追加できたか',
+    name: tutorialName[3],
+    exer: exerName[5],
     answer: 0,
     correct: 0,
     user: []
   },
   checkout: {
-    name: exerName[4],
-    exer: '作業の取り消しができたか',
+    name: tutorialName[4],
+    exer: exerName[6],
     answer: 0,
     correct: 0,
     user: []
