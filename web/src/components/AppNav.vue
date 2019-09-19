@@ -1,13 +1,23 @@
 <template>
   <div id="nav">
     <div id="tutorial-list">
+      <ul>
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <template v-if="this.$store.getters.isSignedIn">
+          <li>
+            <router-link to="my-status">解答状況</router-link>
+          </li>
+        </template>
+        <template v-if="this.$store.getters.isAdmin">
+          <li>
+            <router-link to="/manage">学生の解答状況</router-link>
+          </li>
+        </template>
+      </ul>
       <ul v-if="this.$store.getters.isSignedIn">
         <li v-for="tutorial in gitTutorials" :key="tutorial.contents">
-          <router-link :to="tutorial.contents">{{tutorial.name}}</router-link>
-        </li>
-      </ul>
-      <ul v-else>
-        <li v-for="tutorial in notLogin" :key="tutorial.contents">
           <router-link :to="tutorial.contents">{{tutorial.name}}</router-link>
         </li>
       </ul>
@@ -20,11 +30,7 @@ export default {
   name: 'Nav',
   data: () => {
     return {
-      notLogin: [
-        { name: 'Home', contents: '/' }
-      ],
       gitTutorials: [
-        { name: 'Home', contents: '/' },
         { name: 'Git とは', contents: '/what-is-the-git' },
         { name: 'リポジトリの作成', contents: '/create-repository' },
         { name: '変更内容の記録', contents: '/commit' },
