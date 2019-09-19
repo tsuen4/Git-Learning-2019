@@ -43,5 +43,5 @@ services:
     command: [
         sh,
         -c,
-        npm install && npm install sqlite3 && npm run build && npm run express:run,
+        'npm install && npm install sqlite3 && npm run build && npm run express:run',
       ]
