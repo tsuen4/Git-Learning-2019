@@ -3,6 +3,7 @@ services:
   crate-repository:
     build: ./docker/shell/create-repository
     image: create-repository
+    # extra_hosts: "localapi:192.168.163.225"
 
   git-commit:
     build: ./docker/shell/commit
@@ -20,14 +21,14 @@ services:
     build: ./docker/shell/checkout
     image: git-checkout
 
-  web:
-    build:
-      context: ./ # Dockerfile保存場所
-      dockerfile: docker/deploy/frontend/Dockerfile # Dockerfileファイル名
-    image: gl-web # docker image name
-    container_name: gl-web # docker container name
-    ports:
-      - 80:80
+  # web:
+  #   build:
+  #     context: ./ # Dockerfile保存場所
+  #     dockerfile: docker/deploy/frontend/Dockerfile # Dockerfileファイル名
+  #   image: gl-web # docker image name
+  #   container_name: gl-web # docker container name
+  #   ports:
+  #     - 80:80
 
   app:
     build:
@@ -36,7 +37,7 @@ services:
     image: gl-app # イメージ名
     container_name: gl-app # コンテナ名
     ports: # ポート接続
-      - 3000:3000
+      - 80:3000
     volumes: # mount workdir
       - ./web:/hosting
       - /var/run/docker.sock:/var/run/docker.sock
