@@ -21,7 +21,7 @@ export default (app, http) => {
   // shell on docker
   app.post('/api/console/:imagename', async (req, res) => {
     try {
-      const container = await build.run(req.params.imagename, ['userId=' + req.body.userId])
+      const container = await build.run(req.params.imagename, ['userId=' + req.body.userId, 'userName=' + req.body.userName])
       res.send({
         containerId: container.id
       })

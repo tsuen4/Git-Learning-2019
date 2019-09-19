@@ -1,6 +1,6 @@
 <template>
   <div id="term">
-    <hr>
+    <hr />
     <div id="terminal"></div>
     <div id="buttons">
       <input type="button" class="btn" value="最初からやり直す" @click="reload()" />
@@ -23,14 +23,16 @@ export default {
   },
   data: function () {
     return {
-      userId: ''
+      userId: '',
+      userName: ''
     }
   },
   created: function () {
     this.userId = this.$store.getters.id
+    this.userName = this.$store.getters.name
     fetch('/api/console/' + this.imageName, {
       method: 'POST',
-      body: JSON.stringify({ userId: this.userId }),
+      body: JSON.stringify({ userId: this.userId, userName: this.userName }),
       headers: new Headers({ 'Content-type': 'application/json' })
     }).then(function (response) {
       return response.json()
@@ -72,7 +74,7 @@ export default {
 }
 
 #buttons {
-  padding : 10px 0 20px;
+  padding: 10px 0 20px;
 }
 
 .btn {
