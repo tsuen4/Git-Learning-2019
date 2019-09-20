@@ -20,6 +20,10 @@ services:
     build: ./docker/shell/checkout
     image: git-checkout
 
+  github-create-repository:
+    build: ./docker/shell/github-create-repository
+    image: github-create-repository
+
   app:
     build:
       context: ./ # Dockerfile保存場所
@@ -31,8 +35,4 @@ services:
     volumes: # mount workdir
       - ./web:/hosting
       - /var/run/docker.sock:/var/run/docker.sock
-    command: [
-        sh,
-        -c,
-        npm install && npm install sqlite3 && npm run express,
-      ]
+    command: [sh, -c, npm install && npm install sqlite3 && npm run express]

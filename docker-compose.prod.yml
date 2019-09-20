@@ -20,6 +20,10 @@ services:
     build: ./docker/shell/checkout
     image: git-checkout
 
+  github-create-repository:
+    build: ./docker/shell/github-create-repository
+    image: github-create-repository
+
   # web:
   #   build:
   #     context: ./ # Dockerfile保存場所
