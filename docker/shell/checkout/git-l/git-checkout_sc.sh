@@ -6,7 +6,7 @@ id="\"id\": \"${userId}\""
 
 echo -e "\n===== 採点結果 ====="
 
-if ! cat hello.txt | grep 'This is edit-hello branch' -q; then
+if ! cat hello.txt | grep 'edit on edit-hello branch' -q; then
     echo "NG: 作業が取り消されていません。"
     flag=1
     checkout="\"correct\": 0"
