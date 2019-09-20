@@ -45,16 +45,12 @@ git add hello.txt
 git commit -m "edit-hello ブランチでのコミット"
 ```
 
-コミットができたら、 master ブランチに戻ってマージしてみましょう。マージして不要になったブランチは `git branch` コマンドに `-d` オプションをつけることで削除できます。
-
 ```bash
 git checkout master # master ブランチに移動
 cat hello.txt # master ブランチでの hello.txt を確認
 
 git merge edit-hello # master ブランチに edit-hello ブランチの内容をマージ
 cat hello.txt # マージ後の hello.txt を確認
-
-git branch -d edit-hello # 'edit-hello' ブランチを削除
 ```
 
 edit-hello ブランチで記録した内容が、 master ブランチ上に反映されてたらマージ成功です。
