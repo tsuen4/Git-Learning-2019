@@ -36,7 +36,8 @@ export default {
         { name: '変更内容の記録', contents: '/commit' },
         { name: 'ブランチによる分岐と統合', contents: '/branch' },
         { name: 'コミットのやり直し', contents: '/amend' },
-        { name: '作業の取り消し', contents: '/checkout' }
+        { name: '作業の取り消し', contents: '/checkout' },
+        { name: 'GitHub にアップロード', contents: '/github-create-repository' }
       ]
     }
   }

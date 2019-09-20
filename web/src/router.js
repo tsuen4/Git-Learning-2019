@@ -62,6 +62,11 @@ export default new Router({
       path: '/checkout',
       name: 'checkout',
       component: () => import(/* webpackChunkName: "checkout" */ './views/text/checkout.vue')
+    },
+    {
+      path: '/github-create-repository',
+      name: 'github-create-repository',
+      component: () => import(/* webpackChunkName: "github-create-repository" */ './views/text/github-create-repository.vue')
     }
   ],
   // スクロール位置を保存 & 保存されていないページは一番上に
