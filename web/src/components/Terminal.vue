@@ -55,6 +55,7 @@ export default {
   },
   methods: {
     scoring: function () {
+      socket.emit('data', 'q') // less 抜け用の q
       socket.emit('data', '\x03') // ^C を送信
       socket.emit('data', this.imageName + '_sc.sh\n')
     },
