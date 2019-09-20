@@ -18,4 +18,4 @@ pwd # 現在のディレクトリを確認
 git init
 ```
 
-成功すると、このように出力されます。→ `Initialized empty Git repository in hello-git`
+成功すると、このように出力されます。→ `Initialized empty Git repository in /hello-git/.git/`
