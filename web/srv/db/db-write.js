@@ -23,7 +23,7 @@ const answer = async (obj, exer) => {
 }
 
 exports.createUser = async obj => {
-  console.log('ユーザー登録: ' + obj.id + ': ' + obj.name)
+  console.log('ユーザー登録: ' + obj.id + ' - ' + obj.name)
 
   for (let exer of exercise) {
     await table.Answers.findOrCreate({
@@ -37,30 +37,37 @@ exports.createUser = async obj => {
   }
 }
 
-exports.create_repository = async obj => {
-  await answer(obj, exercise[0])
-}
-
-exports.git_commit = async obj => {
-  await answer(obj, exercise[1])
-}
-
-exports.git_branch = async obj => {
-  await answer(obj, exercise[2])
-}
-
-exports.git_merge = async obj => {
-  await answer(obj, exercise[3])
-}
-
-exports.git_amend = async obj => {
-  await answer(obj, exercise[4])
-}
-
-exports.git_no_edit = async obj => {
-  await answer(obj, exercise[5])
-}
-
-exports.git_checkout = async obj => {
-  await answer(obj, exercise[6])
+exports.regAnswer = async (obj, exername) => {
+  switch (exername) {
+    case 'create-repository':
+      await answer(obj, exercise[0])
+      break
+    case 'commit':
+      await answer(obj, exercise[1])
+      break
+    case 'branch':
+      await answer(obj, exercise[2])
+      break
+    case 'merge':
+      await answer(obj, exercise[3])
+      break
+    case 'amend':
+      await answer(obj, exercise[4])
+      break
+    case 'no_edit':
+      await answer(obj, exercise[5])
+      break
+    case 'checkout':
+      await answer(obj, exercise[6])
+      break
+    case 'remote':
+      await answer(obj, exercise[7])
+      break
+    case 'push':
+      await answer(obj, exercise[8])
+      break
+    default:
+      console.log('存在しない問題 id です: ' + exername)
+      break
+  }
 }
