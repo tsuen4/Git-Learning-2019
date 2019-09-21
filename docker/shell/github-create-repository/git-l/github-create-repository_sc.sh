@@ -28,9 +28,9 @@ fi
 
 echo -e "\n正解数: $count/2"
 
-curl -X POST host.docker.internal:3000/api/scoring/remote -H "Content-Type: application/json" -d "{${id}, ${remote}}"
-# curl -X POST 192.168.163.225/api/scoring/remote -H "Content-Type: application/json" -d "{${id}, ${remote}}"
-curl -X POST host.docker.internal:3000/api/scoring/push -H "Content-Type: application/json" -d "{${id}, ${push}}"
-# curl -X POST 192.168.163.225/api/scoring/push -H "Content-Type: application/json" -d "{${id}, ${push}}"
+# curl -X POST host.docker.internal:3000/api/scoring/remote -H "Content-Type: application/json" -d "{${id}, ${remote}}"
+curl -X POST 192.168.163.225/api/scoring/remote -H "Content-Type: application/json" -d "{${id}, ${remote}}"
+# curl -X POST host.docker.internal:3000/api/scoring/push -H "Content-Type: application/json" -d "{${id}, ${push}}"
+curl -X POST 192.168.163.225/api/scoring/push -H "Content-Type: application/json" -d "{${id}, ${push}}"
 
 exit $flag
