@@ -1,5 +1,5 @@
 'use strict'
-// const express = require('express')
+const express = require('express')
 const bodyParser = require('body-parser')
 const build = require('./build')
 const dbWrite = require('./db/db-write')
@@ -8,6 +8,8 @@ const users = require('./users')
 
 export default (app, http) => {
   build.init(http)
+
+  app.use('/tutorial', express.static(__dirname + '/dist'))
 
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({
@@ -47,7 +49,7 @@ export default (app, http) => {
         res.send(myAns)
         break
       default:
-        console.log('存在しない URI です。')
+        console.log('存在しない URI です。: ' + req.params.operation)
     }
   })
 

@@ -4,8 +4,10 @@ module.exports = {
   runtimeCompiler: true,
   // outputDir: '../docs/',
 
-  // publicPath: process.env.NODE_ENV === 'production' ? '/(RepositoryName)/' : './',
-  publicPath: './',
+  // publicPath: process.env.NODE_ENV === 'production'
+  //   ? '/tutorial/'
+  //   : '/',
+  publicPath: '/tutorial/',
 
   configureWebpack: {
     module: {
