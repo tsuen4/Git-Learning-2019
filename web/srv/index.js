@@ -53,32 +53,7 @@ export default (app, http) => {
 
   // 採点用 API
   app.post('/api/scoring/:exername', (req, res) => {
-    switch (req.params.exername) {
-      case 'create-repository':
-        dbWrite.create_repository(req.body)
-        break
-      case 'commit':
-        dbWrite.git_commit(req.body)
-        break
-      case 'branch':
-        dbWrite.git_branch(req.body)
-        break
-      case 'merge':
-        dbWrite.git_merge(req.body)
-        break
-      case 'amend':
-        dbWrite.git_amend(req.body)
-        break
-      case 'no_edit':
-        dbWrite.git_no_edit(req.body)
-        break
-      case 'checkout':
-        dbWrite.git_checkout(req.body)
-        break
-      default:
-        console.log('存在しない問題 id です')
-        break
-    }
+    dbWrite.regAnswer(req.body, req.params.exername)
     res.send('\n') // ターミナルの入力を可能にするため改行
   })
 }
