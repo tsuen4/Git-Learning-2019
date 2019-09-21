@@ -18,7 +18,9 @@ export const exercise = [
   'merge',
   'amend',
   'no_edit',
-  'checkout'
+  'checkout',
+  'remote',
+  'push'
 ]
 
 export const Answers = sequelize.define('answers',
