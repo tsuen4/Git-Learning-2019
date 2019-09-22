@@ -28,7 +28,9 @@ fi
 
 echo -e "\n正解数: $count/2"
 
-curl -X POST 192.168.163.225/api/scoring/amend -H "Content-Type: application/json" -d "{${id}, ${amend}}"
-curl -X POST 192.168.163.225/api/scoring/no_edit -H "Content-Type: application/json" -d "{${id}, ${no_edit}}"
+# curl -X POST host.docker.internal:3000/tutorial/api/scoring/amend -H "Content-Type: application/json" -d "{${id}, ${amend}}"
+# curl -X POST host.docker.internal:3000/tutorial/api/scoring/no_edit -H "Content-Type: application/json" -d "{${id}, ${no_edit}}"
+curl -X POST 192.168.163.225/tutorial/api/scoring/amend -H "Content-Type: application/json" -d "{${id}, ${amend}}"
+curl -X POST 192.168.163.225/tutorial/api/scoring/no_edit -H "Content-Type: application/json" -d "{${id}, ${no_edit}}"
 
 exit $flag

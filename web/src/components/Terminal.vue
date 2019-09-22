@@ -30,7 +30,7 @@ export default {
   created: function () {
     this.userId = this.$store.getters.id
     this.userName = this.$store.getters.name
-    fetch('/api/console/' + this.imageName, {
+    fetch('/tutorial/api/console/' + this.imageName, {
       method: 'POST',
       body: JSON.stringify({ userId: this.userId, userName: this.userName }),
       headers: new Headers({ 'Content-type': 'application/json' })

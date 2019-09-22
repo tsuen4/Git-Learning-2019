@@ -18,7 +18,7 @@ export default (app, http) => {
   app.use('/tutorial', express.static(path.join(__dirname, '../dist')))
 
   // shell on docker
-  app.post('/api/console/:imagename', async (req, res) => {
+  app.post('/tutorial/api/console/:imagename', async (req, res) => {
     try {
       const container = await build.run(req.params.imagename, ['userId=' + req.body.userId, 'userName=' + req.body.userName])
       res.send({
@@ -30,7 +30,7 @@ export default (app, http) => {
     }
   })
 
-  app.post('/api/db/:operation', async (req, res) => {
+  app.post('/tutorial/api/db/:operation', async (req, res) => {
     switch (req.params.operation) {
       case 'create-user':
         // 初回ログイン時にユーザーを登録する API
@@ -55,7 +55,7 @@ export default (app, http) => {
   })
 
   // 採点用 API
-  app.post('/api/scoring/:exername', (req, res) => {
+  app.post('/tutorial/api/scoring/:exername', (req, res) => {
     dbWrite.regAnswer(req.body, req.params.exername)
     res.send('\n') // ターミナルの入力を可能にするため改行
   })
