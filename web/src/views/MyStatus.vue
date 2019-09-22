@@ -29,7 +29,7 @@ export default {
     }
   },
   created: function () {
-    axios.post('/api/db/get-my-status', { id: this.$store.getters.id })
+    axios.post('/tutorial/api/db/get-my-status', { id: this.$store.getters.id })
       .then(res => { this.ansData = res.data })
   },
   methods: {

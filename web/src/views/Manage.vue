@@ -39,7 +39,7 @@ export default {
     }
   },
   created: function () {
-    axios.post('/api/db/get-ans')
+    axios.post('/tutorial/api/db/get-ans')
       .then(res => { this.ansData = res.data })
   },
   methods: {

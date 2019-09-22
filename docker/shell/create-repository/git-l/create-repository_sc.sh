@@ -18,6 +18,6 @@ fi
 
 echo -e "\n正解数: $count/1"
 
-curl -X POST 192.168.163.225/api/scoring/create-repository -H "Content-Type: application/json" -d "{${id}, ${create_repository}}"
+curl -X POST 192.168.163.225/tutorial/api/scoring/create-repository -H "Content-Type: application/json" -d "{${id}, ${create_repository}}"
 
 exit $flag

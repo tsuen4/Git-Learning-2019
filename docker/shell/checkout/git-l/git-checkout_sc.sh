@@ -18,6 +18,6 @@ fi
 
 echo -e "\n正解数: $count/1"
 
-curl -X POST 192.168.163.225/api/scoring/checkout -H "Content-Type: application/json" -d "{${id}, ${checkout}}"
+curl -X POST 192.168.163.225/tutorial/api/scoring/checkout -H "Content-Type: application/json" -d "{${id}, ${checkout}}"
 
 exit $flag
