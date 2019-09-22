@@ -28,55 +28,55 @@ const tutorialData = {
     name: tutorialName[0],
     exer: exerName[0],
     answer: 0,
-    correct: 0,
+    correct: 0
   },
   commit: {
     name: tutorialName[1],
     exer: exerName[1],
     answer: 0,
-    correct: 0,
+    correct: 0
   },
   branch: {
     name: tutorialName[2],
     exer: exerName[2],
     answer: 0,
-    correct: 0,
+    correct: 0
   },
   merge: {
     name: tutorialName[2],
     exer: exerName[3],
     answer: 0,
-    correct: 0,
+    correct: 0
   },
   amend: {
     name: tutorialName[3],
     exer: exerName[4],
     answer: 0,
-    correct: 0,
+    correct: 0
   },
   no_edit: {
     name: tutorialName[3],
     exer: exerName[5],
     answer: 0,
-    correct: 0,
+    correct: 0
   },
   checkout: {
     name: tutorialName[4],
     exer: exerName[6],
     answer: 0,
-    correct: 0,
+    correct: 0
   },
   remote: {
     name: tutorialName[5],
     exer: exerName[7],
     answer: 0,
-    correct: 0,
+    correct: 0
   },
   push: {
     name: tutorialName[5],
     exer: exerName[8],
     answer: 0,
-    correct: 0,
+    correct: 0
   }
 }
 
