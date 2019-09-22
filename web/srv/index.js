@@ -1,5 +1,6 @@
 'use strict'
-// const express = require('express')
+const path = require('path')
+const express = require('express')
 const bodyParser = require('body-parser')
 const build = require('./build')
 const dbWrite = require('./db/db-write')
@@ -13,6 +14,8 @@ export default (app, http) => {
   app.use(bodyParser.urlencoded({
     extended: true
   }))
+
+  app.use('/tutorial', express.static(path.join(__dirname, '../dist')))
 
   // shell on docker
   app.post('/api/console/:imagename', async (req, res) => {
