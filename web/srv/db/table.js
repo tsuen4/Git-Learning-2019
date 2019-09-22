@@ -2,7 +2,7 @@
 
 const path = require('path')
 const Sequelize = require('sequelize')
-export const sequelize = new Sequelize(
+const sequelize = new Sequelize(
   'database', '', '',
   {
     dialect: 'sqlite',
@@ -11,7 +11,7 @@ export const sequelize = new Sequelize(
 )
 
 // 課題識別用の配列
-export const exercise = [
+const exercise = [
   'create_repository',
   'commit',
   'branch',
@@ -23,7 +23,7 @@ export const exercise = [
   'push'
 ]
 
-export const Answers = sequelize.define('answers',
+const Answers = sequelize.define('answers',
   {
     id: {
       type: Sequelize.TEXT,
@@ -36,3 +36,5 @@ export const Answers = sequelize.define('answers',
   },
   { timestamps: false }
 )
+
+module.exports = { sequelize, exercise, Answers }
