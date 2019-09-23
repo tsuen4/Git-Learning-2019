@@ -15,14 +15,14 @@ git status # 現在のブランチを確認
 
 1 行目 に `On branch master` と表示され、 master ブランチにいることを示しています。
 
-それでは、`git branch` コマンドで新しくブランチを作ってみましょう。今回は hello.txt を編集するので、 `edit-hello` と名前をつけてみましょう。新しく生成されるブランチは、現在いる master ブランチからの分岐となります。新しくブランチを作成したら、 `git branch` コマンドでブランチ一覧を表示して確認してみましょう。
+それでは、`git branch <ブランチ名>` で新しくブランチを作ってみましょう。今回は hello.txt を編集するので、 `edit-hello` と名前をつけてみましょう。新しく生成されるブランチは、現在いる master ブランチからの分岐となります。新しくブランチを作成したら、 `git branch` コマンドでブランチ一覧を表示して確認してみましょう。
 
 ```bash
 git branch edit-hello # edit-hello ブランチの作成
 git branch # ブランチ一覧の表示
 ```
 
-新しく作成したブランチを確認できたら、 `git checkout` で対象のブランチに移動してみましょう。移動後に `git status` で、 edit-hello ブランチにいることが確認できたら成功です。
+新しく作成したブランチを確認できたら、 `git checkout <ブランチ名>` で対象のブランチに移動してみましょう。移動後に `git status` で、 edit-hello ブランチにいることが確認できたら成功です。
 
 ```bash
 git checkout edit-hello # edit-hello ブランチに移動
@@ -44,6 +44,8 @@ echo "edit on edit-hello branch" >> hello.txt
 git add hello.txt
 git commit -m "edit-hello ブランチでのコミット"
 ```
+
+コミットできたら、 master ブランチに edit-hello での編集をマージ(統合)してみましょう。マージするには、マージ先のブランチに移動して `git merge <ブランチ名>` を実行することでマージできます。
 
 ```bash
 git checkout master # master ブランチに移動
