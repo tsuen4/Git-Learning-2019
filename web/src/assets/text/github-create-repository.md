@@ -12,7 +12,7 @@ GitHub とは Git のリポジトリをアップロードして、簡単にソ�
 
 ## 1. GitHub 上にリポジトリを作成
 
-本授業では **Class of Advanced C++ Programming 2** という共有アカウント上に作成します。 GitHub を登録したメールアドレスに、 **@oecu-class-advanced-cpp2 organization** に参加するためのメールが届いていると思うので、そこから参加しておいてください。
+本授業ではリモートリポジトリを **Class of Advanced C++ Programming 2** という共有アカウント上に作成します。 GitHub を登録したメールアドレスに、 **@oecu-class-advanced-cpp2 organization** に参加するためのメールが届いていると思うので、そこから参加してください。
 
 参加したら、 <a href="https://github.com/oecu-class-advanced-cpp2" target="_blank">https://github.com/oecu-class-advanced-cpp2</a> にアクセスしてください。
 
@@ -21,7 +21,7 @@ GitHub とは Git のリポジトリをアップロードして、簡単にソ�
 - Owner は `oecu-class-advanced-cpp2` を選択
 - Repository name は `学生番号-hello-git` の形で入力 → 例: `ht17a000-hello-git`
 - Description(説明) は任意入力
-- 公開範囲を `Private(非公開)`
+- 公開範囲を `Public(公開)`
 - README での初期化をしない (チェックしない)
 - .gitignore と license は `None` のまま
 
