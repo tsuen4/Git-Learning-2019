@@ -1,8 +1,8 @@
 <template>
   <div id="term">
-    <hr />
     <div id="terminal"></div>
-    <div id="buttons">
+    <div id="buttons" class="markdown-body">
+      <hr />
       <input type="button" class="btn" value="最初からやり直す" @click="reload()" />
       <input type="button" class="btn" value="採点" @click="scoring()" />
     </div>
@@ -70,11 +70,7 @@ export default {
 @import url("../../node_modules/xterm/dist/xterm.css");
 
 #buttons {
-  padding: 10px 0 20px;
-}
-
-.btn {
-  margin-right: 10px;
+  padding-bottom: 10px;
 }
 
 #terminal {
@@ -89,7 +85,7 @@ export default {
 /* width: 1024px 以上 */
 @media (min-width: 1024px) {
   #terminal {
-    width: calc(90% - 200px);
+    width: calc(90% - 250px);
   }
 }
 </style>
