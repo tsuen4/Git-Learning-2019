@@ -8,27 +8,6 @@ Vue.config.productionTip = false
 
 firebase.init()
 
-router.beforeEach((to, from, next) => {
-  // このルートはログインされているかどうか認証が必要です。
-  // もしされていないならば、ログインページにリダイレクトします。
-  if (to.matched.some(record => !record.meta.isPublic) && !store.getters.isSignedIn) {
-    next({
-      path: '/'
-    })
-  } else {
-    next()
-  }
-  if (to.matched.some(record => record.meta.isAdmin)) {
-    if (!store.getters.isAdmin) {
-      next({
-        path: '/'
-      })
-    } else {
-      next()
-    }
-  }
-})
-
 new Vue({
   router,
   store,
