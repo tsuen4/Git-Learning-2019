@@ -37,7 +37,7 @@ body {
   float: left;
   position: fixed;
   top: 0;
-  width: 200px;
+  width: 250px;
 }
 
 #text-view {

@@ -13,6 +13,6 @@ export default {
 <style>
 #tutorial {
   overflow: auto;
-  margin-left: 200px;
+  margin-left: 250px;
 }
 </style>
