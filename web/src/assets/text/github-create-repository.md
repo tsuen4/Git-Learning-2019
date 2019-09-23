@@ -18,6 +18,7 @@ GitHub とは Git のリポジトリをアップロードして、簡単にソ�
 
 アクセスしたら、[Create a new repository] または [New] ボタンを選択してください。 Create a new repository の画面に遷移したら、今回は
 
+- Owner は `oecu-class-advanced-cpp2` を選択
 - Repository name は `学生番号-hello-git` の形で入力 → 例: `ht17a000-hello-git`
 - Description(説明) は任意入力
 - 公開範囲を `Private(非公開)`
