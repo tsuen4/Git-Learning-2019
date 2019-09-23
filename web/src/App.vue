@@ -75,6 +75,24 @@ a.router-link-exact-active {
   color: #f05033;
 }
 
+.btn {
+  display: inline-block;
+  background-color: #fff;
+  border: solid 1px #f05033;
+  color: #f05033;
+  border-radius: 0.25rem 0.25rem;
+  margin-left: 5px !important;
+}
+
+.btn:hover {
+  background-color: #f05033;
+  color: #fff;
+}
+
+.btn:active {
+  background-color: #af250d;
+}
+
 /* width: 1024px 以上 */
 @media (min-width: 1024px) {
   #app {
