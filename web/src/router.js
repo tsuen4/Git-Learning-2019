@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import store from './store'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -79,3 +80,26 @@ export default new Router({
     }
   }
 })
+
+router.beforeEach((to, from, next) => {
+  // このルートはログインされているかどうか認証が必要です。
+  // もしされていないならば、ログインページにリダイレクトします。
+  if (to.matched.some(record => !record.meta.isPublic) && !store.getters.isSignedIn) {
+    next({
+      path: '/'
+    })
+  } else {
+    next()
+  }
+  if (to.matched.some(record => record.meta.isAdmin)) {
+    if (!store.getters.isAdmin) {
+      next({
+        path: '/'
+      })
+    } else {
+      next()
+    }
+  }
+})
+
+export default router
