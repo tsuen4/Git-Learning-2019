@@ -17,6 +17,11 @@ export default {
   components: {
     AppNav,
     AppTutorial
+  },
+  data: () => {
+    return {
+      existTerm: false
+    }
   }
 }
 </script>
@@ -37,6 +42,11 @@ body {
 
 #text-view {
   padding: 20px 20px 0 20px;
+}
+
+.existTerm {
+  height: calc(100vh - calc(20px + 300px - 5px));
+  overflow: auto;
 }
 
 #app {

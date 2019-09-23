@@ -1,5 +1,5 @@
 <template>
-  <div id="text-view">
+  <div id="text-view" :class="{ existTerm: true }">
     <md class="markdown-body"></md>
     <TerminalBlock></TerminalBlock>
   </div>

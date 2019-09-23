@@ -69,11 +69,6 @@ export default {
 <style>
 @import url("../../node_modules/xterm/dist/xterm.css");
 
-#text-view {
-  overflow: auto;
-  height: calc(100vh - calc(20px + 300px - 5px));
-}
-
 #buttons {
   padding: 10px 0 20px;
 }
