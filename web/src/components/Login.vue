@@ -3,8 +3,8 @@
     <div v-if="isLoading">loading...</div>
     <div v-else>
       <span v-if="isSignedIn()" class="status">{{ this.$store.getters.id }}: {{ status }}</span>
-      <input v-if="!isSignedIn()" type="button" value="Login" @click="signUp()" />
-      <input v-else type="button" value="Logout" @click="signOut()" />
+      <input v-if="!isSignedIn()" type="button" class="btn" value="Login" @click="signUp()" />
+      <input v-else type="button" class="btn" value="Logout" @click="signOut()" />
     </div>
   </div>
 </template>
