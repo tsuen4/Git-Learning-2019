@@ -8,6 +8,7 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    { path: '*', component: () => import(/* webpackChunkName: "404" */ './components/404.vue') },
     {
       path: '/',
       name: 'home',
