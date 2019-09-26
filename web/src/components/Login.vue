@@ -18,9 +18,6 @@ export default {
   created: function () {
     this.onAuth()
   },
-  beforeDestroy: function () {
-
-  },
   computed: {
     id: function () {
       return this.$store.getters.id
