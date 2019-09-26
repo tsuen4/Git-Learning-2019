@@ -19,12 +19,7 @@ export default {
     this.onAuth()
   },
   beforeDestroy: function () {
-    if (this.isSignedIn()) {
-      axios.post('/tutorial/api/db/create-user', {
-        id: this.id,
-        name: this.name
-      })
-    }
+
   },
   computed: {
     id: function () {

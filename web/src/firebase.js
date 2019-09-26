@@ -35,6 +35,11 @@ export default {
         store.commit('onAuthStateChanged', user)
         store.commit('onUserStatusChanged', true)
 
+        axios.post('/tutorial/api/db/create-user', {
+          id: user.email,
+          name: user.displayName
+        })
+
         axios.post('/tutorial/api/db/isadmin', { id: store.getters.id })
           .then(res => {
             store.commit('onAuthAdminChanged', res.data)
