@@ -6,7 +6,7 @@ let io
 let nsps = {}
 
 exports.init = http => {
-  io = require('socket.io').listen(http)
+  io = require('socket.io')(http, { path: '/tutorial/socket.io' })
 }
 
 exports.run = async (imageName, env = []) => {

@@ -37,7 +37,7 @@ export default {
     }).then(function (response) {
       return response.json()
     }).then(function (response) {
-      socket = io.connect('/tutorial/' + response.containerId)
+      socket = io.connect('/tutorial/' + response.containerId, { path: '/tutorial/socket.io' })
       let term = new Terminal()
       Terminal.applyAddon(fit)
       term.open(document.getElementById('terminal'))
