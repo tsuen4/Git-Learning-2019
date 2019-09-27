@@ -24,14 +24,14 @@ services:
     build: ./docker/shell/github-create-repository
     image: github-create-repository
 
-  # web:
-  #   build:
-  #     context: ./ # Dockerfile保存場所
-  #     dockerfile: docker/deploy/frontend/Dockerfile # Dockerfileファイル名
-  #   image: gl-web # docker image name
-  #   container_name: gl-web # docker container name
-  #   ports:
-  #     - 80:80
+  web:
+    build:
+      context: ./ # Dockerfile保存場所
+      dockerfile: docker/deploy/frontend/Dockerfile # Dockerfileファイル名
+    image: gl-web # docker image name
+    container_name: gl-web # docker container name
+    ports:
+      - 80:80
 
   app:
     build:
@@ -40,7 +40,7 @@ services:
     image: gl-app # イメージ名
     container_name: gl-app # コンテナ名
     ports: # ポート接続
-      - 80:3000
+      - 3000:3000
     volumes: # mount workdir
       - ./web:/hosting
       - /var/run/docker.sock:/var/run/docker.sock
