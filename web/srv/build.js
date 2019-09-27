@@ -32,7 +32,7 @@ exports.run = async (imageName, env = []) => {
     stdout: true,
     stderr: true
   })
-  nsps[container.id] = io.of(`/${container.id}`)
+  nsps[container.id] = io.of(`/tutorial/${container.id}`)
   nsps[container.id].on('connect', event => {
     console.log(`run:${container.id}`)
     stream.on('data', d => {
