@@ -1,29 +1,5 @@
 version: '3'
 services:
-  crate-repository:
-    build: ./docker/shell/create-repository
-    image: create-repository
-
-  git-commit:
-    build: ./docker/shell/commit
-    image: git-commit
-
-  git-branch:
-    build: ./docker/shell/branch
-    image: git-branch
-
-  git-amend:
-    build: ./docker/shell/amend
-    image: git-amend
-
-  git-checkout:
-    build: ./docker/shell/checkout
-    image: git-checkout
-
-  github-create-repository:
-    build: ./docker/shell/github-create-repository
-    image: github-create-repository
-
   app:
     build:
       context: ./ # Dockerfile保存場所
