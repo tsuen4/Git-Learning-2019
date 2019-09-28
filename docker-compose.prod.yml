@@ -4,19 +4,19 @@ services:
     build:
       context: ./ # Dockerfile保存場所
       dockerfile: docker/deploy/frontend/Dockerfile # Dockerfileファイル名
-    image: gl-web # docker image name
-    container_name: gl-web # docker container name
+    image: gl-web-tutorial # docker image name
+    container_name: gl-web-tutorial # docker container name
     ports:
       - 80:80
     depends_on: 
-      - app
+      - app-tutorial
 
-  app:
+  app-tutorial:
     build:
       context: ./ # Dockerfile保存場所
       dockerfile: docker/deploy/backend/Dockerfile # Dockerfileファイル名
-    image: gl-app # イメージ名
-    container_name: gl-app # コンテナ名
+    image: gl-app-tutorial # イメージ名
+    container_name: gl-app-tutorial # コンテナ名
     ports: # ポート接続
       - 3000:3000
     volumes: # mount workdir
