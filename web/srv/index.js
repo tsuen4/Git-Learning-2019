@@ -35,6 +35,7 @@ export default (app, http) => {
       case 'create-user':
         // 初回ログイン時にユーザーを登録する API
         dbWrite.createUser(req.body)
+        res.end()
         break
       case 'isadmin':
         // 管理者か確認する API
