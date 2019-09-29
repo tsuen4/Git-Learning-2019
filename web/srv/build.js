@@ -54,21 +54,22 @@ exports.run = async (imageName, env = []) => {
   return container
 }
 
-// 90 分でコンテナを殺す
+// 30 分でコンテナを殺す
 setInterval(() => {
   docker.listContainers((err, containers) => {
     if (err) return false
-    // 稼働時間チェック => 90 分を超えたものをフィルター
+    // 稼働時間チェック => 30 分を超えたものをフィルター
     let unixtime = new Date().getTime() / 1000
     containers = containers.filter((element, index, array) => {
-      if (unixtime - element.Created > 5400000) {
+      if (unixtime - element.Created > 1800000) {
         return true
       }
     })
     // 殺す
     containers.forEach((containerInfo) => {
       // console.log(containerInfo)
-      if (containerInfo.Image === 'gl-app' || containerInfo.Image === 'gl-web') {
+      let tmp = containerInfo.Id
+      if (tmp.match(/^gl-.*/)) {
         return true
       } else {
         docker.getContainer(containerInfo.Id).stop(() => {
