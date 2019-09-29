@@ -7,11 +7,11 @@ id="\"id\": \"${userId}\""
 echo -e "\n===== 採点結果 ====="
 
 if ! ls /hello-git/.git &> /dev/null; then
-    echo "NG: '/hello-edit/' が作成されていないか、 Git のリポジトリとして初期化されていません。"
+    echo "NG: '/hello-git/' が作成されていないか、 Git のリポジトリとして初期化されていません。"
     flag=1
     create_repository="\"correct\": 0"
 else
-    echo "OK: '/hello-edit/' が Git のリポジトリとして初期化されています。"
+    echo "OK: '/hello-git/' が Git のリポジトリとして初期化されています。"
     let ++count
     create_repository="\"correct\": 1"
 fi

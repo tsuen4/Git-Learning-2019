@@ -22,7 +22,7 @@
 前回の「リポジトリの作成」で作成したリポジトリの中に、新しくファイルを作ってみましょう。今回はコマンドで簡単に生成します。
 
 ```bash
-# 前回作成した 'helo-git' ディレクトリの中から始まります
+# 前回作成した 'hello-git' ディレクトリの中から始まります
 echo "hello" > hello.txt # hello という出力を hello.txt に書き込む
 cat hello.txt # hello.txt の確認
 ```
