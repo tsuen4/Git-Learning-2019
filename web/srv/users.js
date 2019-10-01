@@ -16,6 +16,10 @@ const users = [
   {
     email: 'mt18a006@oecu.jp',
     role: 'admin'
+  },
+  {
+    email: 'mt18a004@oecu.jp',
+    role: 'admin'
   }
 ]
 
