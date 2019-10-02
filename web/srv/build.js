@@ -67,8 +67,8 @@ setInterval(() => {
     })
     // 殺す
     containers.forEach((containerInfo) => {
-      // console.log(containerInfo)
-      let tmp = containerInfo.Id
+      // console.log(containerInfo.Image)
+      let tmp = containerInfo.Image
       if (tmp.match(/^gl-.*/)) {
         return true
       } else {
