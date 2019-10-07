@@ -39,8 +39,15 @@ export default {
     }
   },
   created: function () {
+    // アクセス後
     axios.post('/tutorial/api/db/get-ans')
       .then(res => { this.ansData = res.data })
+
+    // 5 秒毎に取得しにいく
+    setInterval(() => {
+      axios.post('/tutorial/api/db/get-ans')
+        .then(res => { this.ansData = res.data })
+    }, 5000)
   },
   methods: {
     rw: (num) => {
