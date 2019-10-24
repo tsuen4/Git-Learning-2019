@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <script src="main.js" type="module"></script>
     <title>Todo List</title>
 </head>
@@ -15,11 +16,16 @@
         <nav>
         </nav>
     </header>
-    <label>Task</label>
-    <input type="text" onkeydown="addTodo()" id="todo_value" autofocus />
-    <input type="button" value="Add" onclick="addTodo(true)" />
-    <input type="button" value="Delete" onclick="removeTodo()" />
-    <ul id="todo_ul"></ul>
+
+    <div class="todo-input">
+        <label>Task</label>
+        <input type="text" onkeydown="addTodo()" id="todo_value" placeholder="Type a to-do here!" autofocus />
+        <input type="button" value="Add" onclick="addTodo(true)" />
+        <input type="button" value="Delete" onclick="removeTodo()" />
+    </div>
+    <div class="todo-list">
+        <ul id="todo_ul"></ul>
+    </div>
 </body>
 
 </html>

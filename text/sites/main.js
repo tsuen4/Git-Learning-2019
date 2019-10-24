@@ -1,24 +1,11 @@
-// import { todoItem } from './links.js'
 let todoItem = [
-  { id: 0, text: 'todo', checked: false },
+  { id: 0, text: 'todo1', checked: false },
+  { id: 1, text: 'todo2', checked: false },
+  { id: 2, text: 'todo3', checked: false },
 ]
+
+let count = todoItem.length;
 const todo_ul = document.getElementById('todo_ul');
-
-// const obj = [
-//   { name: '1', url: '#1' },
-//   { name: '2', url: '#2' },
-//   { name: '3', url: '#3' },
-//   { name: '4', url: '#4' },
-// ]
-
-// for (const item of todoItem) {
-//   const listEl = document.createElement('li');
-//   const anchor = document.createElement('a');
-//   anchor.href = item.url;
-//   anchor.textContent = item.name;
-//   listEl.appendChild(anchor);
-//   nav_ul.appendChild(listEl);
-// }
 
 const reGenerate = () => {
   while (todo_ul.firstChild) {
@@ -27,25 +14,33 @@ const reGenerate = () => {
   for (const item of todoItem) {
     const listEl = document.createElement('li');
     listEl.setAttribute('id', 'todo-item');
-    listEl.textContent = item.text;
+
+    const labelEl = document.createElement('label');
+    labelEl.textContent = item.text;
 
     const checkEl = document.createElement('input');
     checkEl.setAttribute('type', 'checkbox');
     if (item.checked === true) {
       checkEl.checked = true;
     }
-    checkEl.setAttribute('onclick', `checkItem(${item.id}, this.checked)`);
-    listEl.appendChild(checkEl);
+    checkEl.setAttribute('onclick', `checkItem(${item.id})`);
 
+    listEl.appendChild(labelEl);
+    labelEl.appendChild(checkEl);
     todo_ul.appendChild(listEl);
   }
   console.log(todoItem);
 }
 
-const checkItem = (index, checkState) => {
-  checkState === true ?
-    todoItem[index].checked = true :
-    todoItem[index].checked = false;
+const checkItem = (id) => {
+  // console.log(`${id}: ${checkState}`);
+  for (let i = 0; i < todoItem.length; i++) {
+    if (todoItem[i].id === id && todoItem[i].checked) {
+      todoItem[i].checked = false
+    } else if (todoItem[i].id === id && !todoItem[i].checked) {
+      todoItem[i].checked = true
+    }
+  }
 }
 
 const addTodo = (press) => {
@@ -55,8 +50,7 @@ const addTodo = (press) => {
   // ボタン(true) 又は Enter が押されたら
   if (window.event.keyCode == 13 || press == true) {
     todoItem.push({
-      // TODO: id の処理をなんとかしよう！(カウントしとくとか)
-      id: todoItem[todoItem.length - 1].id + 1,
+      id: count++,
       text: todo.value,
       checked: false
     })
