@@ -1,6 +1,6 @@
 # OECU-Git-Learning
 
-Node.js を使用して開発した Git 学習 Web アプリケーション
+Node.js を使用して開発した Git 学習 Web アプリケーション。大学の授業で使用された。
 
 ![OECU-Git-Learning](https://i.imgur.com/4mPJam1.png)
 
@@ -46,10 +46,14 @@ Node.js を使用して開発した Git 学習 Web アプリケーション
 サーバーの起動コマンド
 
 ```bash
-# API サーバー (localhost:3000)
+# クローン後の操作
+npm install
+npm install sqlite3 # 単体でインストールする必要有り
+
+# API サーバーの起動 (localhost:3000)
 npm run express # 先に！
 
-# Web サーバー (localhost:8080)
+# Web サーバーの起動 (localhost:8080)
 npm run serve
 ```
 

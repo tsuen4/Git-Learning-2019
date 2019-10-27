@@ -3,6 +3,7 @@
 ## Project setup
 ```
 npm install
+npm install sqlite3
 ```
 
 ### Compiles and hot-reloads for development
