@@ -25,9 +25,7 @@
         <ul class="todo-list">
             <li v-for="item in todoItem" :key="item.id" class="todo-item">
                 <label>
-                    <input type="checkbox" v-model="item.checked">
-                    {{ item.text }}
-                </label>
+                    <input type="checkbox" v-model="item.checked">{{ item.text }}</label>
             </li>
         </ul>
     </div>
