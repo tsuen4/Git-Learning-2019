@@ -11,9 +11,28 @@ h1 {
     line-height: 100px;
 }
 
+label {
+    display: inline-block;
+    width: calc(100% - 20px);
+    background-color: #fff;
+    line-height: 50px;
+}
+
+label:hover {
+    background-color: #E1F5FE;
+}
+
+input[type=checkbox] {
+    margin: 0 10px;
+}
+
+a {
+    color: #4FC3F7;
+}
+
 .todo-input {
-    text-align: center;
     padding-top: 10px;
+    text-align: center;
 }
 
 .todo-list {
@@ -25,17 +44,20 @@ h1 {
     margin: 5px 0;
 }
 
-.input-text {
+input {
     margin-bottom: 10px;
-    width: 40%;
+}
+
+.input-text {
+    width: 50%;
     height: 30px;
     border-radius: 5px;
     border: solid 1px #4FC3F7;
     padding: 0 10px;
 }
 
-.button {
-    margin-bottom: 10px;
+input[type=button] {
+    /* margin: 10px 0; */
     font-weight: bold;
     border-radius: 5px;
     height: 30px;
@@ -45,16 +67,18 @@ h1 {
     color: #4FC3F7;
 }
 
-.button:hover {
-    /* border-radius: 5px; */
-    /* height: 33px; */
-    /* padding: 8px; */
+input[type=button]:hover {
     background-color: #4FC3F7;
     border: solid 1px #fff;
     color: #fff;
 }
 
-.button:active {
+input[type=button]:active {
     background-color: #0995D1;
-    /* color: #fff; */
+    color: #fff;
+}
+
+.del-button {
+    float: right;
+    padding-right: 10px;
 }
