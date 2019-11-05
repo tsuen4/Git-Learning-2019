@@ -36,10 +36,18 @@ const reGenerate = () => {
     if (item.checked === true) { checkEl.checked = true }
     checkEl.setAttribute('onclick', `checkItem(${item.id})`)
 
+    const delEl = document.createElement('a')
+    delEl.setAttribute('href', `#`)
+    delEl.setAttribute('onclick', `deleteOne(${item.id})`)
+    delEl.setAttribute('class', 'del-button')
+    delEl.textContent = 'Delete'
+
     const labelEl = document.createElement('label')
     
     labelEl.appendChild(checkEl)
     labelEl.insertAdjacentHTML('beforeend', item.text)
+    labelEl.appendChild(delEl)
+
     listEl.appendChild(labelEl)
     todo_ul.appendChild(listEl)
   }
@@ -77,9 +85,17 @@ const addTodo = (press) => {
   saveTodo()
 }
 
-const removeTodo = () => {
+const deleteSelected = () => {
   todoItem = todoItem.filter((element, index, array) => {
-    return Boolean(element.checked == false)
+    return Boolean(element.checked === false)
+  })
+  reGenerate()
+  saveTodo()
+}
+
+const deleteOne = (id) => {
+  todoItem = todoItem.filter((element, index, array) => {
+    return Boolean(element.id !== id)
   })
   reGenerate()
   saveTodo()
@@ -87,7 +103,8 @@ const removeTodo = () => {
 
 window.checkItem = checkItem
 window.addTodo = addTodo
-window.removeTodo = removeTodo
+window.deleteSelected = deleteSelected
+window.deleteOne = deleteOne
 
 window.onload = () => {
   checkStorage()
