@@ -2,9 +2,6 @@ let todoItem = [
   // { id: 0, text: 'todo1', checked: false }
 ]
 
-let count = todoItem.length
-const todo_ul = document.getElementById('todo_ul')
-
 const checkStorage = () => {
   if (localStorage.getItem('todo')) {
     try {
@@ -21,6 +18,8 @@ const saveTodo = () => {
 }
 
 const reGenerate = () => {
+  const todo_ul = document.getElementById('todo_ul')
+
   // html 側のリストを全消去
   while (todo_ul.firstChild) {
     todo_ul.removeChild(todo_ul.firstChild)
@@ -32,8 +31,8 @@ const reGenerate = () => {
     listEl.setAttribute('class', 'todo-item')
 
     const checkEl = document.createElement('input')
-    checkEl.setAttribute('type', 'checkbox')
     if (item.checked === true) { checkEl.checked = true }
+    checkEl.setAttribute('type', 'checkbox')
     checkEl.setAttribute('onclick', `checkItem(${item.id})`)
 
     const delEl = document.createElement('a')
@@ -43,7 +42,6 @@ const reGenerate = () => {
     delEl.textContent = 'Delete'
 
     const labelEl = document.createElement('label')
-    
     labelEl.appendChild(checkEl)
     labelEl.insertAdjacentHTML('beforeend', item.text)
     labelEl.appendChild(delEl)
