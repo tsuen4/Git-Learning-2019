@@ -7,12 +7,14 @@
         <th>問題名</th>
         <th>解答状況</th>
         <th>正誤</th>
+        <th>解答時刻</th>
       </tr>
       <tr v-for="ans in ansData" :key="ans.name && ans.exer">
         <td>{{ ans.name }}</td>
         <td>{{ ans.exer }}</td>
         <td>{{ rw(ans.answer) }}</td>
         <td>{{ rw(ans.correct) }}</td>
+        <td>{{ parseDate(ans.updatedAt) }}</td>
       </tr>
     </table>
   </div>
@@ -42,6 +44,13 @@ export default {
   methods: {
     rw: (num) => {
       return num === 1 ? '○' : '×'
+    },
+    parseDate: (date) => {
+      // UTC +9
+      date = new Date(date.substring(0, 19)) // -> YYYY-MM-DD hh:mm:dd
+      date = new Date(date.setHours(date.getHours() + 9)) // Thu Sep 26 2019 14:05:20 GMT+0900 (日本標準時)
+      date = date.toString().split('GMT')[0]
+      return date
     }
   }
 }

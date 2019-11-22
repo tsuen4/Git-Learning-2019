@@ -17,6 +17,11 @@ const answer = async (obj, exer) => {
         table.Answers.update(
           { correct: obj.correct },
           { where: { id: obj.id, exer: exer } })
+      } else if (data.correct === 0 && obj.correct === 0) {
+        // 解答時間更新用
+        table.Answers.update(
+          { correct: obj.correct },
+          { where: { id: obj.id, exer: exer } })
       }
     }
     )

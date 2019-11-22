@@ -32,9 +32,10 @@ const Answers = sequelize.define('answers',
     name: Sequelize.TEXT,
     exer: Sequelize.TEXT,
     answer: Sequelize.INTEGER,
-    correct: Sequelize.INTEGER
-  },
-  { timestamps: false }
+    correct: Sequelize.INTEGER,
+    createdAt: Sequelize.DATE,
+    updatedAt: Sequelize.DATE
+  }
 )
 
 module.exports = { sequelize, exercise, Answers }
