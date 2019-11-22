@@ -128,6 +128,7 @@ exports.myAnswer = async userId => {
         let data = r.get()
         myAnsData[data.exer].answer = data.answer
         myAnsData[data.exer].correct = data.correct
+        myAnsData[data.exer].updatedAt = data.updatedAt
       })
     })
   return myAnsData

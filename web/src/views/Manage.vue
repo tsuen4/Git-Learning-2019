@@ -14,14 +14,16 @@
         <tr>
           <th>ID</th>
           <th>名前</th>
-          <th>回答状況</th>
+          <th>解答状況</th>
           <th>正誤</th>
+          <th>解答時刻</th>
         </tr>
         <tr v-for="userItem in ans.user" :key="userItem.id">
           <td>{{ userItem.id }}</td>
           <td>{{ userItem.name }}</td>
           <td>{{ rw(userItem.answer) }}</td>
           <td>{{ rw(userItem.correct) }}</td>
+          <td>{{ parseDate(userItem.updatedAt) }}</td>
         </tr>
       </table>
     </div>
@@ -52,6 +54,13 @@ export default {
   methods: {
     rw: (num) => {
       return num === 1 ? '○' : '×'
+    },
+    parseDate: (date) => {
+      // UTC +9
+      date = new Date(date.substring(0, 19)) // -> YYYY-MM-DD hh:mm:dd
+      date = new Date(date.setHours(date.getHours() + 9)) // Thu Sep 26 2019 14:05:20 GMT+0900 (日本標準時)
+      date = date.toString().split('GMT')[0]
+      return date
     }
   }
 }
