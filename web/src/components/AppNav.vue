@@ -12,7 +12,7 @@
         </template>
         <template v-if="this.$store.getters.isAdmin">
           <li>
-            <router-link to="/manage">学生の解答状況</router-link>
+            <router-link to="/manage">ユーザーの解答状況</router-link>
           </li>
         </template>
       </ul>
