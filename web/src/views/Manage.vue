@@ -13,14 +13,12 @@
       <table>
         <tr>
           <th>ID</th>
-          <th>名前</th>
           <th>解答状況</th>
           <th>正誤</th>
           <th>解答時刻</th>
         </tr>
         <tr v-for="userItem in ans.user" :key="userItem.id">
           <td>{{ userItem.id }}</td>
-          <td>{{ userItem.name }}</td>
           <td>{{ rw(userItem.answer) }}</td>
           <td>{{ rw(userItem.correct) }}</td>
           <td>{{ parseDate(userItem.updatedAt) }}</td>
