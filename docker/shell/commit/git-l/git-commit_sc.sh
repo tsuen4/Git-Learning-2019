@@ -18,6 +18,6 @@ fi
 
 echo -e "\n正解数: $count/1"
 
-curl -X POST 192.168.163.225/tutorial/api/scoring/commit -H "Content-Type: application/json" -d "{${id}, ${commited}}"
+curl -X POST git-learning.hisalab.net/tutorial/api/scoring/commit -H "Content-Type: application/json" -d "{${id}, ${commited}}"
 
 exit $flag
