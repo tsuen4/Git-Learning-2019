@@ -54,29 +54,29 @@ exports.run = async (imageName, env = []) => {
   return container
 }
 
-// 30 分でコンテナを殺す
-setInterval(() => {
-  docker.listContainers((err, containers) => {
-    if (err) return false
-    // 稼働時間チェック => 30 分を超えたものをフィルター
-    let unixtime = new Date().getTime() / 1000
-    containers = containers.filter((element, index, array) => {
-      if (unixtime - element.Created > 1800000) {
-        return true
-      }
-    })
-    // 殺す
-    containers.forEach((containerInfo) => {
-      // console.log(containerInfo.Image)
-      let tmp = containerInfo.Image
-      if (tmp.match(/^gl-.*/)) {
-        return true
-      } else {
-        docker.getContainer(containerInfo.Id).stop(() => {
-          console.log(`kill:${containerInfo.Id}`)
-          return true
-        })
-      }
-    })
-  })
-}, 10000)
+// // 30 分でコンテナを殺す
+// setInterval(() => {
+//   docker.listContainers((err, containers) => {
+//     if (err) return false
+//     // 稼働時間チェック => 30 分を超えたものをフィルター
+//     let unixtime = new Date().getTime() / 1000
+//     containers = containers.filter((element, index, array) => {
+//       if (unixtime - element.Created > 1800000) {
+//         return true
+//       }
+//     })
+//     // 殺す
+//     containers.forEach((containerInfo) => {
+//       // console.log(containerInfo.Image)
+//       let tmp = containerInfo.Image
+//       if (tmp.match(/^gl-.*/)) {
+//         return true
+//       } else {
+//         docker.getContainer(containerInfo.Id).stop(() => {
+//           console.log(`kill:${containerInfo.Id}`)
+//           return true
+//         })
+//       }
+//     })
+//   })
+// }, 10000)
