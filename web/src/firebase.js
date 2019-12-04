@@ -21,9 +21,6 @@ export default {
     store.commit('isLoading', true)
 
     const provider = new firebase.auth.GoogleAuthProvider()
-    provider.setCustomParameters({
-      hd: 'oecu.jp'
-    })
     firebase.auth().signInWithRedirect(provider)
   },
   signOut () {
