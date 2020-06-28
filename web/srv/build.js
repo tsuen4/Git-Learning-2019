@@ -34,6 +34,7 @@ exports.run = async (imageName, env = []) => {
   })
   nsps[container.id] = io.of(`/tutorial/${container.id}`)
   nsps[container.id].on('connect', event => {
+    container.resize({ h: 18, w: 80 })
     console.log(`run:${container.id}`)
     stream.on('data', d => {
       if (nsps[container.id]) nsps[container.id].emit('data', d.toString())

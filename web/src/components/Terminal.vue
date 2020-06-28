@@ -38,7 +38,10 @@ export default {
       return response.json()
     }).then(function (response) {
       socket = io.connect('/tutorial/' + response.containerId, { path: '/tutorial/socket.io' })
-      let term = new Terminal()
+      let term = new Terminal({
+        rows: 18,
+        cols: 80
+      })
       Terminal.applyAddon(fit)
       term.open(document.getElementById('terminal'))
       term.fit()
@@ -79,7 +82,7 @@ export default {
   margin-left: -20px;
   margin-bottom: -5px;
   bottom: 0;
-  height: 300px;
+  height: 310px;
 }
 
 /* width: 1024px 以上 */
