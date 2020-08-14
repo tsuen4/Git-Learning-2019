@@ -1,5 +1,5 @@
 'use strict'
-const path = require('path')
+const { join } = require('path')
 const express = require('express')
 const build = require('./build')
 const dbWrite = require('./db/db-write')
@@ -14,7 +14,7 @@ export default (app, http) => {
     extended: true
   }))
 
-  app.use('/tutorial', express.static(path.join(__dirname, '../dist')))
+  app.use('/tutorial', express.static(join(__dirname, '../dist')))
 
   // shell on docker
   app.post('/tutorial/api/console/:imagename', async (req, res) => {
