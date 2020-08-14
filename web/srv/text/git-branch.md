@@ -2,7 +2,7 @@
 
 Git では `ブランチ(branch)` を使って隔離された作業環境を作ることができます。隔離して作業することで、メインの master ブランチを安全な状態に保ちつつ作業できます。作業が終わり、準備が整ったら `マージ(merge)` というブランチを統合する Git の機能を使えば、変更を master ブランチに反映できます。
 
-![branch](@/assets/text/img/git_branch.png)
+![branch](/tutorial/git_branch.png)
 
 ## 問題: ブランチの作成と切替
 

@@ -6,7 +6,7 @@ GitHub とは、ローカルにある Git リポジトリをアップロード�
 
 ## GitHub Flow
 
-![GitHub-Flow](@/assets/text/img/GitHub-Flow.png)
+![GitHub-Flow](/tutorial/img/GitHub-Flow.png)
 
 `GitHub Flow` とは、既存の `git-flow` の手順をシンプルにした開発フローです。
 
