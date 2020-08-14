@@ -9,6 +9,19 @@ import hljs from 'highlight.js/lib/highlight'
 import bash from 'highlight.js/lib/languages/bash'
 import 'highlight.js/styles/github.css'
 
+const getText = (tutorialName) => {
+  return new Promise((resolve, reject) => {
+    axios.get(`/tutorial/api/text/${tutorialName}`)
+      .then(res => {
+        // console.log(res.data)
+        resolve(res.data)
+      })
+      .catch(res => {
+        // console.error(res)
+      })
+  })
+}
+
 export default {
   props: {
     tutorialName: {
@@ -21,15 +34,9 @@ export default {
       receivedText: ''
     }
   },
-  created () {
-    axios.get(`/tutorial/api/text/${this.tutorialName}`)
-      .then(res => {
-        // console.log(res.data)
-        this.receivedText = res.data
-      })
-      .catch(res => {
-        // console.error(res)
-      })
+  async created () {
+    // テキストを取得
+    this.receivedText = await getText(this.tutorialName)
 
     // Markdown 内のシンタックスハイライト設定
     hljs.registerLanguage('bash', bash)
