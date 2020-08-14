@@ -1,17 +1,30 @@
 <template>
   <div id="tutorial">
-    {{ tutorialName }}
+    <TextComponent :tutorial-name="tutorialName" />
   </div>
 </template>
 
 <script>
+import TextComponent from '@/components/Text.vue'
+
 export default {
   name: 'Tutorial',
+  components: {
+    TextComponent
+  },
   props: {
     tutorialName: {
       type: String,
       required: true
     }
+  },
+  data () {
+    return {
+      tutorial: ''
+    }
+  },
+  created () {
+
   }
 }
 </script>
