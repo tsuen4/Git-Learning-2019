@@ -3,12 +3,19 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import store from './store'
 
+import AppTutorial from '@/components/AppTutorial.vue'
+
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/text/:tutorialName',
+      component: AppTutorial,
+      props: true
+    },
     { path: '*', component: () => import(/* webpackChunkName: "404" */ './components/404.vue') },
     {
       path: '/',

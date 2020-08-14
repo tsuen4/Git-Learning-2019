@@ -1,12 +1,18 @@
 <template>
   <div id="tutorial">
-    <router-view/>
+    {{ tutorialName }}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Tutorial'
+  name: 'Tutorial',
+  props: {
+    tutorialName: {
+      type: String,
+      required: true
+    }
+  }
 }
 </script>
 
