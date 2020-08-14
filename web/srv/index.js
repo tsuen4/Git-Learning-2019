@@ -1,7 +1,6 @@
 'use strict'
 const path = require('path')
 const express = require('express')
-const bodyParser = require('body-parser')
 const build = require('./build')
 const dbWrite = require('./db/db-write')
 const dbRead = require('./db/db-read')
@@ -10,8 +9,8 @@ const users = require('./users')
 export default (app, http) => {
   build.init(http)
 
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({
+  app.use(express.json())
+  app.use(express.urlencoded({
     extended: true
   }))
 
