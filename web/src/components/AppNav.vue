@@ -32,12 +32,12 @@ export default {
     return {
       gitTutorials: [
         { name: '1. Git とは', contents: '/what-is-the-git' },
-        { name: '2. リポジトリの作成', contents: '/create-repository' },
-        { name: '3. 変更内容の記録', contents: '/commit' },
-        { name: '4.1 ブランチによる分岐と統合', contents: '/branch' },
-        { name: '4.2 コミットのやり直し', contents: '/amend' },
-        { name: '4.3 作業の取り消し', contents: '/checkout' },
-        { name: '5. GitHub へプッシュ', contents: '/github-create-repository' }
+        { name: '2. リポジトリの作成', contents: '/text/git-create-repository' },
+        { name: '3. 変更内容の記録', contents: '/text/git-commit' },
+        { name: '4.1 ブランチによる分岐と統合', contents: '/text/git-branch' },
+        { name: '4.2 コミットのやり直し', contents: '/text/git-amend' },
+        { name: '4.3 作業の取り消し', contents: '/text/git-checkout' },
+        { name: '5. GitHub へプッシュ', contents: '/text/github-create-repository' }
       ]
     }
   }
