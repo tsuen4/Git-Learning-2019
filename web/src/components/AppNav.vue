@@ -31,7 +31,7 @@ export default {
   data: () => {
     return {
       gitTutorials: [
-        { name: '1. Git とは', contents: '/what-is-the-git' },
+        { name: '1. Git とは', contents: '/text/what-is-the-git' },
         { name: '2. リポジトリの作成', contents: '/text/git-create-repository' },
         { name: '3. 変更内容の記録', contents: '/text/git-commit' },
         { name: '4.1 ブランチによる分岐と統合', contents: '/text/git-branch' },
