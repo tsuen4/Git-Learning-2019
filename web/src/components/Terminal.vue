@@ -20,46 +20,50 @@ export default {
   props: {
     imageName: String
   },
-  data: function () {
+  data () {
     return {
       userId: '',
       userName: ''
     }
   },
-  created: function () {
+  created () {
     this.userId = this.$store.getters.id
     this.userName = this.$store.getters.name
-    fetch('/tutorial/api/console/' + this.imageName, {
+
+    fetch(`/tutorial/api/console/${this.imageName}`, {
       method: 'POST',
       body: JSON.stringify({ userId: this.userId, userName: this.userName }),
       headers: new Headers({ 'Content-type': 'application/json' })
-    }).then(function (response) {
-      return response.json()
-    }).then(function (response) {
-      socket = io.connect('/tutorial/' + response.containerId, { path: '/tutorial/socket.io' })
-      let term = new Terminal({
-        rows: 18,
-        cols: 80
+    }).then(response => response.json())
+      .then(response => {
+        socket = io.connect(`/tutorial/${response.containerId}`, { path: '/tutorial/socket.io' })
+        const term = new Terminal({
+          rows: 18,
+          cols: 80
+        })
+        term.open(document.getElementById('terminal'))
+
+        // コンテナとのデータのやり取り
+        socket.on('data', data => {
+          term.write(data)
+        })
+        term.onData(data => {
+          socket.emit('data', data)
+        })
+
+        // 接続が切れたときの処理
+        socket.on('disconnect', () => {
+          term.dispose()
+        })
       })
-      term.open(document.getElementById('terminal'))
-      socket.on('data', data => {
-        term.write(data)
-      })
-      term.onData(data => {
-        socket.emit('data', data)
-      })
-      socket.on('disconnect', () => {
-        term.dispose()
-      })
-    })
   },
   methods: {
-    scoring: function () {
+    scoring () {
       socket.emit('data', 'q') // less 抜け用の q
       socket.emit('data', '\x03') // ^C を送信
-      socket.emit('data', this.imageName + '_sc.sh\n')
+      socket.emit('data', `${this.imageName}_sc.sh\n`)
     },
-    reload: function () {
+    reload () {
       this.$router.go({ path: this.$router.currentRoute.path, force: true })
     }
   }
