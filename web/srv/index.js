@@ -1,5 +1,6 @@
 'use strict'
-const path = require('path')
+const { join } = require('path')
+const { readFile } = require('fs')
 const express = require('express')
 const build = require('./build')
 const dbWrite = require('./db/db-write')
@@ -14,7 +15,7 @@ export default (app, http) => {
     extended: true
   }))
 
-  app.use('/tutorial', express.static(path.join(__dirname, '../dist')))
+  app.use('/tutorial', express.static(join(__dirname, '../dist')))
 
   // shell on docker
   app.post('/tutorial/api/console/:imagename', async (req, res) => {
@@ -27,6 +28,18 @@ export default (app, http) => {
     } catch (error) {
       console.error(error)
     }
+  })
+
+  app.get('/tutorial/api/text/:name', (req, res) => {
+    const fileName = req.params.name
+    const relativePath = `./text/${fileName}.md`
+    const filePath = join(__dirname, relativePath)
+    // console.log(filePath)
+
+    readFile(filePath, 'utf-8', (err, data) => {
+      if (err) res.status(404).send('Sorry cant find that!')
+      res.send(data)
+    })
   })
 
   app.post('/tutorial/api/db/:operation', async (req, res) => {

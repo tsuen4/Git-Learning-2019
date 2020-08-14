@@ -1,22 +1,16 @@
 <template>
   <div id="app">
-    <AppNav></AppNav>
-    <AppTutorial></AppTutorial>
+    <AppNav />
+    <router-view />
   </div>
 </template>
 
 <script>
 import AppNav from '@/components/AppNav.vue'
-import AppTutorial from '@/components/AppTutorial.vue'
-import hljs from 'highlight.js/lib/highlight'
-import bash from 'highlight.js/lib/languages/bash'
-import 'highlight.js/styles/github.css'
-hljs.registerLanguage('bash', bash)
 
 export default {
   components: {
-    AppNav,
-    AppTutorial
+    AppNav
   },
   data: () => {
     return {

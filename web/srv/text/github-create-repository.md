@@ -1,6 +1,6 @@
 # GitHub へプッシュ
 
-![GitHub-Logo](@/assets/text/img/GitHub-Mark-120px-plus.png)
+![GitHub-Logo](/tutorial/img/GitHub-Mark-120px-plus.png)
 
 GitHub とは Git のリポジトリをアップロードして、簡単にソースコードの共有や共同開発ができる Web サービスです。ローカルにあるリポジトリに対して、インターネット上にあるリポジトリのことを `リモートリポジトリ` といいます。
 

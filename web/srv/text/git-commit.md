@@ -15,7 +15,7 @@
 
 どのファイルもステージングエリアに追加することで、コミット(記録)対象になります。ファイルの変更を Git で記録することで、追跡対象に置くことができます。
 
-![commit_flow](@/assets/text/img/git_commit_flow.png)
+![commit_flow](/tutorial/img/git_commit_flow.png)
 
 ## 問題: コミットしてみよう
 

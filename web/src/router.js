@@ -3,12 +3,19 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import store from './store'
 
+import AppTutorial from '@/components/AppTutorial.vue'
+
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/text/:tutorialName',
+      component: AppTutorial,
+      props: true
+    },
     { path: '*', component: () => import(/* webpackChunkName: "404" */ './components/404.vue') },
     {
       path: '/',
@@ -26,41 +33,6 @@ const router = new Router({
       path: '/my-status',
       name: 'my-status',
       component: () => import(/* webpackChunkName: "my-status" */ './views/MyStatus.vue')
-    },
-    {
-      path: '/what-is-the-git',
-      name: 'what-is-the-git',
-      component: () => import(/* webpackChunkName: "what-is-the-git" */ './views/text/what-is-the-git.vue')
-    },
-    {
-      path: '/create-repository',
-      name: 'create-repository',
-      component: () => import(/* webpackChunkName: "create-repository" */ './views/text/create-repository.vue')
-    },
-    {
-      path: '/commit',
-      name: 'commit',
-      component: () => import(/* webpackChunkName: "commit" */ './views/text/commit.vue')
-    },
-    {
-      path: '/branch',
-      name: 'branch',
-      component: () => import(/* webpackChunkName: "branch" */ './views/text/branch.vue')
-    },
-    {
-      path: '/amend',
-      name: 'amend',
-      component: () => import(/* webpackChunkName: "amend" */ './views/text/amend.vue')
-    },
-    {
-      path: '/checkout',
-      name: 'checkout',
-      component: () => import(/* webpackChunkName: "checkout" */ './views/text/checkout.vue')
-    },
-    {
-      path: '/github-create-repository',
-      name: 'github-create-repository',
-      component: () => import(/* webpackChunkName: "github-create-repository" */ './views/text/github-create-repository.vue')
     }
   ],
   // スクロール位置を保存 & 保存されていないページは一番上に
