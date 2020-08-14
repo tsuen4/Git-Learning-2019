@@ -8,6 +8,7 @@ import marked from 'marked'
 import hljs from 'highlight.js/lib/highlight'
 import bash from 'highlight.js/lib/languages/bash'
 import 'highlight.js/styles/github.css'
+import 'github-markdown-css/github-markdown.css'
 
 const getText = (tutorialName) => {
   return new Promise((resolve, reject) => {

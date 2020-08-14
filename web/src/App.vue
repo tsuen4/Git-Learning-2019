@@ -21,8 +21,6 @@ export default {
 </script>
 
 <style>
-@import url("../node_modules/github-markdown-css/github-markdown.css");
-
 body {
   margin: 0px;
 }

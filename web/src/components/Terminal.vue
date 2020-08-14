@@ -12,6 +12,7 @@
 <script>
 import io from 'socket.io-client'
 import { Terminal } from 'xterm'
+import '~xterm/css/xterm.css'
 
 let socket
 
@@ -71,8 +72,6 @@ export default {
 </script>
 
 <style>
-@import "~xterm/css/xterm.css";
-
 #buttons {
   padding-bottom: 10px;
 }
