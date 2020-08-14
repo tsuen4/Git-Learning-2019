@@ -11,20 +11,18 @@ exports.init = http => {
 
 exports.run = async (imageName, env = []) => {
   console.log(imageName)
-  let opt = {
-    AttachStdin: true,
-    AttachStdout: true,
-    AttachStderr: true,
-    Tty: true,
-    OpenStdin: true,
-    StdinOnce: true,
-    Env: env,
-    Cmd: ['/bin/bash'],
+
+  const opt = {
     Image: imageName,
-    Volumes: {},
-    Binds: []
+    Cmd: ['/bin/bash'],
+    Tty: true, // 標準入出力に必要
+    OpenStdin: true, // 入力に必要
+    Env: env
+    // StdinOnce: true,
+    // Volumes: {},
+    // Binds: []
   }
-  // opt.Volumes[MountPath] = {}
+
   const container = await docker.createContainer(opt)
   const stream = await container.attach({
     stream: true,
@@ -32,17 +30,23 @@ exports.run = async (imageName, env = []) => {
     stdout: true,
     stderr: true
   })
-  nsps[container.id] = io.of(`/tutorial/${container.id}`)
-  nsps[container.id].on('connect', event => {
-    container.resize({ h: 18, w: 80 })
-    console.log(`run:${container.id}`)
 
+  nsps[container.id] = io.of(`/tutorial/${container.id}`)
+
+  // フロントから接続された時の処理
+  nsps[container.id].on('connect', event => {
+    console.log(`run:${container.id}`)
+    container.resize({ h: 18, w: 80 })
+
+    // フロント側とのやりとり
     stream.on('data', data => {
       if (nsps[container.id]) nsps[container.id].emit('data', data.toString())
     })
     event.on('data', data => {
       stream.write(data)
     })
+
+    // フロントから切断された時の処理
     event.on('disconnect', () => {
       container.remove({ force: true }, function (err, data) {
         console.log(`remove:${container.id}`)
@@ -53,6 +57,7 @@ exports.run = async (imageName, env = []) => {
 
     container.start()
   })
+
   return container
 }
 
