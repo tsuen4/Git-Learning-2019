@@ -5,6 +5,9 @@
 <script>
 import axios from 'axios'
 import marked from 'marked'
+import hljs from 'highlight.js/lib/highlight'
+import bash from 'highlight.js/lib/languages/bash'
+import 'highlight.js/styles/github.css'
 
 export default {
   props: {
@@ -27,6 +30,14 @@ export default {
       .catch(res => {
         // console.error(res)
       })
+
+    // Markdown 内のシンタックスハイライト設定
+    hljs.registerLanguage('bash', bash)
+    marked.setOptions({
+      highlight: (code, lang, callback) => {
+        return hljs.highlight(lang, code).value
+      }
+    })
   },
   computed: {
     compiledMarkdown () { return marked(this.receivedText) }

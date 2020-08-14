@@ -7,10 +7,6 @@
 
 <script>
 import AppNav from '@/components/AppNav.vue'
-import hljs from 'highlight.js/lib/highlight'
-import bash from 'highlight.js/lib/languages/bash'
-import 'highlight.js/styles/github.css'
-hljs.registerLanguage('bash', bash)
 
 export default {
   components: {
