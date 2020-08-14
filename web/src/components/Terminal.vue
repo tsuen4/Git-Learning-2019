@@ -12,7 +12,6 @@
 <script>
 import io from 'socket.io-client'
 import { Terminal } from 'xterm'
-import * as fit from 'xterm/lib/addons/fit/fit'
 
 let socket
 
@@ -42,17 +41,15 @@ export default {
         rows: 18,
         cols: 80
       })
-      Terminal.applyAddon(fit)
       term.open(document.getElementById('terminal'))
-      term.fit()
       socket.on('data', data => {
         term.write(data)
       })
-      term.on('data', data => {
+      term.onData(data => {
         socket.emit('data', data)
       })
       socket.on('disconnect', () => {
-        term.destroy()
+        term.dispose()
       })
     })
   },
@@ -70,7 +67,7 @@ export default {
 </script>
 
 <style>
-@import url("../../node_modules/xterm/dist/xterm.css");
+@import "~xterm/css/xterm.css";
 
 #buttons {
   padding-bottom: 10px;
