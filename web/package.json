@@ -14,7 +14,7 @@
     "babel-runtime": "^6.26.0",
     "core-js": "^2.6.5",
     "dockerode": "^2.5.8",
-    "firebase": "^6.4.2",
+    "firebase": "^7.18.0",
     "github-markdown-css": "^3.0.1",
     "highlight.js": "^9.15.9",
     "markdown-to-vue-loader": "^1.0.1",
