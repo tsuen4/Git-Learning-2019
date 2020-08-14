@@ -36,7 +36,6 @@ exports.run = async (imageName, env = []) => {
   // フロントから接続された時の処理
   nsps[container.id].on('connect', event => {
     console.log(`run:${container.id}`)
-    container.resize({ h: 18, w: 80 })
 
     // フロント側とのやりとり
     stream.on('data', data => {
@@ -56,6 +55,7 @@ exports.run = async (imageName, env = []) => {
     })
 
     container.start()
+    container.resize({ h: 18, w: 80 })
   })
 
   return container
