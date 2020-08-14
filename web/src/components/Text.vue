@@ -31,12 +31,11 @@ export default {
   },
   data () {
     return {
-      receivedText: ''
+      compiledMarkdown: ''
     }
   },
-  async created () {
-    // テキストを取得
-    this.receivedText = await getText(this.tutorialName)
+  mounted () {
+    this.getAndCompile(this.tutorialName)
 
     // Markdown 内のシンタックスハイライト設定
     hljs.registerLanguage('bash', bash)
@@ -46,8 +45,18 @@ export default {
       }
     })
   },
-  computed: {
-    compiledMarkdown () { return marked(this.receivedText) }
+  methods: {
+    // Markdown を取得して HTML に変換する
+    async getAndCompile (tutorialName) {
+      const receivedText = await getText(tutorialName)
+      this.compiledMarkdown = marked(receivedText)
+    }
+  },
+  watch: {
+    // ルートが変更されたときに呼び出される
+    tutorialName (changedName) {
+      this.getAndCompile(changedName)
+    }
   }
 }
 </script>
