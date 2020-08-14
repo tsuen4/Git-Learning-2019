@@ -36,11 +36,12 @@ exports.run = async (imageName, env = []) => {
   nsps[container.id].on('connect', event => {
     container.resize({ h: 18, w: 80 })
     console.log(`run:${container.id}`)
-    stream.on('data', d => {
-      if (nsps[container.id]) nsps[container.id].emit('data', d.toString())
+
+    stream.on('data', data => {
+      if (nsps[container.id]) nsps[container.id].emit('data', data.toString())
     })
-    event.on('data', d => {
-      stream.write(d)
+    event.on('data', data => {
+      stream.write(data)
     })
     event.on('disconnect', () => {
       container.remove({ force: true }, function (err, data) {
