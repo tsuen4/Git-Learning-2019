@@ -48,7 +48,7 @@ exports.run = async (imageName, env = []) => {
 
     // フロントから切断された時の処理
     event.on('disconnect', () => {
-      container.remove({ force: true }, function (err, data) {
+      container.remove({ force: true }, (err, data) => {
         console.log(`remove:${container.id}`)
         if (err) console.error(err)
         delete nsps[container.id]
