@@ -7,7 +7,7 @@
         </li>
         <template v-if="this.$store.getters.isSignedIn">
           <li>
-            <router-link to="my-status">解答状況</router-link>
+            <router-link to="/my-status">解答状況</router-link>
           </li>
         </template>
         <template v-if="this.$store.getters.isAdmin">
