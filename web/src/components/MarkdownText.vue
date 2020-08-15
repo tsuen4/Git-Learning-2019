@@ -3,31 +3,17 @@
 </template>
 
 <script>
-import axios from 'axios'
 import marked from 'marked'
 import hljs from 'highlight.js/lib/highlight'
 import bash from 'highlight.js/lib/languages/bash'
 import 'highlight.js/styles/github.css'
 import 'github-markdown-css/github-markdown.css'
 
-const getText = (tutorialName) => {
-  return new Promise((resolve, reject) => {
-    axios.get(`/tutorial/api/text/${tutorialName}`)
-      .then(res => {
-        // console.log(res.data)
-        resolve(res.data)
-      })
-      .catch(res => {
-        // console.error(res)
-      })
-  })
-}
-
 export default {
   props: {
-    tutorialName: {
+    tutorialText: {
       type: String,
-      required: true
+      default: ''
     }
   },
   data () {
@@ -36,7 +22,7 @@ export default {
     }
   },
   mounted () {
-    this.getAndCompile(this.tutorialName)
+    this.markdownToHTML(this.tutorialText)
 
     // Markdown 内のシンタックスハイライト設定
     hljs.registerLanguage('bash', bash)
@@ -48,15 +34,15 @@ export default {
   },
   methods: {
     // Markdown を取得して HTML に変換する
-    async getAndCompile (tutorialName) {
-      const receivedText = await getText(tutorialName)
-      this.compiledMarkdown = marked(receivedText)
+    async markdownToHTML (tutorialText) {
+      if (!tutorialText) return
+      this.compiledMarkdown = marked(tutorialText)
     }
   },
   watch: {
-    // ルートが変更されたときに呼び出される
-    tutorialName (changedName) {
-      this.getAndCompile(changedName)
+    // props: tutorialText 変更されたときに呼び出される
+    tutorialText (changedText) {
+      this.markdownToHTML(changedText)
     }
   }
 }
