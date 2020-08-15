@@ -87,6 +87,9 @@ export default {
       if (this.socket.connected) this.socket.disconnect()
       this.connectContainer(changedName)
     }
+  },
+  beforeDestroy () {
+    if (this.socket.connected) this.socket.disconnect()
   }
 }
 </script>
