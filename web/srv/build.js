@@ -17,8 +17,8 @@ exports.run = async (imageName, env = []) => {
     Cmd: ['/bin/bash'],
     Tty: true, // 標準入出力に必要
     OpenStdin: true, // 入力に必要
+    StdinOnce: true, // 切断後に閉じる？
     Env: env
-    // StdinOnce: true,
     // Volumes: {},
     // Binds: []
   }
