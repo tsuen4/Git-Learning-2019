@@ -30,14 +30,25 @@ export default (app, http) => {
     }
   })
 
-  app.get('/tutorial/api/text/:name', (req, res) => {
-    const fileName = req.params.name
+  const getText = (fileName) => {
+    return new Promise((resolve, reject) => {
+
     const relativePath = `./text/${fileName}.md`
     const filePath = join(__dirname, relativePath)
     // console.log(filePath)
 
     readFile(filePath, 'utf-8', (err, data) => {
-      if (err) res.status(404).send('Sorry cant find that!')
+        if (err) reject(err)
+        resolve(data)
+      })
+    })
+  }
+
+  app.get('/tutorial/api/text/:name', async (req, res) => {
+    const fileName = req.params.name
+    const textData = await getText(fileName)
+    res.send(textData)
+  })
       res.send(data)
     })
   })
