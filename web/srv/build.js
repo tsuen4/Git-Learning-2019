@@ -54,8 +54,10 @@ exports.run = async (imageName, env = []) => {
       })
     })
 
-    container.start()
+    // tty のサイズをコンテナ起動後に指定
+    container.start().then(() => {
     container.resize({ h: 18, w: 80 })
+  })
   })
 
   return container
