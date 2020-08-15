@@ -27,6 +27,7 @@ export default (app, http) => {
       console.log(req.body.userId)
     } catch (error) {
       console.error(error)
+      res.status(500)
     }
   })
 
