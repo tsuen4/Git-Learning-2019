@@ -12,7 +12,7 @@
 <script>
 import io from 'socket.io-client'
 import { Terminal } from 'xterm'
-import '~xterm/css/xterm.css'
+import 'xterm/css/xterm.css'
 
 let socket
 
