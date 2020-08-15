@@ -2,19 +2,19 @@
   <div id="text-view" class="markdown-body">
     <h1>Git-Learning</h1>
     <Login />
-    <HowToUse />
+    <MDText tutorial-name="how-to-use" />
   </div>
 </template>
 
 <script>
 import Login from '@/components/Login.vue'
-import HowToUse from '@/assets/text/how-to-use.md'
+import MDText from '@/components/MarkdownText.vue'
 
 export default {
   name: 'home',
   components: {
     Login,
-    HowToUse
+    MDText
   }
 }
 </script>

@@ -1,7 +1,7 @@
 'use strict'
-const path = require('path')
+const { join } = require('path')
+const { readFile } = require('fs')
 const express = require('express')
-const bodyParser = require('body-parser')
 const build = require('./build')
 const dbWrite = require('./db/db-write')
 const dbRead = require('./db/db-read')
@@ -10,12 +10,12 @@ const users = require('./users')
 export default (app, http) => {
   build.init(http)
 
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({
+  app.use(express.json())
+  app.use(express.urlencoded({
     extended: true
   }))
 
-  app.use('/tutorial', express.static(path.join(__dirname, '../dist')))
+  app.use('/tutorial', express.static(join(__dirname, '../dist')))
 
   // shell on docker
   app.post('/tutorial/api/console/:imagename', async (req, res) => {
@@ -27,7 +27,93 @@ export default (app, http) => {
       console.log(req.body.userId)
     } catch (error) {
       console.error(error)
+      res.status(500)
     }
+  })
+
+  const getText = (fileName) => {
+    return new Promise((resolve, reject) => {
+      const relativePath = `./text/${fileName}.md`
+      const filePath = join(__dirname, relativePath)
+      // console.log(filePath)
+
+      readFile(filePath, 'utf-8', (err, data) => {
+        if (err) reject(err)
+        resolve(data)
+      })
+    })
+  }
+
+  app.get('/tutorial/api/text/:name', async (req, res) => {
+    const fileName = req.params.name
+    const textData = await getText(fileName)
+    res.send(textData)
+  })
+
+  const tutorials = {
+    'how-to-use': {
+      exercise: false
+    },
+    'what-is-the-git': {
+      exercise: false
+    },
+    'git-create-repository': {
+      exercise: true,
+      exerciseContent: [
+        'ディレクトリ hello-git の作成ができたか',
+        'hello-git リポジトリの作成ができたか'
+      ]
+    },
+    'git-commit': {
+      exercise: true,
+      exerciseContent: [
+        'hello.txt の作成ができたか',
+        'hello.txt がコミットされているか'
+      ]
+    },
+    'git-branch': {
+      exercise: true,
+      exerciseContent: [
+        'edit-hello ブランチの作成ができたか',
+        'edit-hello ブランチの変更が master にマージできているか'
+      ]
+    },
+    'git-amend': {
+      exercise: true,
+      exerciseContent: [
+        '直前のコミットメッセージの変更ができたか',
+        '直前のコミットにファイルの追加ができたか'
+      ]
+    },
+    'git-checkout': {
+      exercise: true,
+      exerciseContent: [
+        '作業の取り消しができたか'
+      ]
+    },
+    'github-create-repository': {
+      exercise: true,
+      exerciseContent: [
+        'リモートリポジトリとの連携ができたか',
+        'GitHub にプッシュできたか'
+      ]
+    }
+  }
+
+  app.get('/tutorial/api/tutorials/:name', async (req, res) => {
+    const tutorialName = req.params.name
+    // console.log(tutorialName)
+
+    const hasTutorial = tutorials.hasOwnProperty(tutorialName)
+    if (hasTutorial) {
+      const data = tutorials[tutorialName]
+      data.text = await getText(tutorialName)
+      res.send(data)
+    } else {
+      res.status(404)
+    }
+
+    res.end()
   })
 
   app.post('/tutorial/api/db/:operation', async (req, res) => {
