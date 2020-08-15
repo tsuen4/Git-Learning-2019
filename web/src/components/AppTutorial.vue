@@ -1,11 +1,11 @@
 <template>
   <div id="tutorial">
-    <TextComponent :tutorial-name="tutorialName" />
+    <MDText :tutorial-text="getData.text" />
   </div>
 </template>
 
 <script>
-import TextComponent from '@/components/Text.vue'
+import MDText from '@/components/MarkdownText.vue'
 import axios from 'axios'
 
 const getTutorial = (tutorialName) => {
@@ -25,7 +25,7 @@ const getTutorial = (tutorialName) => {
 export default {
   name: 'Tutorial',
   components: {
-    TextComponent
+    MDText
   },
   props: {
     tutorialName: {
