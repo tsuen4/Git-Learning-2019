@@ -17,7 +17,14 @@ import 'xterm/css/xterm.css'
 export default {
   name: 'Terminal',
   props: {
-    imageName: String
+    imageName: {
+      type: String,
+      required: true
+    },
+    exercise: {
+      type: Boolean,
+      default: false
+    }
   },
   data () {
     return {
@@ -42,6 +49,9 @@ export default {
       this.$router.go({ path: this.$router.currentRoute.path, force: true })
     },
     connectContainer (imageName) {
+      // console.log(this.exercise)
+      if (!this.exercise) return
+
       fetch(`/tutorial/api/console/${this.imageName}`, {
         method: 'POST',
         body: JSON.stringify({ userId: this.userId, userName: this.userName }),
@@ -72,7 +82,9 @@ export default {
   },
   watch: {
     imageName (changedName) {
-      this.socket.disconnect()
+      // imageName と同時に exercise(Boolean) も変更される
+
+      if (this.socket.connected) this.socket.disconnect()
       this.connectContainer(changedName)
     }
   }

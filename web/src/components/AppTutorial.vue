@@ -1,11 +1,13 @@
 <template>
   <div id="tutorial">
     <MDText :tutorial-text="getData.text" />
+    <Terminal :image-name="imageName" :exercise="getData.exercise" />
   </div>
 </template>
 
 <script>
 import MDText from '@/components/MarkdownText.vue'
+import Terminal from '@/components/Terminal.vue'
 import axios from 'axios'
 
 const getTutorial = (tutorialName) => {
@@ -25,7 +27,8 @@ const getTutorial = (tutorialName) => {
 export default {
   name: 'Tutorial',
   components: {
-    MDText
+    MDText,
+    Terminal
   },
   props: {
     tutorialName: {
@@ -35,7 +38,7 @@ export default {
   },
   data () {
     return {
-      tutorial: '',
+      imageName: '',
       getData: {}
     }
   },
@@ -47,6 +50,9 @@ export default {
       const data = await getTutorial(this.tutorialName)
       // console.log(data)
       this.getData = data
+
+      // データ取得段階でイメージネームを指定
+      this.imageName = `glc-${tutorialName}`
     }
   },
   watch: {
