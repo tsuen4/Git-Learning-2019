@@ -6,6 +6,21 @@
 
 <script>
 import TextComponent from '@/components/Text.vue'
+import axios from 'axios'
+
+const getTutorial = (tutorialName) => {
+  return new Promise((resolve, reject) => {
+    axios.get(`/tutorial/api/tutorials/${tutorialName}`)
+      .then(res => {
+        // console.log(res.data)
+        resolve(res.data)
+      })
+      .catch(err => {
+        // console.error(err)
+        reject(err)
+      })
+  })
+}
 
 export default {
   name: 'Tutorial',
@@ -20,11 +35,24 @@ export default {
   },
   data () {
     return {
-      tutorial: ''
+      tutorial: '',
+      getData: {}
     }
   },
-  created () {
-
+  mounted () {
+    this.setData(this.tutorialName)
+  },
+  methods: {
+    async setData (tutorialName) {
+      const data = await getTutorial(this.tutorialName)
+      // console.log(data)
+      this.getData = data
+    }
+  },
+  watch: {
+    tutorialName (changedName) {
+      this.setData(changedName)
+    }
   }
 }
 </script>

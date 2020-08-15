@@ -34,11 +34,11 @@ export default (app, http) => {
   const getText = (fileName) => {
     return new Promise((resolve, reject) => {
 
-    const relativePath = `./text/${fileName}.md`
-    const filePath = join(__dirname, relativePath)
-    // console.log(filePath)
+      const relativePath = `./text/${fileName}.md`
+      const filePath = join(__dirname, relativePath)
+      // console.log(filePath)
 
-    readFile(filePath, 'utf-8', (err, data) => {
+      readFile(filePath, 'utf-8', (err, data) => {
         if (err) reject(err)
         resolve(data)
       })
@@ -50,8 +50,71 @@ export default (app, http) => {
     const textData = await getText(fileName)
     res.send(textData)
   })
+
+  const tutorials = {
+    'how-to-use': {
+      exercise: false
+    },
+    'what-is-the-git': {
+      exercise: false
+    },
+    'git-create-repository': {
+      exercise: true,
+      exerciseContent: [
+        'ディレクトリ hello-git の作成ができたか',
+        'hello-git リポジトリの作成ができたか'
+      ]
+    },
+    'git-commit': {
+      exercise: true,
+      exerciseContent: [
+        'hello.txt の作成ができたか',
+        'hello.txt がコミットされているか'
+      ]
+    },
+    'git-branch': {
+      exercise: true,
+      exerciseContent: [
+        'edit-hello ブランチの作成ができたか',
+        'edit-hello ブランチの変更が master にマージできているか'
+      ]
+    },
+    'git-amend': {
+      exercise: true,
+      exerciseContent: [
+        '直前のコミットメッセージの変更ができたか',
+        '直前のコミットにファイルの追加ができたか'
+      ]
+    },
+    'git-checkout': {
+      exercise: true,
+      exerciseContent: [
+        '作業の取り消しができたか'
+      ]
+    },
+    'github-create-repository': {
+      exercise: true,
+      exerciseContent: [
+        'リモートリポジトリとの連携ができたか',
+        'GitHub にプッシュできたか'
+      ]
+    }
+  }
+
+  app.get('/tutorial/api/tutorials/:name', async (req, res) => {
+    const tutorialName = req.params.name
+    // console.log(tutorialName)
+
+    const hasTutorial = tutorials.hasOwnProperty(tutorialName)
+    if (hasTutorial) {
+      const data = tutorials[tutorialName]
+      data.text = await getText(tutorialName)
       res.send(data)
-    })
+    } else {
+      res.status(404)
+    }
+
+    res.end()
   })
 
   app.post('/tutorial/api/db/:operation', async (req, res) => {
