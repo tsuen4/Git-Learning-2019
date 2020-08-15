@@ -1,7 +1,9 @@
 <template>
   <div id="tutorial">
     <MDText :tutorial-text="getData.text" />
-    <Terminal :image-name="imageName" :exercise="getData.exercise" />
+    <template v-if="getData.exercise">
+      <Terminal :image-name="imageName" :exercise="getData.exercise" />
+    </template>
   </div>
 </template>
 
