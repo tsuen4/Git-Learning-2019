@@ -75,6 +75,7 @@ export default {
 .existTerm {
   /* ターミナルの高さ分引く (rows 18 = 306px) */
   height: calc(100vh - 306px);
+  overflow: auto;
 }
 
 #tutorial {

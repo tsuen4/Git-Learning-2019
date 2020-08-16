@@ -36,11 +36,6 @@ body {
   padding: 20px 20px 0 20px;
 }
 
-.existTerm {
-  height: calc(100vh - calc(20px + 300px - 5px));
-  overflow: auto;
-}
-
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
