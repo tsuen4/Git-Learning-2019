@@ -66,6 +66,8 @@ export default {
   watch: {
     tutorialName (changedName) {
       this.setData(changedName)
+      const text = document.getElementById('text')
+      text.scrollTop = 0
     }
   }
 }
