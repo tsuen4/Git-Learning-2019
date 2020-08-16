@@ -1,6 +1,8 @@
 <template>
   <div id="tutorial">
+    <div id="text" :class="{ existTerm: getData.exercise }">
     <MDText :tutorial-text="getData.text" />
+    </div>
     <template v-if="getData.exercise">
       <Terminal :image-name="imageName" :exercise="getData.exercise" />
     </template>
@@ -41,7 +43,8 @@ export default {
   data () {
     return {
       imageName: '',
-      getData: {}
+      getData: {},
+      existTerm: false
     }
   },
   mounted () {
@@ -66,8 +69,12 @@ export default {
 </script>
 
 <style>
+.existTerm {
+  /* ターミナルの高さ分引く (rows 18 = 306px) */
+  height: calc(100vh - 306px);
+}
+
 #tutorial {
-  overflow: auto;
   margin-left: 250px;
 }
 </style>
