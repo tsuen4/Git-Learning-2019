@@ -45,6 +45,7 @@ export default {
     connectContainer (imageName) {
       // console.log(this.exercise)
       if (!this.exercise) return
+      if (this.socket.connected) this.socket.disconnect()
 
       fetch(`/tutorial/api/console/${this.imageName}`, {
         method: 'POST',
@@ -80,10 +81,8 @@ export default {
     }
   },
   watch: {
+    // imageName と同時に exercise(Boolean) も変更される
     imageName (changedName) {
-      // imageName と同時に exercise(Boolean) も変更される
-
-      if (this.socket.connected) this.socket.disconnect()
       this.connectContainer(changedName)
     }
   },
