@@ -58,7 +58,8 @@ export default {
             rows: 18,
             cols: 80
           })
-          this.term.open(document.getElementById('terminal'))
+          const termDOM = document.getElementById('terminal')
+          this.term.open(termDOM)
 
           // コンテナとのデータのやり取り
           this.socket.on('data', data => {
@@ -74,7 +75,6 @@ export default {
           })
 
           // 複製されたターミナルを削除 (高速で教材を切り替えたときに発生する)
-          const termDOM = document.getElementById('terminal')
           while (termDOM.childElementCount > 1) termDOM.removeChild(termDOM.firstChild)
         })
     }
