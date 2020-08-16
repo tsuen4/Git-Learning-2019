@@ -3,19 +3,23 @@
     <div id="terminal"></div>
     <div id="buttons" class="markdown-body">
       <hr />
-      <input type="button" class="btn" value="最初からやり直す" @click="reload()" />
-      <input type="button" class="btn" value="採点" @click="scoring()" />
+      <Button @click="reload" >最初からやり直す</Button>
+      <Button @click="scoring">採点</Button>
     </div>
   </div>
 </template>
 
 <script>
+import Button from '@/components/Button.vue'
 import io from 'socket.io-client'
 import { Terminal } from 'xterm'
 import 'xterm/css/xterm.css'
 
 export default {
   name: 'Terminal',
+  components: {
+    Button
+  },
   props: {
     imageName: {
       type: String,
