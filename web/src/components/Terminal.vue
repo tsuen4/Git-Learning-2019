@@ -23,7 +23,8 @@ export default {
     return {
       userId: '',
       userName: '',
-      socket: io
+      socket: io,
+      term: Terminal
     }
   },
   created () {
@@ -52,23 +53,24 @@ export default {
       }).then(response => response.json())
         .then(response => {
           this.socket = io.connect(`/tutorial/${response.containerId}`, { path: '/tutorial/socket.io' })
-          const term = new Terminal({
+
+          this.term = new Terminal({
             rows: 18,
             cols: 80
           })
-          term.open(document.getElementById('terminal'))
+          this.term.open(document.getElementById('terminal'))
 
           // コンテナとのデータのやり取り
           this.socket.on('data', data => {
-            term.write(data)
+            this.term.write(data)
           })
-          term.onData(data => {
+          this.term.onData(data => {
             this.socket.emit('data', data)
           })
 
           // 接続が切れたときの処理
           this.socket.on('disconnect', () => {
-            term.dispose()
+            this.term.dispose()
           })
         })
     }
