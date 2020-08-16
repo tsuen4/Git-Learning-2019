@@ -72,6 +72,10 @@ export default {
           this.socket.on('disconnect', () => {
             this.term.dispose()
           })
+
+          // 複製されたターミナルを削除 (高速で教材を切り替えたときに発生する)
+          const termDOM = document.getElementById('terminal')
+          while (termDOM.childElementCount > 1) termDOM.removeChild(termDOM.firstChild)
         })
     }
   },
