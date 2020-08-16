@@ -1,12 +1,17 @@
 <template>
-  <button>
+  <button @click="click">
     <slot />
   </button>
 </template>
 
 <script>
 export default {
-
+  methods: {
+    click (event) {
+      // 親から @click で指定されたものを実行
+      this.$emit('click', event)
+    }
+  }
 }
 </script>
 
