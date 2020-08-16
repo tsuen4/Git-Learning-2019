@@ -1,7 +1,8 @@
 <template>
   <div id="tutorial">
     <div id="text" :class="{ existTerm: getData.exercise }">
-    <MDText :tutorial-text="getData.text" />
+      <MDText :tutorial-text="getData.text" />
+      <Scoring v-if="getData.exercise" />
     </div>
     <template v-if="getData.exercise">
       <Terminal :image-name="imageName" :exercise="getData.exercise" />
@@ -12,6 +13,7 @@
 <script>
 import MDText from '@/components/MarkdownText.vue'
 import Terminal from '@/components/Terminal.vue'
+import Scoring from '@/components/Scoring.vue'
 import axios from 'axios'
 
 const getTutorial = (tutorialName) => {
@@ -32,7 +34,8 @@ export default {
   name: 'Tutorial',
   components: {
     MDText,
-    Terminal
+    Terminal,
+    Scoring
   },
   props: {
     tutorialName: {

@@ -1,25 +1,14 @@
 <template>
-  <div id="term">
-    <div id="terminal"></div>
-    <div id="buttons" class="markdown-body">
-      <hr />
-      <Button @click="reload" >最初からやり直す</Button>
-      <Button @click="scoring">採点</Button>
-    </div>
-  </div>
+  <div id="terminal" />
 </template>
 
 <script>
-import Button from '@/components/Button.vue'
 import io from 'socket.io-client'
 import { Terminal } from 'xterm'
 import 'xterm/css/xterm.css'
 
 export default {
   name: 'Terminal',
-  components: {
-    Button
-  },
   props: {
     imageName: {
       type: String,
@@ -99,17 +88,9 @@ export default {
 </script>
 
 <style>
-#buttons {
-  padding-bottom: 10px;
-}
-
 #terminal {
   position: fixed;
-  width: 100%;
-  margin-left: -20px;
-  margin-bottom: -5px;
   bottom: 0;
-  height: 310px;
 }
 
 /* width: 1024px 以上 */
