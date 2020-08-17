@@ -36,11 +36,6 @@ body {
   padding: 20px 20px 0 20px;
 }
 
-.existTerm {
-  height: calc(100vh - calc(20px + 300px - 5px));
-  overflow: auto;
-}
-
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -65,24 +60,6 @@ a {
 
 a.router-link-exact-active {
   color: #f05033;
-}
-
-.btn {
-  display: inline-block;
-  background-color: #fff;
-  border: solid 1px #f05033;
-  color: #f05033;
-  border-radius: 0.25rem 0.25rem;
-  margin-left: 5px !important;
-}
-
-.btn:hover {
-  background-color: #f05033;
-  color: #fff;
-}
-
-.btn:active {
-  background-color: #af250d;
 }
 
 /* width: 1024px 以上 */

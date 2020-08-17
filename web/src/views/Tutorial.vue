@@ -1,8 +1,12 @@
 <template>
   <div id="tutorial">
-    <MDText :tutorial-text="getData.text" />
+    <div id="text" :class="{ existTerm: getData.exercise }">
+      <MDText :tutorial-text="getData.text" />
+      <!-- 子からイベントを受け取る => (@scoring, @startOver) -->
+      <Scoring v-if="getData.exercise" @scoring="scoring" @startOver="startOver" />
+    </div>
     <template v-if="getData.exercise">
-      <Terminal :image-name="imageName" :exercise="getData.exercise" />
+      <Terminal :image-name="imageName" :exercise="getData.exercise" ref="terminal" />
     </template>
   </div>
 </template>
@@ -10,6 +14,7 @@
 <script>
 import MDText from '@/components/MarkdownText.vue'
 import Terminal from '@/components/Terminal.vue'
+import Scoring from '@/components/Scoring.vue'
 import axios from 'axios'
 
 const getTutorial = (tutorialName) => {
@@ -30,7 +35,8 @@ export default {
   name: 'Tutorial',
   components: {
     MDText,
-    Terminal
+    Terminal,
+    Scoring
   },
   props: {
     tutorialName: {
@@ -41,7 +47,8 @@ export default {
   data () {
     return {
       imageName: '',
-      getData: {}
+      getData: {},
+      existTerm: false
     }
   },
   mounted () {
@@ -55,19 +62,34 @@ export default {
 
       // データ取得段階でイメージネームを指定
       this.imageName = `glc-${tutorialName}`
+    },
+    startOver () {
+      // Terminal(ref="terminal") の connectContariner() を発火
+      this.$refs.terminal.connectContainer(this.imageName)
+    },
+    scoring () {
+      // Terminal(ref="terminal") の scoring() を発火
+      this.$refs.terminal.scoring()
     }
   },
   watch: {
     tutorialName (changedName) {
       this.setData(changedName)
+      const text = document.getElementById('text')
+      text.scrollTop = 0
     }
   }
 }
 </script>
 
 <style>
-#tutorial {
+.existTerm {
+  /* ターミナルの高さ分引く (rows 18 = 306px) */
+  height: calc(100vh - 306px);
   overflow: auto;
+}
+
+#tutorial {
   margin-left: 250px;
 }
 </style>

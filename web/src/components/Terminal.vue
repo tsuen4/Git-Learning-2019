@@ -1,12 +1,5 @@
 <template>
-  <div id="term">
-    <div id="terminal"></div>
-    <div id="buttons" class="markdown-body">
-      <hr />
-      <input type="button" class="btn" value="最初からやり直す" @click="reload()" />
-      <input type="button" class="btn" value="採点" @click="scoring()" />
-    </div>
-  </div>
+  <div id="terminal" />
 </template>
 
 <script>
@@ -30,7 +23,8 @@ export default {
     return {
       userId: '',
       userName: '',
-      socket: io
+      socket: io,
+      term: Terminal
     }
   },
   created () {
@@ -51,6 +45,7 @@ export default {
     connectContainer (imageName) {
       // console.log(this.exercise)
       if (!this.exercise) return
+      if (this.socket.connected) this.socket.disconnect()
 
       fetch(`/tutorial/api/console/${this.imageName}`, {
         method: 'POST',
@@ -59,32 +54,35 @@ export default {
       }).then(response => response.json())
         .then(response => {
           this.socket = io.connect(`/tutorial/${response.containerId}`, { path: '/tutorial/socket.io' })
-          const term = new Terminal({
+
+          this.term = new Terminal({
             rows: 18,
             cols: 80
           })
-          term.open(document.getElementById('terminal'))
+          const termDOM = document.getElementById('terminal')
+          this.term.open(termDOM)
 
           // コンテナとのデータのやり取り
           this.socket.on('data', data => {
-            term.write(data)
+            this.term.write(data)
           })
-          term.onData(data => {
+          this.term.onData(data => {
             this.socket.emit('data', data)
           })
 
           // 接続が切れたときの処理
           this.socket.on('disconnect', () => {
-            term.dispose()
+            this.term.dispose()
           })
+
+          // 複製されたターミナルを削除 (高速で教材を切り替えたときに発生する)
+          while (termDOM.childElementCount > 1) termDOM.removeChild(termDOM.firstChild)
         })
     }
   },
   watch: {
+    // imageName と同時に exercise(Boolean) も変更される
     imageName (changedName) {
-      // imageName と同時に exercise(Boolean) も変更される
-
-      if (this.socket.connected) this.socket.disconnect()
       this.connectContainer(changedName)
     }
   },
@@ -95,17 +93,9 @@ export default {
 </script>
 
 <style>
-#buttons {
-  padding-bottom: 10px;
-}
-
 #terminal {
   position: fixed;
-  width: 100%;
-  margin-left: -20px;
-  margin-bottom: -5px;
   bottom: 0;
-  height: 310px;
 }
 
 /* width: 1024px 以上 */
