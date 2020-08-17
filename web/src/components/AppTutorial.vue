@@ -2,10 +2,11 @@
   <div id="tutorial">
     <div id="text" :class="{ existTerm: getData.exercise }">
       <MDText :tutorial-text="getData.text" />
-      <Scoring v-if="getData.exercise" />
+      <!-- 子からイベントを受け取ったら AppTutorial の scoring() を発火 -->
+      <Scoring v-if="getData.exercise" @scoring="scoring" />
     </div>
     <template v-if="getData.exercise">
-      <Terminal :image-name="imageName" :exercise="getData.exercise" />
+      <Terminal :image-name="imageName" :exercise="getData.exercise" ref="terminal" />
     </template>
   </div>
 </template>
@@ -61,6 +62,10 @@ export default {
 
       // データ取得段階でイメージネームを指定
       this.imageName = `glc-${tutorialName}`
+    },
+    scoring () {
+      // Terminal(ref="terminal") の scoring() を発火
+      this.$refs.terminal.scoring()
     }
   },
   watch: {
