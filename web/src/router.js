@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import store from './store'
 
-import AppTutorial from '@/components/AppTutorial.vue'
+import AppTutorial from '@/views/Tutorial.vue'
 
 Vue.use(Router)
 
