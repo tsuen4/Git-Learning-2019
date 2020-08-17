@@ -2,8 +2,8 @@
   <div id="tutorial">
     <div id="text" :class="{ existTerm: getData.exercise }">
       <MDText :tutorial-text="getData.text" />
-      <!-- 子からイベントを受け取ったら AppTutorial の scoring() を発火 -->
-      <Scoring v-if="getData.exercise" @scoring="scoring" />
+      <!-- 子からイベントを受け取る => (@scoring, @startOver) -->
+      <Scoring v-if="getData.exercise" @scoring="scoring" @startOver="startOver" />
     </div>
     <template v-if="getData.exercise">
       <Terminal :image-name="imageName" :exercise="getData.exercise" ref="terminal" />
@@ -62,6 +62,10 @@ export default {
 
       // データ取得段階でイメージネームを指定
       this.imageName = `glc-${tutorialName}`
+    },
+    startOver () {
+      // Terminal(ref="terminal") の connectContariner() を発火
+      this.$refs.terminal.connectContainer(this.imageName)
     },
     scoring () {
       // Terminal(ref="terminal") の scoring() を発火

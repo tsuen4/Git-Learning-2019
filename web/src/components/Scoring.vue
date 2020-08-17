@@ -1,6 +1,6 @@
 <template>
   <div class="scoring">
-    <!-- <Button @click="reload">最初からやり直す</Button> -->
+    <Button @click="startOver">最初からやり直す</Button>
     <Button @click="scoring">採点</Button>
   </div>
 </template>
@@ -14,6 +14,10 @@ export default {
     Button
   },
   methods: {
+    startOver () {
+      // 親 (AppTutorial) に知らせる
+      this.$emit('startOver')
+    },
     scoring () {
       // 親 (AppTutorial) に知らせる
       this.$emit('scoring')
