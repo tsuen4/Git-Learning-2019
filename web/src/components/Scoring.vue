@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Button from '@/components/Scoring.vue'
+import Button from '@/components/Button.vue'
 
 export default {
   name: 'scoring',
