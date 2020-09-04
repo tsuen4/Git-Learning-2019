@@ -3,17 +3,21 @@
     <div v-if="isLoading">loading...</div>
     <div v-else>
       <span v-if="isSignedIn()" class="status">{{ this.$store.getters.id }}: {{ status }}</span>
-      <input v-if="!isSignedIn()" type="button" class="btn" value="Login" @click="signUp()" />
-      <input v-else type="button" class="btn" value="Logout" @click="signOut()" />
+      <Button v-if="!isSignedIn()" type="button" class="btn" @click="signUp()">Login</Button>
+      <Button v-else type="button" class="btn" @click="signOut()">Logout</Button>
     </div>
   </div>
 </template>
 
 <script>
 import firebase from '../firebase'
+import Button from '@/components/Button.vue'
 
 export default {
   name: 'login',
+  components: {
+    Button
+  },
   created: function () {
     this.onAuth()
   },
