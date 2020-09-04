@@ -31,13 +31,13 @@ export default {
   data: () => {
     return {
       gitTutorials: [
-        { name: '1. Git とは', contents: '/text/what-is-the-git' },
-        { name: '2. リポジトリの作成', contents: '/text/git-create-repository' },
-        { name: '3. 変更内容の記録', contents: '/text/git-commit' },
-        { name: '4.1 ブランチによる分岐と統合', contents: '/text/git-branch' },
-        { name: '4.2 コミットのやり直し', contents: '/text/git-amend' },
-        { name: '4.3 作業の取り消し', contents: '/text/git-checkout' },
-        { name: '5. GitHub へプッシュ', contents: '/text/github-create-repository' }
+        { name: '1. Git とは', contents: '/what-is-the-git' },
+        { name: '2. リポジトリの作成', contents: '/git-create-repository' },
+        { name: '3. 変更内容の記録', contents: '/git-commit' },
+        { name: '4.1 ブランチによる分岐と統合', contents: '/git-branch' },
+        { name: '4.2 コミットのやり直し', contents: '/git-amend' },
+        { name: '4.3 作業の取り消し', contents: '/git-checkout' },
+        { name: '5. GitHub へプッシュ', contents: '/github-create-repository' }
       ]
     }
   }
