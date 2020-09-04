@@ -20,7 +20,10 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: AppTutorial,
+      props: {
+        tutorialName: 'how-to-use'
+      },
       meta: { isPublic: true }
     },
     {
