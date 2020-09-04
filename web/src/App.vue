@@ -1,15 +1,18 @@
 <template>
   <div id="app">
+    <Login />
     <AppNav />
     <router-view />
   </div>
 </template>
 
 <script>
+import Login from '@/components/Login.vue'
 import AppNav from '@/components/AppNav.vue'
 
 export default {
   components: {
+    Login,
     AppNav
   },
   data: () => {
@@ -28,7 +31,6 @@ body {
 #nav {
   float: left;
   position: fixed;
-  top: 0;
   width: 250px;
 }
 
