@@ -55,13 +55,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .status {
   padding-right: 10px;
 }
+
 .login {
-  display: table;
-  margin: -65px 0 0 auto;
-  height: 50px;
+  display: block;
+  height: 40px;
+  background-color: bisque;
 }
 </style>
