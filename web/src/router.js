@@ -12,7 +12,7 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/:tutorialName',
+      path: '/tutorial/:tutorialName',
       component: AppTutorial,
       props: true
     },
