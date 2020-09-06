@@ -45,10 +45,12 @@ body {
   color: #2c3e50;
 }
 
-.markdown-body {
-  box-sizing: border-box;
-  min-width: 300px;
-  margin: 0 auto 20px;
+.text-padding {
+  padding: 15px 15px 0 15px;
+}
+
+.text-padding:last-child {
+  padding-bottom: 15px;
 }
 
 hr {
