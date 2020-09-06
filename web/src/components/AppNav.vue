@@ -47,7 +47,8 @@ export default {
 <style>
 #tutorial-list ul {
   list-style-type: none;
-  margin-left: -40px;
+  /* ブラウザで指定されてる値を削除 */
+  padding-inline-start: 0;
 }
 
 #tutorial-list li {
@@ -55,5 +56,9 @@ export default {
   list-style-position: inside;
   line-height: 2em;
   padding-left: 10px;
+}
+
+#tutorial-list li:last-child {
+  border-bottom: none;
 }
 </style>
