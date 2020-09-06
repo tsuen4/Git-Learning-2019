@@ -85,7 +85,8 @@ export default {
 <style>
 .existTerm {
   /* ターミナルの高さ分引く (rows 18 = 306px) */
-  height: calc(100vh - 306px);
+  /* 上部バーの高さ分引く () */
+  height: calc(100vh - 306px - 40px);
   overflow: auto;
 }
 

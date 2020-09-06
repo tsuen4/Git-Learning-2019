@@ -12,7 +12,7 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/text/:tutorialName',
+      path: '/tutorial/:tutorialName',
       component: AppTutorial,
       props: true
     },
@@ -20,7 +20,10 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: AppTutorial,
+      props: {
+        tutorialName: 'how-to-use'
+      },
       meta: { isPublic: true }
     },
     {

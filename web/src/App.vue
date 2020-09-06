@@ -1,15 +1,18 @@
 <template>
   <div id="app">
+    <Login />
     <AppNav />
     <router-view />
   </div>
 </template>
 
 <script>
+import Login from '@/components/Login.vue'
 import AppNav from '@/components/AppNav.vue'
 
 export default {
   components: {
+    Login,
     AppNav
   },
   data: () => {
@@ -28,7 +31,6 @@ body {
 #nav {
   float: left;
   position: fixed;
-  top: 0;
   width: 250px;
 }
 
@@ -43,10 +45,12 @@ body {
   color: #2c3e50;
 }
 
-.markdown-body {
-  box-sizing: border-box;
-  min-width: 300px;
-  margin: 0 auto 20px;
+.text-padding {
+  padding: 15px 15px 0 15px;
+}
+
+.text-padding:last-child {
+  padding-bottom: 15px;
 }
 
 hr {

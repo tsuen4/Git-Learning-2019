@@ -1,5 +1,5 @@
 <template>
-  <div class="scoring">
+  <div class="scoring text-padding">
     <Button @click="startOver">最初からやり直す</Button>
     <Button @click="scoring">採点</Button>
   </div>

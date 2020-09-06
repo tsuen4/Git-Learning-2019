@@ -1,5 +1,5 @@
 <template>
-  <div class="markdown-body" v-html="compiledMarkdown" />
+  <div class="markdown-body text-padding" v-html="compiledMarkdown" />
 </template>
 
 <script>

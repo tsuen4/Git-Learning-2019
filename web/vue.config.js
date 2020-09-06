@@ -3,7 +3,8 @@ module.exports = {
   // outputDir: '../docs/',
 
   // publicPath: process.env.NODE_ENV === 'production' ? '/(RepositoryName)/' : './',
-  publicPath: '/tutorial/',
+  // publicPath: '/tutorial/',
+  publicPath: '/',
 
   pluginOptions: {
     express: {
